@@ -37,6 +37,7 @@ public void draw() {
     y-= 10;
   }
 
+  text("" + x + ", " + y, 10, 10);
   rect(x, y, 50, 50);
 }
 
@@ -53,7 +54,7 @@ public void keyReleased() {
   if (key == 'd')  keyz[2] = false;
   if (key == 'w')  keyz[3] = false;
 }
-  public void settings() {  size(400, 400);  smooth(); }
+  public void settings() {  size(1000, 1200);  smooth(); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Test_pde" };
     if (passedArgs != null) {

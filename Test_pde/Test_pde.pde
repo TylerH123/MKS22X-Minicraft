@@ -1,7 +1,7 @@
 boolean keyz[] = new boolean [4];
 float x, y;
 void setup() {
-  size(400, 400);
+  size(1000, 1200);
   noStroke();
   smooth();
 }
@@ -21,6 +21,7 @@ void draw() {
     y-= 10;
   }
 
+  text("" + x + ", " + y, 10, 10);
   rect(x, y, 50, 50);
 }
 
