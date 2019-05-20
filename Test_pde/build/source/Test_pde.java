@@ -25,16 +25,16 @@ public void setup() {
 public void draw() {
   background(80);
   if (keyz[0]){
-    x-= 10;
+    x-= 5;
   }
   if (keyz[1]){
-    y+= 10;
+    y+= 5;
   }
   if (keyz[2]){
-    x+= 10;
+    x+= 5;
   }
   if (keyz[3]){
-    y-= 10;
+    y-= 5;
   }
 
   text("" + x + ", " + y, 10, 10);
