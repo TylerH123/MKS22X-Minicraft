@@ -14,9 +14,8 @@ import java.io.IOException;
 
 public class Test_pde extends PApplet {
 
-float keyz[] = new float [4];
+boolean keyz[] = new boolean [4];
 float x, y;
-
 public void setup() {
   
   noStroke();
@@ -24,34 +23,36 @@ public void setup() {
 }
 
 public void draw() {
-  float dx = 0.0f;
-  float dy = 0.0f;
-  for (int n = 0; n < keyz.length; n++){
-    if (n == 0 || n == 2){
-      dx += keyz[n];
-    }
-
-    if (n == 1 || n == 3){
-      dy += keyz[n];
-    }
+  background(80);
+  if (keyz[0]){
+    x-= 10;
+  }
+  if (keyz[1]){
+    y+= 10;
+  }
+  if (keyz[2]){
+    x+= 10;
+  }
+  if (keyz[3]){
+    y-= 10;
   }
 
-  rect(dx, dy, 50, 50);
+  rect(x, y, 50, 50);
 }
 
 public void keyPressed() {
-  if (key == 'a')  keyz[0] = -10;
-  if (key == 's')  keyz[1] = 10;
-  if (key == 'd')  keyz[2] = 10;
-  if (key == 'w')  keyz[3] = -10;
+  if (key == 'a')  keyz[0] = true;
+  if (key == 's')  keyz[1] = true;
+  if (key == 'd')  keyz[2] = true;
+  if (key == 'w')  keyz[3] = true;
 }
 
-//void keyReleased() {
-//  if (key == 'a')  keyz[0] = 0;
-//  if (key == 's')  keyz[1] = 0;
-//  if (key == 'd')  keyz[2] = 0;
-//  if (key == 'w')  keyz[3] = 0;
-//}
+public void keyReleased() {
+  if (key == 'a')  keyz[0] = false;
+  if (key == 's')  keyz[1] = false;
+  if (key == 'd')  keyz[2] = false;
+  if (key == 'w')  keyz[3] = false;
+}
   public void settings() {  size(400, 400);  smooth(); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Test_pde" };
