@@ -46,12 +46,12 @@ public void keyPressed() {
   if (key == 'w')  keyz[3] = -10;
 }
 
-public void keyReleased() {
-  if (key == 'a')  keyz[0] = 0;
-  if (key == 's')  keyz[1] = 0;
-  if (key == 'd')  keyz[2] = 0;
-  if (key == 'w')  keyz[3] = 0;
-}
+//void keyReleased() {
+//  if (key == 'a')  keyz[0] = 0;
+//  if (key == 's')  keyz[1] = 0;
+//  if (key == 'd')  keyz[2] = 0;
+//  if (key == 'w')  keyz[3] = 0;
+//}
   public void settings() {  size(400, 400);  smooth(); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Test_pde" };
