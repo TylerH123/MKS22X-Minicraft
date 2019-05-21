@@ -6,14 +6,18 @@ void setup() {
   size(1000, 1200);
   noStroke();
   smooth();
-  t.add(new Grass(0, 50));
-  t.add(new Grass(0, 100));
-  t.add(new Grass(0, 150));
-  t.add(new Grass(0, 200));
+  for (int i = 0; i < 100; i++) {
+    for (int j = 0; j < 100; j++) {
+      t.add(new Grass(i*50, j*50));
+    }
+  }
 }
 
 void draw() {
-  background(80);
+  background(0,0,255);
+  for (Tile g : t) {   
+    g.display();
+  }
   leanx = 0;
   leany = 0;
   if (keyz[0]) {
@@ -42,9 +46,6 @@ void draw() {
   fill(100, 50, 118);
   text("PLAYER BOI", 400, 500);
   rect(400 + leanx, 500 + leany, 50, 50);
-  for (Tile g : t){   
-    g.display();
-  }
 }
 
 void keyPressed() {
