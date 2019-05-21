@@ -42,7 +42,7 @@ void draw() {
   fill(100, 50, 118);
   text("PLAYER BOI", 400, 500);
   rect(400 + leanx, 500 + leany, 50, 50);
-  for (Tile g : t){ 
+  for (Tile g : t){   
     g.display();
   }
 }
