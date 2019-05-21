@@ -38,9 +38,13 @@ public void draw() {
   }
 
   text("" + dx + ", " + dy, 10, 10);
+  fill(88, 185, 118);
+  text("PLAYER BOI", 400, 500);
 
+  fill(204, 153, 21);
   rect(dx+100, dy+100, 30, 50);
 
+  fill(5);
   rect(400, 500, 50, 50);
 }
 
