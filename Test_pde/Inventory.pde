@@ -1,6 +1,5 @@
 public class Inventory{
-  ArrayList<Item> inventory;
-  
+  int[] inventory = new int[50]; 
   public Inventory(){  
   }
   void display(){
