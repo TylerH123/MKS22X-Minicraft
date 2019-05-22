@@ -1,4 +1,4 @@
 public interface Transversable{
 
-  public boolean canWalk();
+  boolean canWalk();
 }

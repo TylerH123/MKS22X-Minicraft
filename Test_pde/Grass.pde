@@ -7,4 +7,8 @@ public class Grass extends Tile {
     c = color(0,255,0);
   }
 
+  public boolean canWalk(){
+    return true;
+  }
+
 }
