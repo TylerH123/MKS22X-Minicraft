@@ -18,7 +18,7 @@ void draw() {
   background(0,0,255);
   stroke(#000000, 50);
 
-  strokeWeight(4);
+  strokeWeight(2);
   for (Tile g : t) {
     g.display();
   }
@@ -46,10 +46,6 @@ void draw() {
   fill(5);
 
   text("" + dx + ", " + dy, 10, 10);
-
-  fill(204, 153, 21);
-  rect(dx+100, dy+100, 30, 50);
-
   fill(100, 50, 118);
   text("PLAYER BOI", 400, 500);
   stroke(#000000, 50);
@@ -61,7 +57,7 @@ void keyPressed() {
   if (key == 's')  keyz[1] = true;
   if (key == 'd')  keyz[2] = true;
   if (key == 'w')  keyz[3] = true;
-  if (key == 'i')  keyz[4] = true;
+  if (key == 'i')  keyz[4] = !keyz[4];
 }
 
 void keyReleased() {
@@ -69,5 +65,4 @@ void keyReleased() {
   if (key == 's')  keyz[1] = false;
   if (key == 'd')  keyz[2] = false;
   if (key == 'w')  keyz[3] = false;
-  if (key == 'i')  keyz[4] = false;
 }

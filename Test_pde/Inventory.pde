@@ -4,7 +4,8 @@ public class Inventory{
   public Inventory(){  
   }
   void display(){
-    rect(dx,dy,100,100);
+    fill(255);
+    rect(410+dx,510+dy,100,100);
   }
   
 }
