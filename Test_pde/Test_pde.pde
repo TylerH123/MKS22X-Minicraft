@@ -1,4 +1,5 @@
 boolean keyz[] = new boolean [5];
+boolean isPaused = false; 
 static float dx, dy;
 float leanx, leany;
 ArrayList<Tile> t = new ArrayList<Tile>();
@@ -57,7 +58,10 @@ void keyPressed() {
   if (key == 's')  keyz[1] = true;
   if (key == 'd')  keyz[2] = true;
   if (key == 'w')  keyz[3] = true;
-  if (key == 'i')  keyz[4] = !keyz[4];
+  if (key == 'i'){
+    keyz[4] = !keyz[4];
+    isPaused = true;
+  }
 }
 
 void keyReleased() {
