@@ -1,7 +1,7 @@
 boolean keyz[] = new boolean [4];
 static float dx, dy;
 float leanx, leany;
-ArrayList<Tile> t = new ArrayList<Tile>(); 
+ArrayList<Tile> t = new ArrayList<Tile>();
 void setup() {
   size(1000, 1200);
   noStroke();
@@ -15,7 +15,10 @@ void setup() {
 
 void draw() {
   background(0,0,255);
-  for (Tile g : t) {   
+  stroke(#000000, 50);
+
+  strokeWeight(4);
+  for (Tile g : t) {
     g.display();
   }
   leanx = 0;
@@ -40,11 +43,12 @@ void draw() {
 
   text("" + dx + ", " + dy, 10, 10);
 
-  fill(204, 153, 21); 
+  fill(204, 153, 21);
   rect(dx+100, dy+100, 30, 50);
 
   fill(100, 50, 118);
   text("PLAYER BOI", 400, 500);
+  stroke(#000000, 50);
   rect(400 + leanx, 500 + leany, 50, 50);
 }
 
