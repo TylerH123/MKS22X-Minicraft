@@ -19,3 +19,5 @@ border such that differentiating tiles is easier.
 #### DevLog Tyler
 ## 05-20-19
 Today, Moody and I worked together to code movement using w,a,s,d. At first, the movement was clunky and did not move diagonally. Eventually, we got it to move around smoothly.
+## 05-21-19
+Today, Moody and I worked together to created a class for tile, grass, stone, and made a collideable interface. We also added the grass and water at the border of the world. 
