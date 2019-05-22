@@ -1,7 +1,8 @@
-boolean keyz[] = new boolean [4];
+boolean keyz[] = new boolean [5];
 static float dx, dy;
 float leanx, leany;
 ArrayList<Tile> t = new ArrayList<Tile>();
+Inventory inv = new Inventory();
 void setup() {
   size(1000, 1200);
   noStroke();
@@ -39,6 +40,9 @@ void draw() {
     dy+= 5;
     leany = -5;
   }
+  if (keyz[4]){
+    inv.display();
+  }
   fill(5);
 
   text("" + dx + ", " + dy, 10, 10);
@@ -57,6 +61,7 @@ void keyPressed() {
   if (key == 's')  keyz[1] = true;
   if (key == 'd')  keyz[2] = true;
   if (key == 'w')  keyz[3] = true;
+  if (key == 'i')  keyz[4] = true;
 }
 
 void keyReleased() {
@@ -64,4 +69,5 @@ void keyReleased() {
   if (key == 's')  keyz[1] = false;
   if (key == 'd')  keyz[2] = false;
   if (key == 'w')  keyz[3] = false;
+  if (key == 'i')  keyz[4] = false;
 }
