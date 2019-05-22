@@ -48,7 +48,7 @@ void draw() {
 
   text("" + dx + ", " + dy, 10, 10);
   fill(100, 50, 118);
-  text("PLAYER BOI", 440, 370);
+  text("PLAYER BOI", 442, 368);
   stroke(#000000, 50);
   rect(450 + leanx, 375 + leany, 50, 50);
 }
@@ -60,7 +60,7 @@ void keyPressed() {
   if (key == 'w')  keyz[3] = true;
   if (key == 'i') {
     keyz[4] = !keyz[4];
-    isPaused = true;
+    isPaused = !isPaused;
   }
 }
 
