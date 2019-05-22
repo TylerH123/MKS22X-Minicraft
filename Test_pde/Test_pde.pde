@@ -1,4 +1,5 @@
 boolean keyz[] = new boolean [4];
+boolean canmove[] = new boolean [4];
 static float dx, dy;
 float leanx, leany;
 ArrayList<Tile> t = new ArrayList<Tile>();
