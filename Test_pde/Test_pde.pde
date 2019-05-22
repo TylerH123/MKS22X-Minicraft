@@ -16,7 +16,7 @@ void setup() {
 }
 
 void draw() {
-  background(0,0,255);
+  background(0, 0, 255);
   stroke(#000000, 50);
 
   strokeWeight(2);
@@ -25,23 +25,23 @@ void draw() {
   }
   leanx = 0;
   leany = 0;
-  if (keyz[0]) {
+  if (keyz[0] && !isPaused) {
     dx+= 5;
     leanx = -5;
   }
-  if (keyz[1]) {
+  if (keyz[1] && !isPaused) {
     dy-= 5;
     leany = 5;
   }
-  if (keyz[2]) {
+  if (keyz[2] && !isPaused) {
     dx-= 5;
     leanx = 5;
   }
-  if (keyz[3]) {
+  if (keyz[3] && !isPaused) {
     dy+= 5;
     leany = -5;
   }
-  if (keyz[4]){
+  if (keyz[4]) {
     inv.display();
   }
   fill(5);
@@ -58,7 +58,7 @@ void keyPressed() {
   if (key == 's')  keyz[1] = true;
   if (key == 'd')  keyz[2] = true;
   if (key == 'w')  keyz[3] = true;
-  if (key == 'i'){
+  if (key == 'i') {
     keyz[4] = !keyz[4];
     isPaused = true;
   }
