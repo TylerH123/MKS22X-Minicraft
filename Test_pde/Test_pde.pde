@@ -5,7 +5,7 @@ float leanx, leany;
 ArrayList<Tile> t = new ArrayList<Tile>();
 Inventory inv = new Inventory();
 void setup() {
-  size(1000, 1200);
+  size(1000, 750);
   noStroke();
   smooth();
   for (int i = 0; i < 100; i++) {
@@ -48,9 +48,9 @@ void draw() {
 
   text("" + dx + ", " + dy, 10, 10);
   fill(100, 50, 118);
-  text("PLAYER BOI", 400, 500);
+  text("PLAYER BOI", 440, 370);
   stroke(#000000, 50);
-  rect(400 + leanx, 500 + leany, 50, 50);
+  rect(450 + leanx, 375 + leany, 50, 50);
 }
 
 void keyPressed() {

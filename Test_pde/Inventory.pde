@@ -4,7 +4,7 @@ public class Inventory{
   }
   void display(){
     fill(255);
-    rect(470,500,100,100);
+    rect(520,375,100,100);
   }
   
 }
