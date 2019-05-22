@@ -21,3 +21,5 @@ border such that differentiating tiles is easier.
 Today, Moody and I worked together to code movement using w,a,s,d. At first, the movement was clunky and did not move diagonally. Eventually, we got it to move around smoothly.
 ## 05-21-19
 Today, Moody and I worked together to created a class for tile, grass, stone, and made a collideable interface. We also added the grass and water at the border of the world. 
+## 05-22-19
+Today, I worked on inventory and item class. For inventory, I did part of the display function. I added a pause to the game so when you open inventory, the player cannot move. Item class is abstract and has the children tool,resource, armor, and station. Each of these items can be picked up and added to the inventory. 
