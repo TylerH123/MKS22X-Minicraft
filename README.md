@@ -23,3 +23,5 @@ Today, Moody and I worked together to code movement using w,a,s,d. At first, the
 Today, Moody and I worked together to created a class for tile, grass, stone, and made a collideable interface. We also added the grass and water at the border of the world. 
 ## 05-22-19
 Today, I worked on inventory and item class. For inventory, I did part of the display function. I added a pause to the game so when you open inventory, the player cannot move. Item class is abstract and has the children tool,resource, armor, and station. Each of these items can be picked up and added to the inventory. 
+## 05-23-19
+Today, I worked on inventory and armor class. For armor, I added a way to determine the damage reduction for each piece of armor. I also added a constructor that can become different pieces of armor at different tiers. A method to determine if a certain piece of armor for the different tiers can be made. 
