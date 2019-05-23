@@ -3,7 +3,7 @@ public class Armor extends Item {
   String piece; 
   float dmgReduc; 
   int pieceStr;
-  public Armor(int type, String piece) {
+  Armor(int type, String piece) {
     this.type = type; 
     this.piece = piece; 
     dmgReduc = .015 * (type * pieceStr);
@@ -24,11 +24,16 @@ public class Armor extends Item {
       id = 4;
     }
   }
-  public String name() {
+  String name() {
     String typeName = ""; 
     if (type == 1) typeName = "wooden"; 
     if (type == 2) typeName = "stone";
     if (type == 3) typeName = "moodstone";
     return typeName + " " + piece;
+  }
+  String create(){
+    
+    
+    return "cannot create";
   }
 }
