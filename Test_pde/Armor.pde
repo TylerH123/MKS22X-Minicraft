@@ -1,32 +1,32 @@
-public class Armor extends Item {
+public class Armor extends Item{
   int type; 
   String piece; 
   float dmgReduc; 
-  int pieceStr;
+  int pieceStrength;
   int cost; 
   Armor(int type, String piece) {
     this.type = type; 
     this.piece = piece; 
-    dmgReduc = .015 * (type * pieceStr);
+    dmgReduc = .015 * (type * pieceStrength);
     if (piece.equals("head")) {
-      pieceStr = 2; 
+      pieceStrength = 2; 
       id = 1;
-      cost = 10; 
+      cost = 10;
     }
     if (piece.equals("chest")) {
-      pieceStr = 4; 
+      pieceStrength = 4; 
       id = 2;
-      cost = 20; 
+      cost = 20;
     }
     if (piece.equals("legs")) {
-      pieceStr = 3; 
+      pieceStrength = 3; 
       id = 3;
-      cost = 15; 
+      cost = 15;
     }
     if (piece.equals("foot")) { 
-      pieceStr = 1; 
+      pieceStrength = 1; 
       id = 4;
-      cost = 5; 
+      cost = 5;
     }
   }
   String name() {
@@ -35,5 +35,22 @@ public class Armor extends Item {
     if (type == 2) typeName = "stone";
     if (type == 3) typeName = "moodstone";
     return typeName + " " + piece;
+  }
+  boolean canCreate(String p, int t) {
+    int c = 0; 
+    if (p.equals("head")) {
+      c = 10;
+    }
+    if (p.equals("chest")) {
+      c = 20;
+    }
+    if (p.equals("legs")) {
+      c = 15;
+    }
+    if (p.equals("foot")) { 
+      c = 5;
+    }
+    if (inv.contains(t,c)) return true; 
+    return false; 
   }
 }
