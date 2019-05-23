@@ -1,12 +1,11 @@
 public class Stone extends Tile implements Transversable {
 
-    color c = #a43512;
+    color c = #73aba3;
 
     public Stone(int x, int y){
       super();
       this.x = x;
       this.y = y;
-      c = color(0,255,0);
     }
 
     boolean isTouching(Object o){
@@ -15,5 +14,10 @@ public class Stone extends Tile implements Transversable {
 
     boolean canWalk(){
       return false;
+    }
+
+    void display(){
+      fill(c);
+      rect(x+Test_pde.dx,y+Test_pde.dy,50,50);
     }
 }
