@@ -33,6 +33,7 @@ public class Station extends Item {
       if (inv.contains(rssID, c) && inv.contains(14, 5)){
         inv.remove(rssID,c); 
         inv.remove(14,5); 
+        inv.add(itemID); 
         return "Successfully crafted"; 
       }
       else { 
@@ -40,7 +41,11 @@ public class Station extends Item {
       }
     }
     //if anything else, check inventory for the resources 
-    if (inv.contains(rssID, c)) return "Successfully crafted"; 
+    if (inv.contains(rssID, c)){
+      inv.remove(rssID,c); 
+      inv.add(itemID);
+      return "Successfully crafted";
+    }
     return "Failed to craft";
   }
 }
