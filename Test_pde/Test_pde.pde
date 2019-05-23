@@ -1,8 +1,9 @@
 boolean keyz[] = new boolean [5];
 boolean isPaused = false;
+boolean canwalk[] = new boolean[4];
 static float dx, dy;
 float leanx, leany;
-ArrayList<Tile> t = new ArrayList<Tile>();
+Tile[][] t = new Tile[100][100];
 Inventory inv = new Inventory();
 void setup() {
   size(1000, 750);
@@ -10,19 +11,21 @@ void setup() {
   smooth();
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
-      t.add(new Grass(i*50, j*50));
+      t[i][j] = new Grass(i*50, j*50);
     }
   }
 }
 
 void draw() {
-  clear();
+  // clear();
   background(0, 0, 255);
   stroke(#000000, 50);
 
   strokeWeight(2);
-  for (Tile g : t) {
-    g.display();
+  for (Tile[] garray : t) {
+    for (Tile g: garray){
+      g.display();
+    }
   }
   leanx = 0;
   leany = 0;
@@ -51,7 +54,7 @@ void draw() {
   fill(100, 50, 118);
   text("PLAYER BOI", 442, 368);
   stroke(#000000, 50);
-  rect(450 + leanx, 375 + leany, 50, 50);
+  rect(400 + leanx, 400 + leany, 50, 50);
 }
 
 void keyPressed() {
