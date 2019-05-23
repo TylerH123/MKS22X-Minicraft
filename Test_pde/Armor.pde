@@ -24,7 +24,7 @@ public class Armor extends Item{
       pieceStrength = 1; 
       id = 4;
     }
-    cost = costList[id];
+    cost = costList[id][0];
   }
   String name() {
     String typeName = ""; 
