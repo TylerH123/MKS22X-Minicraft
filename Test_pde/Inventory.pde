@@ -12,4 +12,10 @@ public class Inventory {
     }
     return false;
   }
+  void add(int itemID){
+   inventory[itemID]++;
+  }
+  void remove(int itemID, int amt){
+    inventory[itemID] -= amt;
+  }
 }
