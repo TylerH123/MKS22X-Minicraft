@@ -16,6 +16,7 @@ void setup() {
 }
 
 void draw() {
+  clear(); 
   background(0, 0, 255);
   stroke(#000000, 50);
 
