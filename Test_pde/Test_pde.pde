@@ -14,6 +14,8 @@ void setup() {
       t[i][j] = new Grass(i*50, j*50);
     }
   }
+
+  t[0][0] = new Stone(0, 0);
 }
 
 void draw() {
