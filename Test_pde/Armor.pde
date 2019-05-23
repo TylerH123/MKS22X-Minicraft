@@ -31,9 +31,4 @@ public class Armor extends Item {
     if (type == 3) typeName = "moodstone";
     return typeName + " " + piece;
   }
-  String create(){
-    
-    
-    return "cannot create";
-  }
 }
