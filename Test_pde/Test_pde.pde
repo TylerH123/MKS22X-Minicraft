@@ -1,5 +1,5 @@
 boolean keyz[] = new boolean [5];
-boolean isPaused = false; 
+boolean isPaused = false;
 static float dx, dy;
 float leanx, leany;
 ArrayList<Tile> t = new ArrayList<Tile>();
@@ -16,7 +16,7 @@ void setup() {
 }
 
 void draw() {
-  clear(); 
+  clear();
   background(0, 0, 255);
   stroke(#000000, 50);
 

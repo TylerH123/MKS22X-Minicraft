@@ -1,6 +1,10 @@
-public class Stone extends Tile implements Collideable {
-  
+public class Stone extends Tile implements Transversable {
+
     boolean isTouching(Object o){
-     return true;  
+     return true;
     }
-} 
+
+    boolean canWalk(){
+      return false;
+    }
+}
