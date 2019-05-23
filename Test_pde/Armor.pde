@@ -24,8 +24,11 @@ public class Armor extends Item {
       id = 4;
     }
   }
-  public String recipe() {
-
-    return "";
+  public String name() {
+    String typeName = ""; 
+    if (type == 1) typeName = "wooden"; 
+    if (type == 2) typeName = "stone";
+    if (type == 3) typeName = "moodstone";
+    return typeName + " " + piece;
   }
 }
