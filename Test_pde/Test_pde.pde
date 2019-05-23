@@ -4,6 +4,7 @@ static float dx, dy;
 float leanx, leany;
 ArrayList<Tile> t = new ArrayList<Tile>();
 Inventory inv = new Inventory();
+String direction = "";
 void setup() {
   size(1000, 750);
   noStroke();
@@ -29,18 +30,22 @@ void draw() {
   if (keyz[0] && !isPaused) {
     dx+= 5;
     leanx = -5;
+    direction = "west";
   }
   if (keyz[1] && !isPaused) {
     dy-= 5;
     leany = 5;
+    direction = "south";
   }
   if (keyz[2] && !isPaused) {
     dx-= 5;
     leanx = 5;
+    direction = "east";
   }
   if (keyz[3] && !isPaused) {
     dy+= 5;
     leany = -5;
+    direction = "south";
   }
   if (keyz[4]) {
     inv.display();
