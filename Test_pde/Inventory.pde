@@ -1,5 +1,6 @@
 public class Inventory {
   int[] inventory = new int[50];
+  float[][] position = new float[50][1]; 
   int ypos = 0; 
   public Inventory() {
   }
@@ -7,10 +8,13 @@ public class Inventory {
   void display() {
     fill(255);
     rect(520, 300, 200, 300);
+    int pos = 0; 
     for (int i = 0; i < itemList.length; i++) {
       if (itemList[i] != null) {
         fill(0);
-        text(inventory[i] + " " + itemList[i], 540, 313 + 10 * i);
+        text(inventory[i] + " " + itemList[i], 540, 313 + 10 * pos);
+        position[pos][0] = 23; 
+        pos++; 
       }
     }
     fill(255, 0, 0);
@@ -36,5 +40,8 @@ public class Inventory {
   }
   void moveDown(){
     ypos += 10;
+  }
+  void interact(){
+    
   }
 }
