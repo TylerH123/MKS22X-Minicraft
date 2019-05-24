@@ -33,26 +33,42 @@ public class Station extends Item {
     int c = costList[itemID][0]; 
     //if its a tool, also cehck if inventory has 5 wood
     if (itemID >= 14 || itemID <= 18) {
-      if (inv.contains(rssID, c) && inv.contains(14, 5)){
+      if (inv.contains(rssID, c) && inv.contains(14, 5)) {
         //remove the resources required to craft
-        inv.remove(rssID,c); 
-        inv.remove(14,5); 
+        inv.remove(rssID, c); 
+        inv.remove(14, 5); 
         //add crafted item to inventory
         inv.add(itemID); 
-        return "Successfully crafted"; 
-      }
-      else { 
+        return "Successfully crafted";
+      } else { 
         return "Failed to craft";
       }
     }
     //if anything else, check inventory for the resources 
-    if (inv.contains(rssID, c)){
+    if (inv.contains(rssID, c)) {
       //remove the resources required to craft
-      inv.remove(rssID,c); 
+      inv.remove(rssID, c); 
       //add crafted item to inventory
       inv.add(itemID);
       return "Successfully crafted";
     }
     return "Failed to craft";
+  }
+  /**place the station 50 units in front of player according to direction 
+   @param station determines the picture of the station 
+   **/
+  void place(int station) {
+    if (direction.equals("north")) {
+      rect(450, 325, 50, 50);
+    }
+    if (direction.equals("south")) {
+      rect(450, 425, 50, 50);
+    }
+    if (direction.equals("east")) {
+      rect(500, 375, 50, 50);
+    }
+    if (direction.equals("west")) {
+      rect(400, 375, 50, 50);
+    }
   }
 }
