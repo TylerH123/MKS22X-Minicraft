@@ -32,29 +32,57 @@ void draw() {
   }
   leanx = 0;
   leany = 0;
-  if (keyz[0] && !isPaused) {
-    dx+= 5;
-    leanx = -5;
-    direction = "west";
+  // if (keyz[0] && !isPaused) {
+  //   dx+= 5;
+  //   leanx = -5;
+  //   direction = "west";
+  // }
+  // if (keyz[1] && !isPaused) {
+  //   dy-= 5;
+  //   leany = 5;
+  //   direction = "south";
+  // }
+  // if (keyz[2] && !isPaused) {
+  //   dx-= 5;
+  //   leanx = 5;
+  //   direction = "east";
+  // }
+  // if (keyz[3] && !isPaused) {
+  //   dy+= 5;
+  //   leany = -5;
+  //   direction = "south";
+  // }
+  // if (keyz[4]) {
+  //   inv.display();
+  // }
+
+  if (!isPaused){
+    if (keyz[0]) {
+      dx+= 5;
+      leanx = -5;
+      direction = "west";
+    }
+    if (keyz[1]) {
+      dy-= 5;
+      leany = 5;
+      direction = "south";
+    }
+    if (keyz[2]) {
+      dx-= 5;
+      leanx = 5;
+      direction = "east";
+    }
+    if (keyz[3]) {
+      dy+= 5;
+      leany = -5;
+      direction = "south";
+    }
   }
-  if (keyz[1] && !isPaused) {
-    dy-= 5;
-    leany = 5;
-    direction = "south";
-  }
-  if (keyz[2] && !isPaused) {
-    dx-= 5;
-    leanx = 5;
-    direction = "east";
-  }
-  if (keyz[3] && !isPaused) {
-    dy+= 5;
-    leany = -5;
-    direction = "south";
-  }
+
   if (keyz[4]) {
     inv.display();
   }
+
   fill(5);
 
   text("" + dx + ", " + dy, 10, 10);
