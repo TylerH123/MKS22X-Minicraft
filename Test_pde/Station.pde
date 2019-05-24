@@ -1,23 +1,26 @@
 public class Station extends Item {
   int station; 
+  String name; 
   Station(int station) {
     this.station = station;
     //workbench
     if (station == 0) {
       id = 5;
+      name = "workbench";
     }
-    //furnace
     if (station == 1) {
       id = 6;
+      name = "furnace";
     }
-    //anvil
     if (station == 2) {
       id = 7;
+      name = "anvil";
     }
-    //oven
     if (station == 3) {
       id = 8;
+      name = "oven";
     }
+    itemNames[id] = name; 
   }
   /**first, checks your inventory to see if the item can be created. then creates it
    @param itemID is the id of the item you are trying to create
@@ -71,5 +74,4 @@ public class Station extends Item {
       rect(400, 375, 50, 50);
     }
   }
-  
 }

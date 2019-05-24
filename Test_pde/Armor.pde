@@ -8,23 +8,24 @@ public class Armor extends Item{
     this.type = type; 
     this.piece = piece; 
     dmgReduc = .015 * (type * pieceStrength);
-    if (piece.equals("head")) {
+    if (piece.equals("helemt")) {
       pieceStrength = 2; 
       id = 1;
     }
-    if (piece.equals("chest")) {
+    if (piece.equals("chestpiece")) {
       pieceStrength = 4; 
       id = 2;
     }
-    if (piece.equals("legs")) {
+    if (piece.equals("leggings")) {
       pieceStrength = 3; 
       id = 3;
     }
-    if (piece.equals("foot")) { 
+    if (piece.equals("boots")) { 
       pieceStrength = 1; 
       id = 4;
     }
     cost = costList[id][0];
+    itemNames[id] = name();
   }
   String name() {
     String typeName = ""; 
