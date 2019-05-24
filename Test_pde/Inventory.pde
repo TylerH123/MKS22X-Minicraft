@@ -5,7 +5,7 @@ public class Inventory {
   //displays the inventory menu
   void display() {
     fill(255);
-    rect(520, 375, 100, 100);
+    rect(520, 375, 200, 300);
     for (int i = 0; i < itemList.length; i++) {
       if (itemList[i] != null){
         fill(255,0,0);
