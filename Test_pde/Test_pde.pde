@@ -72,7 +72,8 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  text(t[(int)dx/50][(int)dy/50].getName(), 10, 30);
+  text(t[(int)dx/50 + 9][(int)dy/50 + 6].getName(), 10, 30);
+  text("You're at tile" + ((int)dx/50 + 9) + ", " + ((int)dy/50 + 6), 10, 40);
   p.display();
 }
 
