@@ -56,7 +56,7 @@ void draw() {
     if (keyz[3]) {
       dy+= 5;
       leany = -5;
-      direction = "south";
+      direction = "north";
     }
   }
 
@@ -67,6 +67,7 @@ void draw() {
   fill(5);
 
   text("" + dx + ", " + dy, 10, 10);
+  text(direction, 10, 20);
   p.display();
 }
 
