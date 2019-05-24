@@ -42,6 +42,7 @@ public class Station extends Item {
         inv.remove(14, 5);
         //add crafted item to inventory
         inv.add(itemID);
+        items[itemID] = new Tool(); 
         return "Successfully crafted";
       } else {
         return "Failed to craft";
