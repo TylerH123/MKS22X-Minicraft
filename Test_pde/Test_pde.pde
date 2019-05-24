@@ -33,15 +33,16 @@ void draw() {
   itemList[1] = "beef";
   itemList[2] = "pork";
   strokeWeight(2);
-  for(int x = 0; x < 100; x++){
-    for(int y = 0; y < 100; y++){
+  for (int x = 0; x < 100; x++) {
+    for (int y = 0; y < 100; y++) {
       t[x][y].display();
     }
   }
   leanx = 0;
   leany = 0;
 
-  if (!isPaused){
+  if (!isPaused) {
+    inv.ypos = 0;
     if (keyz[0]) {
       dx+= 5;
       leanx = -5;
@@ -86,6 +87,10 @@ void keyPressed() {
   if (key == 'i') {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
+  }
+  if (isPaused) {
+    if (key == 'w')  inv.moveUp();
+    if (key == 's')  inv.moveDown();
   }
 }
 

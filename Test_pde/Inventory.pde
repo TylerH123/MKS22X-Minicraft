@@ -1,5 +1,6 @@
 public class Inventory {
   int[] inventory = new int[50];
+  int ypos = 0; 
   public Inventory() {
   }
   //displays the inventory menu
@@ -13,7 +14,7 @@ public class Inventory {
       }
     }
     fill(255, 0, 0);
-    triangle(530, 305, 530, 310, 535, 307.5);
+    triangle(530, 305 + ypos, 530, 310 + ypos, 535, 307.5 + ypos);
   }
   //checks if the inventory contains an item, tgt, equal to or greater than amount
   boolean contains(int tgt, int amount) {
@@ -31,5 +32,9 @@ public class Inventory {
     inventory[itemID] -= amt;
   }
   void moveUp() {
+    ypos -= 10; 
+  }
+  void moveDown(){
+    ypos += 10;
   }
 }
