@@ -5,6 +5,7 @@ float leanx, leany;
 ArrayList<Tile> t = new ArrayList<Tile>();
 Inventory inv = new Inventory();
 String direction = "";
+//String[] itemNames = new String[]{Armor.nameOfItem};
 void setup() {
   size(1000, 750);
   noStroke();
