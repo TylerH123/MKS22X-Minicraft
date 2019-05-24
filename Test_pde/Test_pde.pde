@@ -3,7 +3,7 @@ boolean isPaused = false;
 boolean canwalk[] = new boolean[4];
 static float dx, dy;
 float leanx, leany;
-Tile[][] t = new Tile[100][100];
+static Tile[][] t = new Tile[100][100];
 Inventory inv = new Inventory();
 Player p = new Player();
 //direction that player is facing
@@ -70,6 +70,9 @@ void draw() {
 
   text("" + dx + ", " + dy, 10, 10);
   text(direction, 10, 20);
+
+  //white board the nedded transformation to map dx and dy to their tile underneath
+  text(t[(int)dx/50][(int)dy/50].getName(), 10, 30);
   p.display();
 }
 
