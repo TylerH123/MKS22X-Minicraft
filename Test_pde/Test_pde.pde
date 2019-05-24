@@ -30,6 +30,8 @@ void draw() {
   background(0, 0, 255);
   stroke(#000000, 50);
   itemList[0] = "chicken";
+  itemList[1] = "beef";
+  itemList[2] = "pork";
   strokeWeight(2);
   for(int x = 0; x < 100; x++){
     for(int y = 0; y < 100; y++){
