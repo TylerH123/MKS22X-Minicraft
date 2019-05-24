@@ -41,4 +41,6 @@ public class Armor extends Item implements Interactable{
     info[2] = "";
     return info;
   }
+  void interact(){
+  }; 
 }

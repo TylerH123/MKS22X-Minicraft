@@ -44,6 +44,6 @@ public class Inventory {
   void moveDown() {
     ypos += 10;
   }
-  void interact() {
+  void use() {
   }
 }

@@ -5,4 +5,6 @@ public class Tool extends Item implements Interactable{
   
   return info; 
  }
+ void interact(){
+  };
 }
