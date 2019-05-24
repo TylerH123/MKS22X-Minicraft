@@ -4,6 +4,7 @@ static float dx, dy;
 float leanx, leany;
 ArrayList<Tile> t = new ArrayList<Tile>();
 Inventory inv = new Inventory();
+Player p = new Player();
 //direction that player is facing
 String direction = "";
 //list shows cost as first value and id of the material needed to create
@@ -63,7 +64,6 @@ void draw() {
   fill(5);
 
   text("" + dx + ", " + dy, 10, 10);
-  Player p = new Player();
   p.display();
 }
 
