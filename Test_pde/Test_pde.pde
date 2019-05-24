@@ -32,29 +32,6 @@ void draw() {
   }
   leanx = 0;
   leany = 0;
-  // if (keyz[0] && !isPaused) {
-  //   dx+= 5;
-  //   leanx = -5;
-  //   direction = "west";
-  // }
-  // if (keyz[1] && !isPaused) {
-  //   dy-= 5;
-  //   leany = 5;
-  //   direction = "south";
-  // }
-  // if (keyz[2] && !isPaused) {
-  //   dx-= 5;
-  //   leanx = 5;
-  //   direction = "east";
-  // }
-  // if (keyz[3] && !isPaused) {
-  //   dy+= 5;
-  //   leany = -5;
-  //   direction = "south";
-  // }
-  // if (keyz[4]) {
-  //   inv.display();
-  // }
 
   if (!isPaused){
     if (keyz[0]) {
@@ -86,10 +63,8 @@ void draw() {
   fill(5);
 
   text("" + dx + ", " + dy, 10, 10);
-  fill(100, 50, 118);
-  text("PLAYER BOI", 442, 368);
-  stroke(#000000, 50);
-  rect(450 + leanx, 375 + leany, 50, 50);
+  Player p = new Player();
+  p.display();
 }
 
 void keyPressed() {
