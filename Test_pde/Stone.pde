@@ -20,4 +20,8 @@ public class Stone extends Tile implements Transversable {
       fill(c);
       rect(x+Test_pde.dx,y+Test_pde.dy,50,50);
     }
+
+    public String getName(){
+      return "stone";
+    }
 }

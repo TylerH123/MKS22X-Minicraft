@@ -3,7 +3,7 @@ boolean isPaused = false;
 boolean canwalk[] = new boolean[4];
 static float dx, dy;
 float leanx, leany;
-Tile[][] t = new Tile[100][100];
+static Tile[][] t = new Tile[100][100];
 Inventory inv = new Inventory();
 Player p = new Player();
 //direction that player is facing

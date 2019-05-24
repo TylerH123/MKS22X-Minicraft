@@ -11,4 +11,8 @@ public class Grass extends Tile {
     return true;
   }
 
+  public String getName(){
+    return "grass";
+  }
+
 }
