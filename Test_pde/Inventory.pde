@@ -2,6 +2,8 @@ public class Inventory {
   int[] inventory = new int[50];
   float[][] position = new float[50][1]; 
   int ypos = 0; 
+  //initial height of the pointer
+  int y = 305; 
   public Inventory() {
   }
   //displays the inventory menu
@@ -14,7 +16,7 @@ public class Inventory {
         fill(0);
         text(inventory[i] + " " + itemList[i], 540, 313 + 10 * pos);
         position[pos][0] = 23; 
-        pos++; 
+        pos++;
       }
     }
     fill(255, 0, 0);
@@ -36,12 +38,11 @@ public class Inventory {
     inventory[itemID] -= amt;
   }
   void moveUp() {
-    ypos -= 10; 
+    ypos -= 10;
   }
-  void moveDown(){
+  void moveDown() {
     ypos += 10;
   }
-  void interact(){
-    
+  void interact() {
   }
 }

@@ -89,8 +89,18 @@ void keyPressed() {
     isPaused = !isPaused;
   }
   if (isPaused) {
-    if (key == 'w')  inv.moveUp();
-    if (key == 's')  inv.moveDown();
+    if (key == 'w') {
+      if (inv.y - 10 >= 305) {
+        inv.y -= 10; 
+        inv.moveUp();
+      }
+    }
+    if (key == 's') {
+      if (inv.y + 10 <= 590) {
+        inv.y += 10; 
+        inv.moveDown();
+      }
+    }
   }
 }
 
