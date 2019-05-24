@@ -17,24 +17,17 @@ void setup() {
   noStroke();
   smooth();
   for (int i = 0; i < 100; i++) {
-    if (i == 0 || i == 99){
-      for(int j = 0; j < 100; j++){
+    for (int j = 0; j < 100; j++) {
+      if (j == 0|| j == 99 || i == 0 || i == 99){
         t[i][j] = new Stone(i*50, j*50);
       }
-    }
-
-    }
-      for (int j = 0; j < 100; j++) {
-        if (j == 0 || j == 99){
-          t[i][j] = new Stone(i*50, j*50);
-        } else{
-          t[i][j] = new Grass(i*50, j*50);
-        }
+      else{
+        t[i][j] = new Grass(i*50, j*50);
       }
-    // t[0][0] = new Stone(0, 0);
-    // // rectMode(CENTER);
+    }
   }
-
+  // rectMode(CENTER);
+}
 
 void draw() {
   // clear();
