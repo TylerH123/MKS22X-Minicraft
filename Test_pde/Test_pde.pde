@@ -2,7 +2,8 @@ boolean keyz[] = new boolean [5];
 boolean isPaused = false;
 static float dx, dy;
 float leanx, leany;
-ArrayList<Tile> t = new ArrayList<Tile>();
+// ArrayList<Tile> t = new ArrayList<Tile>();
+Tile[][] t = new Tile[100][100];
 Inventory inv = new Inventory();
 Player p = new Player();
 //direction that player is facing
@@ -17,7 +18,7 @@ void setup() {
   smooth();
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
-      t.add(new Grass(i*50, j*50));
+      t[i][j] = new Grass(i*50, j*50);
     }
   }
 }
@@ -28,8 +29,10 @@ void draw() {
   stroke(#000000, 50);
   itemList[0] = "chicken";
   strokeWeight(2);
-  for (Tile g : t) {
-    g.display();
+  for(int x = 0; x < 100; x++){
+    for(int y = 0; y < 100; y++){
+      t[x][y].display();
+    }
   }
   leanx = 0;
   leany = 0;
