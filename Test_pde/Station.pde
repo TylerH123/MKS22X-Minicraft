@@ -20,7 +20,7 @@ public class Station extends Item {
       id = 8;
       name = "oven";
     }
-    itemNames[id] = name; 
+    itemList[id] = name; 
   }
   /**first, checks your inventory to see if the item can be created. then creates it
    @param itemID is the id of the item you are trying to create

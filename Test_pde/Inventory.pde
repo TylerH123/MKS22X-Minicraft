@@ -6,12 +6,10 @@ public class Inventory {
   void display() {
     fill(255);
     rect(520, 375, 100, 100);
-    for (int i = 0; i < inventory.length; i++) {
-      if (inventory[i] > 0){
-        if (i > 0 && i < 5){
-          text(dx + ", " + dy, 10, 10);
-        }
-        
+    for (int i = 0; i < itemList.length; i++) {
+      if (itemList[i] != null){
+        fill(255,0,0);
+        text(itemList[i],530,386);
       }
     }
   }

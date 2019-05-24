@@ -4,10 +4,12 @@ static float dx, dy;
 float leanx, leany;
 ArrayList<Tile> t = new ArrayList<Tile>();
 Inventory inv = new Inventory();
+//direction that player is facing
 String direction = "";
 //list shows cost as first value and id of the material needed to create
 int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14}, {20, 15}, {5, 17}, {15, 15}, {5, 0}, {5, 0}, {2, 0}, {2, 0}, {7, 0} };
-String[] itemNames = new String[50];
+//list with all the items in inventory
+String[] itemList = new String[50];
 void setup() {
   size(1000, 750);
   noStroke();
@@ -23,7 +25,7 @@ void draw() {
   clear(); 
   background(0, 0, 255);
   stroke(#000000, 50);
-
+  itemList[0] = "chicken";
   strokeWeight(2);
   for (Tile g : t) {
     g.display();

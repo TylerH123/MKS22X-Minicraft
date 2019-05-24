@@ -25,7 +25,7 @@ public class Armor extends Item{
       id = 4;
     }
     cost = costList[id][0];
-    itemNames[id] = name();
+    itemList[id] = name();
   }
   String name() {
     String typeName = ""; 
