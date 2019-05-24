@@ -1,8 +1,8 @@
 boolean keyz[] = new boolean [5];
 boolean isPaused = false;
+boolean canwalk[] = new boolean[4];
 static float dx, dy;
 float leanx, leany;
-// ArrayList<Tile> t = new ArrayList<Tile>();
 Tile[][] t = new Tile[100][100];
 Inventory inv = new Inventory();
 Player p = new Player();
@@ -21,10 +21,12 @@ void setup() {
       t[i][j] = new Grass(i*50, j*50);
     }
   }
+
+  t[0][0] = new Stone(0, 0);
 }
 
 void draw() {
-  clear();
+  // clear();
   background(0, 0, 255);
   stroke(#000000, 50);
   itemList[0] = "chicken";
