@@ -1,4 +1,4 @@
-public class Armor extends Item{
+public class Armor extends Item implements Interactable{
   int type;
   String piece;
   float dmgReduc;
@@ -33,5 +33,12 @@ public class Armor extends Item{
     if (type == 2) typeName = "stone";
     if (type == 3) typeName = "moodstone";
     return typeName + " " + piece;
+  }
+  String[] getInfo(){
+    String[] info = new String[10];
+    info[0] = name(); 
+    info[1] = dmgReduc + ""; 
+    info[2] = "";
+    return info;
   }
 }

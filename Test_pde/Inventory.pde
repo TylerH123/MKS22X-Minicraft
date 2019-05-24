@@ -9,6 +9,7 @@ public class Inventory {
   //displays the inventory menu
   void display() {
     fill(255);
+    //menu 
     rect(520, 300, 200, 300);
     int pos = 0; 
     for (int i = 0; i < itemList.length; i++) {
