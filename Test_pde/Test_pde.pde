@@ -17,13 +17,24 @@ void setup() {
   noStroke();
   smooth();
   for (int i = 0; i < 100; i++) {
-    for (int j = 0; j < 100; j++) {
-      t[i][j] = new Grass(i*50, j*50);
+    if (i == 0 || i == 99){
+      for(int j = 0; j < 100; j++){
+        t[i][j] = new Stone(i*50, j*50);
+      }
     }
+
+    }
+      for (int j = 0; j < 100; j++) {
+        if (j == 0 || j == 99){
+          t[i][j] = new Stone(i*50, j*50);
+        } else{
+          t[i][j] = new Grass(i*50, j*50);
+        }
+      }
+    // t[0][0] = new Stone(0, 0);
+    // // rectMode(CENTER);
   }
 
-  t[0][0] = new Stone(0, 0);
-}
 
 void draw() {
   // clear();
@@ -72,8 +83,8 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  text(t[(int)dx/50 + 9][(int)dy/50 + 6].getName(), 10, 30);
-  text("You're at tile" + ((int)dx/50 + 9) + ", " + ((int)dy/50 + 6), 10, 40);
+  text(t[9-(int)dx/50 - 1][6-(int)dy/50 - 1].getName(), 10, 30);
+  text("You're at tile" + (9-(int)dx/50 - 1) + ", " + (6-(int)dy/50 - 1), 10, 40);
   p.display();
 }
 
