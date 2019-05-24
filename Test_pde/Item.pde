@@ -1,5 +1,5 @@
 public abstract class Item{
-  int id; 
+  int id;
   public Item(){
   }
 }

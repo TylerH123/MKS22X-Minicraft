@@ -1,8 +1,8 @@
 public class Inventory {
-  int[] inventory = new int[50];  
+  int[] inventory = new int[50];
   public Inventory() {
   }
-  //displays the inventory menu 
+  //displays the inventory menu
   void display() {
     fill(255);
     rect(520, 375, 100, 100);
@@ -13,7 +13,7 @@ public class Inventory {
       }
     }
   }
-  //checks if the inventory contains an item, tgt, equal to or greater than amount 
+  //checks if the inventory contains an item, tgt, equal to or greater than amount
   boolean contains(int tgt, int amount) {
     if (inventory[tgt] >= amount) {
       return true;

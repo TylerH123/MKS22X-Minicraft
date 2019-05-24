@@ -1,4 +1,4 @@
 public interface Collideable{
-  
-  boolean isTouching(Object o); 
+
+  boolean isTouching(Object o);
 }
