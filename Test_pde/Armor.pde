@@ -4,25 +4,25 @@ public class Armor extends Item implements Interactable{
   float dmgReduc;
   int pieceStrength;
   int cost;
-  Armor(int type, String piece) {
+  Armor(int type, int id) {
     this.type = type;
-    this.piece = piece;
+    this.id = id;
     dmgReduc = .015 * (type * pieceStrength);
-    if (piece.equals("helemt")) {
+    if (id == 1) {
       pieceStrength = 2;
-      id = 1;
+      piece = "helmet"; 
     }
-    if (piece.equals("chestpiece")) {
+    if (id == 2) {
       pieceStrength = 4;
-      id = 2;
+      piece = "chestpiece";
     }
-    if (piece.equals("leggings")) {
+    if (id == 3) {
       pieceStrength = 3;
-      id = 3;
+      piece = "leggings";
     }
-    if (piece.equals("boots")) {
+    if (id == 4) {
       pieceStrength = 1;
-      id = 4;
+      piece = "boots"; 
     }
     cost = costList[id][0];
     itemList[id] = name();

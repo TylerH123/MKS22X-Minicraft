@@ -1,23 +1,18 @@
-public class Station extends Item {
-  int station;
+public class Station extends Item implements Interactable {
   String name;
   Station(int station) {
-    this.station = station;
+    id = station; 
     //workbench
-    if (station == 0) {
-      id = 5;
+    if (station == 5) {
       name = "workbench";
     }
-    if (station == 1) {
-      id = 6;
+    if (station == 6) {
       name = "furnace";
     }
-    if (station == 2) {
-      id = 7;
+    if (station == 7) {
       name = "anvil";
     }
-    if (station == 3) {
-      id = 8;
+    if (station == 8) {
       name = "oven";
     }
     itemList[id] = name;
@@ -42,6 +37,7 @@ public class Station extends Item {
         inv.remove(14, 5);
         //add crafted item to inventory
         inv.add(itemID);
+        //add the crafted tool to the interactables items list
         items[itemID] = new Tool(); 
         return "Successfully crafted";
       } else {
@@ -50,6 +46,14 @@ public class Station extends Item {
     }
     //if anything else, check inventory for the resources
     if (inv.contains(rssID, c)) {
+      //if it is armor piece then add it to interactables items list
+      if (itemID >= 1 && itemID <= 4) {
+        items[itemID] = new Armor(rss, itemID);
+      }
+      //if it is station then add it to interactables items list
+      if (itemID >= 5 && itemID <= 8) {
+        items[itemID] = new Station(itemID);
+      }
       //remove the resources required to craft
       inv.remove(rssID, c);
       //add crafted item to inventory
@@ -74,5 +78,10 @@ public class Station extends Item {
     if (direction.equals("west")) {
       rect(400, 375, 50, 50);
     }
+  }
+  String[] getInfo() {
+    String[] info = new String[10]; 
+
+    return info;
   }
 }
