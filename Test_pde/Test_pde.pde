@@ -12,6 +12,8 @@ String direction = "";
 int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14}, {20, 15}, {5, 17}, {15, 15}, {5, 0}, {5, 0}, {2, 0}, {2, 0}, {7, 0} };
 //list with all the items in inventory
 String[] itemList = new String[50];
+//list with all items that player can interact with
+Interactable[] items = new Interactable[50]; 
 void setup() {
   size(1000, 750);
   noStroke();
@@ -34,16 +36,19 @@ void draw() {
   background(0, 0, 255);
   stroke(#000000, 50);
   itemList[0] = "chicken";
+  itemList[1] = "beef";
+  itemList[2] = "pork";
   strokeWeight(2);
-  for(int x = 0; x < 100; x++){
-    for(int y = 0; y < 100; y++){
+  for (int x = 0; x < 100; x++) {
+    for (int y = 0; y < 100; y++) {
       t[x][y].display();
     }
   }
   leanx = 0;
   leany = 0;
 
-  if (!isPaused){
+  if (!isPaused) {
+    inv.ypos = 0;
     if (keyz[0]) {
       dx+= 5;
       leanx = -5;
@@ -91,6 +96,20 @@ void keyPressed() {
   if (key == 'i') {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
+  }
+  if (isPaused) {
+    if (key == 'w') {
+      if (inv.y - 10 >= 305) {
+        inv.y -= 10; 
+        inv.moveUp();
+      }
+    }
+    if (key == 's') {
+      if (inv.y + 10 <= 590) {
+        inv.y += 10; 
+        inv.moveDown();
+      }
+    }
   }
 }
 
