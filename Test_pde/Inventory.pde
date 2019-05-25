@@ -12,7 +12,7 @@ public class Inventory {
   void display() {
     fill(255);
     //menu
-    rect(520, 300, 200, 300);
+    rect(520, 300, 200, 295);
     //pos is used to place the items in inventory in the correct place
     int pos = 0;
     for (int i = 0; i < itemList.length; i++) {
@@ -25,6 +25,15 @@ public class Inventory {
     }
     fill(255, 0, 0);
     triangle(530, 305 + ypos, 530, 310 + ypos, 535, 307.5 + ypos);
+  }
+  int getSize() {
+    int size = 0;
+    for (String s : itemList) {
+      if (s != null) {
+        size++;
+      }
+    }
+    return size;
   }
   //checks if the inventory contains an item, tgt, equal to or greater than amount
   boolean contains(int tgt, int amount) {
