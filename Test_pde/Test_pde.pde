@@ -13,7 +13,7 @@ int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14},
 //list with all the items in inventory
 String[] itemList = new String[50];
 //list with all items that player can interact with
-Interactable[] items = new Interactable[50]; 
+Interactable[] items = new Interactable[50];
 void setup() {
   size(1000, 750);
   noStroke();
@@ -100,13 +100,13 @@ void keyPressed() {
   if (isPaused) {
     if (key == 'w') {
       if (inv.y - 10 >= 305) {
-        inv.y -= 10; 
+        inv.y -= 10;
         inv.moveUp();
       }
     }
     if (key == 's') {
       if (inv.y + 10 <= 590) {
-        inv.y += 10; 
+        inv.y += 10;
         inv.moveDown();
       }
     }
