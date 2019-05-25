@@ -10,7 +10,7 @@ public class Armor extends Item implements Interactable{
     dmgReduc = .015 * (type * pieceStrength);
     if (id == 1) {
       pieceStrength = 2;
-      piece = "helmet"; 
+      piece = "helmet";
     }
     if (id == 2) {
       pieceStrength = 4;
@@ -22,7 +22,7 @@ public class Armor extends Item implements Interactable{
     }
     if (id == 4) {
       pieceStrength = 1;
-      piece = "boots"; 
+      piece = "boots";
     }
     cost = costList[id][0];
     itemList[id] = name();
@@ -36,11 +36,11 @@ public class Armor extends Item implements Interactable{
   }
   String[] getInfo(){
     String[] info = new String[10];
-    info[0] = name(); 
-    info[1] = dmgReduc + ""; 
+    info[0] = name();
+    info[1] = dmgReduc + "";
     info[2] = "";
     return info;
   }
   void interact(){
-  }; 
+  };
 }

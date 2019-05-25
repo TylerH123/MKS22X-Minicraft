@@ -1,7 +1,7 @@
 public class Station extends Item implements Interactable {
   String name;
   Station(int station) {
-    id = station; 
+    id = station;
     //workbench
     if (station == 5) {
       name = "workbench";
@@ -38,7 +38,7 @@ public class Station extends Item implements Interactable {
         //add crafted item to inventory
         inv.add(itemID);
         //add the crafted tool to the interactables items list
-        items[itemID] = new Tool(); 
+        items[itemID] = new Tool();
         return "Successfully crafted";
       } else {
         return "Failed to craft";
@@ -80,7 +80,7 @@ public class Station extends Item implements Interactable {
     }
   }
   String[] getInfo() {
-    String[] info = new String[10]; 
+    String[] info = new String[10];
 
     return info;
   }
