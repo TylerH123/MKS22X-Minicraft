@@ -76,8 +76,10 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  text(t[9-(int)dx/50 - 1][6-(int)dy/50 - 1].getName(), 10, 30);
-  text("You're at tile" + (9-(int)dx/50 - 1) + ", " + (6-(int)dy/50 - 1), 10, 40);
+  int currtilex = 9-(int)dx/50 - 1;
+  int currtiley = 6-(int)dy/50 - 1;
+  text(t[currtilex][currtiley].getName(), 10, 30);
+  text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
   p.display();
 }
 

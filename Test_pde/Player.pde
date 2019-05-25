@@ -1,4 +1,6 @@
 public class Player{
+  // static int x = 0;
+
   public Player(){
 
   }
