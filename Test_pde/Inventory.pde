@@ -1,25 +1,25 @@
 public class Inventory {
   int[] inventory = new int[50];
   //array containing id of items that show up in the inventory menu
-  float[] position = new float[50]; 
-  int ypos = 0; 
+  float[] position = new float[50];
+  int ypos = 0;
   //initial height of the pointer
-  int y = 305; 
-  int current = 0; 
+  int y = 305;
+  int current = 0;
   public Inventory() {
   }
   //displays the inventory menu
   void display() {
     fill(255);
-    //menu 
+    //menu
     rect(520, 300, 200, 300);
     //pos is used to place the items in inventory in the correct place
-    int pos = 0; 
+    int pos = 0;
     for (int i = 0; i < itemList.length; i++) {
       if (itemList[i] != null) {
         fill(0);
         text(inventory[i] + " " + itemList[i], 540, 313 + 10 * pos);
-        position[pos] = i; 
+        position[pos] = i;
         pos++;
       }
     }
@@ -43,13 +43,13 @@ public class Inventory {
   }
   void moveUp() {
     ypos -= 10;
-    current--; 
+    current--;
   }
   void moveDown() {
     ypos += 10;
-    current++; 
+    current++;
   }
   void use() {
-    items[current].interact(); 
+    items[current].interact();
   }
 }
