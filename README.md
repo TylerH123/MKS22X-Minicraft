@@ -43,5 +43,5 @@ Under inventory class, I added an add and remove function to update the values i
 inventory. In addition, I added to the display method so it can display the items
 in the inventory. The armor and station class both have a way to add to this list
 in their constructor.
-## 05-23-19
+## 05-24-19
 Today, I worked on innventory, tool, armor, and station class. I added a pointer to the inventory and a way for the player to move it up and down. I also added a way to interact with the items in the inventory. Under the game class, the keyPresssed function was modified to contain a way for the pointer to stay inside the inventory menu. Also, added new interface interactable, which will be implemented by armor, tool, and station class. This interface will allow the player to use the item in the inventory. For the tool class, I added a constructor. For armor and station class, I changed the constructor. In station, I added to the craft method to add any interactable items to the interactables list. 

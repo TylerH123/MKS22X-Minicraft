@@ -14,16 +14,16 @@ int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14},
 String[] itemList = new String[50];
 //list with all items that player can interact with
 Interactable[] items = new Interactable[50];
+int count = inv.getSize();
 void setup() {
   size(1000, 750);
   noStroke();
   smooth();
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
-      if (j == 0|| j == 99 || i == 0 || i == 99){
+      if (j == 0|| j == 99 || i == 0 || i == 99) {
         t[i][j] = new Stone(i*50, j*50);
-      }
-      else{
+      } else {
         t[i][j] = new Grass(i*50, j*50);
       }
     }
@@ -94,6 +94,7 @@ void keyPressed() {
   if (key == 'd')  keyz[2] = true;
   if (key == 'w')  keyz[3] = true;
   if (key == 'i') {
+    count = inv.getSize();
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
@@ -105,9 +106,17 @@ void keyPressed() {
       }
     }
     if (key == 's') {
-      if (inv.y + 10 <= 590) {
-        inv.y += 10;
-        inv.moveDown();
+      count--; 
+      if (inv.y + 15 <= 590) {
+        if (count <= 0) {
+          inv.y = 305; 
+          inv.current = 0; 
+          inv.ypos = 0;
+          count = inv.getSize();
+        } else {
+          inv.y += 10;
+          inv.moveDown();
+        }
       }
     }
   }
