@@ -18,7 +18,7 @@ public class Inventory {
     for (int i = 0; i < itemList.length; i++) {
       if (itemList[i] != null) {
         fill(0);
-        text(inventory[i] + " " + itemList[i], 540, 313 + 10 * pos);
+        text(inventory[i] + "x " + itemList[i], 540, 313 + 10 * pos);
         position[pos] = i;
         pos++;
       }
