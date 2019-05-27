@@ -46,25 +46,29 @@ void draw() {
   }
   leanx = 0;
   leany = 0;
+  canwalk[0] = p.getA();
+  canwalk[1] = p.getS();
+  canwalk[2] = p.getD();
+  canwalk[3] = p.getW();
 
   if (!isPaused) {
     inv.ypos = 0;
-    if (keyz[0]) {
+    if (keyz[0] && canWalk[0]) {
       dx+= 5;
       leanx = -5;
       direction = "west";
     }
-    if (keyz[1]) {
+    if (keyz[1] && canWalk[1]) {
       dy-= 5;
       leany = 5;
       direction = "south";
     }
-    if (keyz[2]) {
+    if (keyz[2] && canWalk[2]) {
       dx-= 5;
       leanx = 5;
       direction = "east";
     }
-    if (keyz[3]) {
+    if (keyz[3] && canWalk[3]) {
       dy+= 5;
       leany = -5;
       direction = "north";
