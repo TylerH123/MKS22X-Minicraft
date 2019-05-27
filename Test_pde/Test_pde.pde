@@ -53,22 +53,22 @@ void draw() {
 
   if (!isPaused) {
     inv.ypos = 0;
-    if (keyz[0] && canwalk[0]) {
+    if (keyz[0]) {
       dx+= 5;
       leanx = -5;
       direction = "west";
     }
-    if (keyz[1] && canwalk[1]) {
+    if (keyz[1]) {
       dy-= 5;
       leany = 5;
       direction = "south";
     }
-    if (keyz[2] && canwalk[2]) {
+    if (keyz[2]) {
       dx-= 5;
       leanx = 5;
       direction = "east";
     }
-    if (keyz[3] && canwalk[3]) {
+    if (keyz[3]) {
       dy+= 5;
       leany = -5;
       direction = "north";
@@ -89,6 +89,8 @@ void draw() {
   int currtiley = 6-(int)dy/50 - 1;
   text(t[currtilex][currtiley].getName(), 10, 30);
   text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
+  text("thing to my north is" + t[currtiley - 1][currtilex].getName(),  10, 50);
+  text("can i go north?: " + canwalk[3], 10, 60);
   p.display();
 }
 
@@ -131,4 +133,7 @@ void keyReleased() {
   if (key == 's')  keyz[1] = false;
   if (key == 'd')  keyz[2] = false;
   if (key == 'w')  keyz[3] = false;
+  for(int x = 0; x < 4; x++){
+    canwalk[x] = true;
+  }
 }
