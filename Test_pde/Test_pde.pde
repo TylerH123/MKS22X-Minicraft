@@ -1,6 +1,6 @@
 boolean keyz[] = new boolean [5];
 boolean isPaused = false;
-boolean canwalk[] = new boolean[4];
+static boolean canwalk[] = new boolean[4];
 static float dx, dy;
 float leanx, leany;
 static Tile[][] t = new Tile[100][100];
@@ -106,11 +106,11 @@ void keyPressed() {
       }
     }
     if (key == 's') {
-      count--; 
+      count--;
       if (inv.y + 15 <= 590) {
         if (count <= 0) {
-          inv.y = 305; 
-          inv.current = 0; 
+          inv.y = 305;
+          inv.current = 0;
           inv.ypos = 0;
           count = inv.getSize();
         } else {
