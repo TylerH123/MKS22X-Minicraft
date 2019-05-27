@@ -16,7 +16,17 @@ public class Player{
     rect(450 + leanx, 300 + leany, 30, 30);
   }
 
-  // boolean getW(){
-  //   return()
-  // }
+  boolean getW(){
+    return t[currtiley - 1][currtilex].getName().equals("stone");
+  }
+
+  boolean getS(){
+    return t[currtiley + 1][currtilex].getName().equals("stone");
+  }
+  boolean getA(){
+    return t[currtiley][currtilex - 1].getName().equals("stone");
+  }
+  boolean getD(){
+    return t[currtiley][currtilex + 1].getName().equals("stone");
+  }
 }
