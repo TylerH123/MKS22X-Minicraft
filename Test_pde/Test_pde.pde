@@ -15,9 +15,9 @@ String direction = "";
 //list shows cost as first value and id of the material needed to create
 int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14}, {20, 15}, {5, 17}, {15, 15}, {5, 0}, {5, 0}, {2, 0}, {2, 0}, {7, 0} };
 //list with all the items in inventory
-String[] itemList = new String[50];
+String[] itemList = new String[25];
 //list with all items that player can interact with
-Interactable[] items = new Interactable[50];
+Interactable[] items = new Interactable[25];
 int count = inv.getSize();
 void setup() {
   size(1000, 750);
@@ -44,8 +44,7 @@ void draw() {
   // clear();
   background(0, 0, 255);
   stroke(#000000, 50);
-  itemList[0] = "chicken";
-  itemList[1] = "beef";
+  itemList[1] = "wooden helmet";
   itemList[2] = "pork";
   strokeWeight(2);
   for (int x = 0; x < 100; x++) {
