@@ -30,13 +30,17 @@ public class Inventory {
     fill(255, 0, 0);
     triangle(530, 305 + ypos, 530, 310 + ypos, 535, 307.5 + ypos);
     fill(255); 
-    rect(230, 300, 200, 100);
+    rect(230, 300, 200, 85);
     if (itemList[1] != null) hel = itemList[1];
     if (itemList[2] != null) chest = itemList[2];
     if (itemList[3] != null) leg = itemList[3];
     if (itemList[4] != null) boot = itemList[4];
     fill(0);
-    text("chest: " + chest, 230, 315);
+    text("Helmet: " + hel, 235, 315);
+    text("Chestpiece: " + chest, 235, 330);
+    text("Leggings: " + leg, 235, 345);
+    text("Boots: " + boot, 235, 360);
+    text("Damage Reduction: " + p.dmgReduction, 255, 375);
   }
   int getSize() {
     int size = 0;

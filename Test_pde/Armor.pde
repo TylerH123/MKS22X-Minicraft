@@ -6,7 +6,6 @@ public class Armor extends Item implements Interactable {
   Armor(int type, int id) {
     this.type = type;
     this.id = id;
-    dmgReduc = .015 * (type * pieceStrength);
     if (id == 1) {
       pieceStrength = 2;
       piece = "helmet";
@@ -23,6 +22,7 @@ public class Armor extends Item implements Interactable {
       pieceStrength = 1;
       piece = "boots";
     }
+    dmgReduc += .015 * (type * pieceStrength);
     itemList[id] = name();
   }
   String name() {
