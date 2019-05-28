@@ -2,6 +2,7 @@ boolean keyz[] = new boolean [5];
 boolean isPaused = false;
 static boolean canwalk[] = new boolean[4];
 static float dx, dy;
+static int currtilex, currtiley;
 float leanx, leany;
 static Tile[][] t = new Tile[100][100];
 Inventory inv = new Inventory();
@@ -89,10 +90,11 @@ void draw() {
   int currtiley = 6-(int)dy/50 - 1;
   text(t[currtilex][currtiley].getName(), 10, 30);
   text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
-  text("thing to my north is" + t[currtiley - 1][currtilex].getName(),  10, 50);
-  text("can i go north?: " + canwalk[3], 10, 60);
+  text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
+  text("can i go north?: " + t[currtiley - 1][currtilex].getName().equals("stone"), 10, 60);
   p.display();
 }
+
 
 void keyPressed() {
   if (key == 'a')  keyz[0] = true;

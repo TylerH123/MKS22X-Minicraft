@@ -17,11 +17,12 @@ public class Player{
   }
 
   boolean getW(){
-    return t[currtiley + 1][currtilex].getName().equals("stone");
+    System.out.println(t[currtiley - 1][currtilex].getName());
+    return t[currtiley - 1][currtilex].getName().equals("stone");
   }
 
   boolean getS(){
-    return t[currtiley - 1][currtilex].getName().equals("stone");
+    return t[currtiley + 1][currtilex].getName().equals("stone");
   }
   boolean getA(){
     return t[currtiley][currtilex - 1].getName().equals("stone");
