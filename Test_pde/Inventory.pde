@@ -59,6 +59,10 @@ public class Inventory {
     current++;
   }
   void use() {
-    items[current].interact();
+    try {
+      items[current].interact();
+    }
+    catch (NullPointerException e) {
+    }
   }
 }

@@ -65,7 +65,7 @@ public class Station extends Item implements Interactable {
   /**place the station 50 units in front of player according to direction
    @param station determines the picture of the station
    **/
-  void place(int station) {
+  void place() {
     if (direction.equals("north")) {
       rect(450, 325, 50, 50);
     }
@@ -84,6 +84,6 @@ public class Station extends Item implements Interactable {
 
     return info;
   }
-  void interact(){
-  };
+  void interact() {
+  }
 }
