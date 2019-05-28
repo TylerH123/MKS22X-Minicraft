@@ -92,10 +92,10 @@ void draw() {
   //white board the nedded transformation to map dx and dy to their tile underneath
   currtilex = 9-(int)dx/50 - 1;
   currtiley = 6-(int)dy/50 - 1;
-  text(t[currtilex][currtiley].getName(), 10, 30);
-  text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
-  text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
-  text("is my north blocked?: " + p.getW(), 10, 60);
+  // text(t[currtilex][currtiley].getName(), 10, 30);
+  // text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
+  // text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
+  // text("is my north blocked?: " + p.getW(), 10, 60);
   p.display();
 }
 
@@ -114,6 +114,12 @@ static boolean collideDetect(boolean keypress, boolean cannotwalk){
 
 
 void keyPressed() {
+  cannotwalk[0] = p.getA();
+  cannotwalk[1] = p.getS();
+  cannotwalk[2] = p.getD();
+  cannotwalk[3] = p.getW();
+
+
   if (key == 'a')  keyz[0] = true;
   if (key == 's')  keyz[1] = true;
   if (key == 'd')  keyz[2] = true;
@@ -124,10 +130,6 @@ void keyPressed() {
     isPaused = !isPaused;
   }
 
-  cannotwalk[0] = p.getA();
-  cannotwalk[1] = p.getS();
-  cannotwalk[2] = p.getD();
-  cannotwalk[3] = p.getW();
 
   if (isPaused) {
     if (key == 'w') {
