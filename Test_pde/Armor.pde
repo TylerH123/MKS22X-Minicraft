@@ -22,7 +22,7 @@ public class Armor extends Item implements Interactable {
       pieceStrength = 1;
       piece = "boots";
     }
-    dmgReduc += .015 * (type * pieceStrength);
+    dmgReduc = .015 * (type * pieceStrength);
     itemList[id] = name();
   }
   String name() {

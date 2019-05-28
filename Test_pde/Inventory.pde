@@ -40,7 +40,7 @@ public class Inventory {
     text("Chestpiece: " + chest, 235, 330);
     text("Leggings: " + leg, 235, 345);
     text("Boots: " + boot, 235, 360);
-    text("Damage Reduction: " + p.dmgReduction, 255, 375);
+    text("Damage Reduction: " + (int)(p.dmgReduction * 100) + "%", 255, 375);
   }
   int getSize() {
     int size = 0;

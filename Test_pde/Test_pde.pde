@@ -36,7 +36,8 @@ void setup() {
       }
     }
   }
-
+  Armor a = new Armor(2, 2);
+  items[2] = a; 
   // rectMode(CENTER);
 }
 
@@ -44,8 +45,6 @@ void draw() {
   // clear();
   background(0, 0, 255);
   stroke(#000000, 50);
-  itemList[1] = "wooden helmet";
-  itemList[2] = "pork";
   strokeWeight(2);
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
@@ -100,6 +99,7 @@ void draw() {
   // text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
   // text("is my north blocked?: " + p.getW(), 10, 60);
   p.display();
+  System.out.println(items[2].getInfo()[1]);
 }
 
 
