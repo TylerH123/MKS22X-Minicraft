@@ -119,6 +119,9 @@ void keyPressed() {
         }
       }
     }
+    if (key == 'o'){
+      inv.use(); 
+    }
   }
 }
 
