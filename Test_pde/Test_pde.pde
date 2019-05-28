@@ -133,6 +133,7 @@ void keyPressed() {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
+  if (key == 'o' && !isPaused) p.punch(); 
 
 
   if (isPaused) {

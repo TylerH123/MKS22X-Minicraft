@@ -1,4 +1,5 @@
 public class Tree extends Tile implements Transversable {
+  int hp = 10; 
   Tree(float x, float y) {
     this.x = x;
     this.y = y; 
