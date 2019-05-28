@@ -1,5 +1,23 @@
 # MKS22X-Minicraft
 
+# Description 
+
+
+
+# How to Run 
+```
+w,a,s,d to move around
+```
+```
+i to open inventory
+```
+```
+while inventory is opened: 
+o to interact with the item 
+w,s to move pointer up and down 
+While invetory is closed: 
+o to punch or use tool equipped
+```
 # DevLog
 
 ## 05-20-19
