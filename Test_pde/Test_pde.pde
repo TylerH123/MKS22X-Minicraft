@@ -33,8 +33,6 @@ void setup() {
     }
   }
 
-  currtilex = 9;
-  currtiley = 6;
   // rectMode(CENTER);
 }
 
@@ -113,10 +111,10 @@ void keyPressed() {
     isPaused = !isPaused;
   }
 
-  // canwalk[0] = p.getA();
-  // canwalk[1] = p.getS();
-  // canwalk[2] = p.getD();
-  // canwalk[3] = p.getW();
+  canwalk[0] = p.getA();
+  canwalk[1] = p.getS();
+  canwalk[2] = p.getD();
+  canwalk[3] = p.getW();
 
   if (isPaused) {
     if (key == 'w') {
