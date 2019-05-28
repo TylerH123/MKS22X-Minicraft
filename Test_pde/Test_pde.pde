@@ -104,6 +104,12 @@ void keyPressed() {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
+
+  canwalk[0] = p.getA();
+  canwalk[1] = p.getS();
+  canwalk[2] = p.getD();
+  canwalk[3] = p.getW();
+
   if (isPaused) {
     if (key == 'w') {
       if (inv.y - 10 >= 305) {
@@ -133,7 +139,4 @@ void keyReleased() {
   if (key == 's')  keyz[1] = false;
   if (key == 'd')  keyz[2] = false;
   if (key == 'w')  keyz[3] = false;
-  for(int x = 0; x < 4; x++){
-    canwalk[x] = true;
-  }
 }
