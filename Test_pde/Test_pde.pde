@@ -2,7 +2,10 @@ boolean keyz[] = new boolean [5];
 boolean isPaused = false;
 static boolean canwalk[] = new boolean[4];
 static float dx, dy;
-static int currtilex, currtiley;
+
+static int currtilex;
+static int currtiley;
+
 float leanx, leany;
 static Tile[][] t = new Tile[100][100];
 Inventory inv = new Inventory();
@@ -29,6 +32,9 @@ void setup() {
       }
     }
   }
+
+  currtilex = 9;
+  currtiley = 6;
   // rectMode(CENTER);
 }
 
@@ -86,12 +92,12 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  int currtilex = 9-(int)dx/50 - 1;
-  int currtiley = 6-(int)dy/50 - 1;
+  currtilex = 9-(int)dx/50 - 1;
+  currtiley = 6-(int)dy/50 - 1;
   text(t[currtilex][currtiley].getName(), 10, 30);
   text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
   text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
-  text("can i go north?: " + t[currtiley - 1][currtilex].getName().equals("stone"), 10, 60);
+  text("can i go north?: " + p.getW(), 10, 60);
   p.display();
 }
 
