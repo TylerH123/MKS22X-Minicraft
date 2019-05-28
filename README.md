@@ -1,5 +1,27 @@
 # MKS22X-Minicraft
 
+# Description 
+
+The game is a top down version of Minecraft where you have to gather resources and survive. The player starts off with the most basic tools created by gathering wood from trees. As the player progresses further into the game, they can mine stronger ore such as iron and moodstone. The material gathered can be used to create items such as a storage chest or craft stations like a furnace. The main objective is to stay alive by defending themselves against monsters. The player can create weapons from the materials they have gathered, such as a stone sword from stone. There is also armor that can be created and equipped by the player to reduce damage taken. There are two stats to keep in check throughout the game: health and stamina. 
+
+# How to Run 
+
+# How to Play 
+```
+w,a,s,d to move around
+```
+```
+i to open inventory
+```
+While inventory is opened: 
+```
+o to interact with the item 
+w,s to move pointer up and down 
+```
+While invetory is closed: 
+```
+o to punch or use tool equipped
+```
 # DevLog
 
 ## 05-20-19
@@ -51,3 +73,7 @@ in their constructor.
 ## 05-24-19
 ### Tyler
 Today, I worked on innventory, tool, armor, and station class. I added a pointer to the inventory and a way for the player to move it up and down. I also added a way to interact with the items in the inventory. Under the game class, the keyPresssed function was modified to contain a way for the pointer to stay inside the inventory menu. Also, added new interface interactable, which will be implemented by armor, tool, and station class. This interface will allow the player to use the item in the inventory. For the tool class, I added a constructor. For armor and station class, I changed the constructor. In station, I added to the craft method to add any interactable items to the interactables list. 
+
+## 5-28-19
+### Tyler
+Today, I updated the README with the controls to play our game and the description of our game. 
