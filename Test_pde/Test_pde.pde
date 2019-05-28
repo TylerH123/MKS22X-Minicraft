@@ -1,6 +1,6 @@
 boolean keyz[] = new boolean [5];
 boolean isPaused = false;
-static boolean canwalk[] = new boolean[4];
+static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
 
 static int currtilex;
@@ -51,29 +51,29 @@ void draw() {
   }
   leanx = 0;
   leany = 0;
-  // canwalk[0] = p.getA();
-  // canwalk[1] = p.getS();
-  // canwalk[2] = p.getD();
-  // canwalk[3] = p.getW();
+  // cannotwalk[0] = p.getA();
+  // cannotwalk[1] = p.getS();
+  // cannotwalk[2] = p.getD();
+  // cannotwalk[3] = p.getW();
 
   if (!isPaused) {
     inv.ypos = 0;
-    if (keyz[0] && !canwalk[0]) {
+    if (collideDetect(keyz[0], cannotwalk[0])) {
       dx+= 5;
       leanx = -5;
       direction = "west";
     }
-    if (keyz[1] && !canwalk[1]) {
+    if (collideDetect(keyz[1], cannotwalk[1])) {
       dy-= 5;
       leany = 5;
       direction = "south";
     }
-    if (keyz[2] && !canwalk[2]) {
+    if (collideDetect(keyz[2], cannotwalk[2])) {
       dx-= 5;
       leanx = 5;
       direction = "east";
     }
-    if (keyz[3] && !canwalk[3]) {
+    if (collideDetect(keyz[3], cannotwalk[3])) {
       dy+= 5;
       leany = -5;
       direction = "north";
@@ -95,8 +95,17 @@ void draw() {
   text(t[currtilex][currtiley].getName(), 10, 30);
   text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
   text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
-  text("can i go north?: " + p.getW(), 10, 60);
+  text("is my north blocked?: " + p.getW(), 10, 60);
   p.display();
+}
+
+
+static boolean collideDetect(boolean keypress, boolean cannotwalk){
+  // if (keypress && cannotwalk){
+  //   return false;
+  // }
+  // return true;
+  return keypress;
 }
 
 
@@ -111,10 +120,10 @@ void keyPressed() {
     isPaused = !isPaused;
   }
 
-  canwalk[0] = p.getA();
-  canwalk[1] = p.getS();
-  canwalk[2] = p.getD();
-  canwalk[3] = p.getW();
+  cannotwalk[0] = p.getA();
+  cannotwalk[1] = p.getS();
+  cannotwalk[2] = p.getD();
+  cannotwalk[3] = p.getW();
 
   if (isPaused) {
     if (key == 'w') {
