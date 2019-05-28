@@ -101,11 +101,15 @@ void draw() {
 
 
 static boolean collideDetect(boolean keypress, boolean cannotwalk){
-  // if (keypress && cannotwalk){
-  //   return false;
-  // }
-  // return true;
-  return keypress;
+  if (keypress && cannotwalk){
+    return false;
+  }
+  if (keypress && !cannotwalk){
+    return true;
+  }
+  return false;
+
+  // return keypress;
 }
 
 
