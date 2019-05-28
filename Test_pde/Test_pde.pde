@@ -99,7 +99,7 @@ void draw() {
   // text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
   // text("is my north blocked?: " + p.getW(), 10, 60);
   p.display();
-  System.out.println(items[2].getInfo()[1]);
+  //System.out.println(items[2].getInfo()[1]);
 }
 
 
@@ -157,6 +157,7 @@ void keyPressed() {
       }
     }
     if (key == 'o') {
+      System.out.println(inv.current + "works");
       inv.use();
     }
   }

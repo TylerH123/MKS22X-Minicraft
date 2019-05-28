@@ -40,5 +40,9 @@ public class Armor extends Item implements Interactable {
     return info;
   }
   void interact() {
-  };
+    inv.remove(id,1);
+    itemList[id] = null;
+    p.equipped[id-1] = name(); 
+    p.updateArmor();
+  }
 }

@@ -1,7 +1,7 @@
 public class Inventory {
-  int[] inventory = new int[50];
+  int[] inventory = new int[25];
   //array containing id of items that show up in the inventory menu
-  float[] position = new float[50];
+  int[] position = new int[25];
   int ypos = 0;
   //initial height of the pointer
   int y = 305;
@@ -31,10 +31,10 @@ public class Inventory {
     triangle(530, 305 + ypos, 530, 310 + ypos, 535, 307.5 + ypos);
     fill(255); 
     rect(230, 300, 200, 85);
-    if (itemList[1] != null) hel = itemList[1];
-    if (itemList[2] != null) chest = itemList[2];
-    if (itemList[3] != null) leg = itemList[3];
-    if (itemList[4] != null) boot = itemList[4];
+    if (p.equipped[0] != null) hel = p.equipped[0];
+    if (p.equipped[1] != null) chest = p.equipped[1];
+    if (p.equipped[2] != null) leg = p.equipped[2];
+    if (p.equipped[3] != null) boot = p.equipped[3];
     fill(0);
     text("Helmet: " + hel, 235, 315);
     text("Chestpiece: " + chest, 235, 330);
@@ -76,7 +76,7 @@ public class Inventory {
   }
   void use() {
     try {
-      items[current].interact();
+      items[position[current]].interact();
     }
     catch (NullPointerException e) {
     }
