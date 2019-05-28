@@ -157,7 +157,7 @@ void keyPressed() {
       }
     }
     if (key == 'o') {
-      System.out.println(inv.current + "works");
+      //System.out.println(inv.current + "works");
       inv.use();
     }
   }
