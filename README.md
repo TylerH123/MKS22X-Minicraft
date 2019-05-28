@@ -76,4 +76,4 @@ Today, I worked on innventory, tool, armor, and station class. I added a pointer
 
 ## 5-28-19
 ### Tyler
-Today, I updated the README with the controls to play our game. 
+Today, I updated the README with the controls to play our game and the description of our game. 
