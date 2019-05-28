@@ -1,10 +1,10 @@
-public class Tool extends Item implements Interactable{
+public class Tool extends Item implements Interactable {
 
- String[] getInfo(){
-  String[] info = new String[10];
+  String[] getInfo() {
+    String[] info = new String[10];
 
-  return info;
- }
- void interact(){
-  };
+    return info;
+  }
+  void interact() {
+  }
 }

@@ -2,7 +2,7 @@ boolean keyz[] = new boolean [5];
 boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
-
+PImage treeImg; 
 static int currtilex;
 static int currtiley;
 
@@ -23,9 +23,13 @@ void setup() {
   size(1000, 750);
   noStroke();
   smooth();
+  treeImg = loadImage("tree.jpg");
+  treeImg.resize(50, 50); 
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
-      if (j == 0|| j == 99 || i == 0 || i == 99) {
+      if (j == 4 && i == 4) {
+        t[i][j] = new Tree(i*50, j*50);
+      } else if (j == 0|| j == 99 || i == 0 || i == 99) {
         t[i][j] = new Stone(i*50, j*50);
       } else {
         t[i][j] = new Grass(i*50, j*50);
@@ -100,11 +104,11 @@ void draw() {
 }
 
 
-static boolean collideDetect(boolean keypress, boolean cannotwalk){
-  if (keypress && cannotwalk){
+static boolean collideDetect(boolean keypress, boolean cannotwalk) {
+  if (keypress && cannotwalk) {
     return false;
   }
-  if (keypress && !cannotwalk){
+  if (keypress && !cannotwalk) {
     return true;
   }
   return false;
@@ -152,8 +156,8 @@ void keyPressed() {
         }
       }
     }
-    if (key == 'o'){
-      inv.use(); 
+    if (key == 'o') {
+      inv.use();
     }
   }
 }
