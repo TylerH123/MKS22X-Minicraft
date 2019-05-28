@@ -14,12 +14,12 @@ it's the figure doing the action
 ### Tyler 
 Today, Moody and I worked together to code movement using w,a,s,d. At first, the movement was clunky and did not move diagonally. Eventually, we got it to move around smoothly.
 
-## 05-21-19
-# Moody
+### 05-21-19
+### Moody
 We worked on the tile class and the inital implementation of grass, plus
 graphics to handle world edge (ocean). I made boundaries for each tile have a
 border such that differentiating tiles is easier.
-# Tyler 
+### Tyler 
 Today, Moody and I worked together to created a class for tile, grass, stone, and made a collideable interface. We also added the grass and water at the border of the world.
 
 ### 05-22-19
