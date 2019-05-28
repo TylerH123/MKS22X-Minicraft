@@ -18,16 +18,16 @@ public class Player{
 
   boolean getW(){
     System.out.println(t[currtiley - 1][currtilex].getName());
-    return t[currtiley - 1][currtilex].getName().equals("stone");
+    return t[Test_pde.currtiley - 1][Test_pde.currtilex].getName().equals("stone");
   }
 
   boolean getS(){
-    return t[currtiley + 1][currtilex].getName().equals("stone");
+    return t[Test_pde.currtiley + 1][Test_pde.currtilex].getName().equals("stone");
   }
   boolean getA(){
-    return t[currtiley][currtilex - 1].getName().equals("stone");
+    return t[Test_pde.currtiley][Test_pde.currtilex - 1].getName().equals("stone");
   }
   boolean getD(){
-    return t[currtiley][currtilex + 1].getName().equals("stone");
+    return t[Test_pde.currtiley][Test_pde.currtilex + 1].getName().equals("stone");
   }
 }
