@@ -47,10 +47,10 @@ void draw() {
   }
   leanx = 0;
   leany = 0;
-  canwalk[0] = p.getA();
-  canwalk[1] = p.getS();
-  canwalk[2] = p.getD();
-  canwalk[3] = p.getW();
+  // canwalk[0] = p.getA();
+  // canwalk[1] = p.getS();
+  // canwalk[2] = p.getD();
+  // canwalk[3] = p.getW();
 
   if (!isPaused) {
     inv.ypos = 0;
@@ -107,10 +107,10 @@ void keyPressed() {
     isPaused = !isPaused;
   }
 
-  canwalk[0] = p.getA();
-  canwalk[1] = p.getS();
-  canwalk[2] = p.getD();
-  canwalk[3] = p.getW();
+  // canwalk[0] = p.getA();
+  // canwalk[1] = p.getS();
+  // canwalk[2] = p.getD();
+  // canwalk[3] = p.getW();
 
   if (isPaused) {
     if (key == 'w') {
