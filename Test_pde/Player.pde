@@ -1,6 +1,7 @@
 public class Player {
   // static int x = 0;
   int dmg = 1; 
+  float dmgReduction = 0.0; 
   public Player() {
   }
 

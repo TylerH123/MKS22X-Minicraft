@@ -6,6 +6,10 @@ public class Inventory {
   //initial height of the pointer
   int y = 305;
   int current = 0;
+  String hel = "none";
+  String chest = "none"; 
+  String leg = "none";
+  String boot = "none"; 
   public Inventory() {
   }
   //displays the inventory menu
@@ -25,6 +29,14 @@ public class Inventory {
     }
     fill(255, 0, 0);
     triangle(530, 305 + ypos, 530, 310 + ypos, 535, 307.5 + ypos);
+    fill(255); 
+    rect(230, 300, 200, 100);
+    if (itemList[1] != null) hel = itemList[1];
+    if (itemList[2] != null) chest = itemList[2];
+    if (itemList[3] != null) leg = itemList[3];
+    if (itemList[4] != null) boot = itemList[4];
+    fill(0);
+    text("chest: " + chest, 230, 315);
   }
   int getSize() {
     int size = 0;
