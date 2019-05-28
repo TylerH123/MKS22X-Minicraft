@@ -1,7 +1,11 @@
 boolean keyz[] = new boolean [5];
 boolean isPaused = false;
-boolean canwalk[] = new boolean[4];
+static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
+
+static int currtilex;
+static int currtiley;
+
 float leanx, leany;
 static Tile[][] t = new Tile[100][100];
 Inventory inv = new Inventory();
@@ -28,6 +32,7 @@ void setup() {
       }
     }
   }
+
   // rectMode(CENTER);
 }
 
@@ -46,25 +51,29 @@ void draw() {
   }
   leanx = 0;
   leany = 0;
+  // cannotwalk[0] = p.getA();
+  // cannotwalk[1] = p.getS();
+  // cannotwalk[2] = p.getD();
+  // cannotwalk[3] = p.getW();
 
   if (!isPaused) {
     inv.ypos = 0;
-    if (keyz[0]) {
+    if (collideDetect(keyz[0], cannotwalk[0])) {
       dx+= 5;
       leanx = -5;
       direction = "west";
     }
-    if (keyz[1]) {
+    if (collideDetect(keyz[1], cannotwalk[1])) {
       dy-= 5;
       leany = 5;
       direction = "south";
     }
-    if (keyz[2]) {
+    if (collideDetect(keyz[2], cannotwalk[2])) {
       dx-= 5;
       leanx = 5;
       direction = "east";
     }
-    if (keyz[3]) {
+    if (collideDetect(keyz[3], cannotwalk[3])) {
       dy+= 5;
       leany = -5;
       direction = "north";
@@ -81,14 +90,36 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  int currtilex = 9-(int)dx/50 - 1;
-  int currtiley = 6-(int)dy/50 - 1;
-  text(t[currtilex][currtiley].getName(), 10, 30);
-  text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
+  currtilex = 9-(int)dx/50 - 1;
+  currtiley = 6-(int)dy/50 - 1;
+  // text(t[currtilex][currtiley].getName(), 10, 30);
+  // text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
+  // text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
+  // text("is my north blocked?: " + p.getW(), 10, 60);
   p.display();
 }
 
+
+static boolean collideDetect(boolean keypress, boolean cannotwalk){
+  if (keypress && cannotwalk){
+    return false;
+  }
+  if (keypress && !cannotwalk){
+    return true;
+  }
+  return false;
+
+  // return keypress;
+}
+
+
 void keyPressed() {
+  cannotwalk[0] = p.getA();
+  cannotwalk[1] = p.getS();
+  cannotwalk[2] = p.getD();
+  cannotwalk[3] = p.getW();
+
+
   if (key == 'a')  keyz[0] = true;
   if (key == 's')  keyz[1] = true;
   if (key == 'd')  keyz[2] = true;
@@ -98,6 +129,8 @@ void keyPressed() {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
+
+
   if (isPaused) {
     if (key == 'w') {
       if (inv.y - 10 >= 305) {
@@ -106,11 +139,11 @@ void keyPressed() {
       }
     }
     if (key == 's') {
-      count--; 
+      count--;
       if (inv.y + 15 <= 590) {
         if (count <= 0) {
-          inv.y = 305; 
-          inv.current = 0; 
+          inv.y = 305;
+          inv.current = 0;
           inv.ypos = 0;
           count = inv.getSize();
         } else {
