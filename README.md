@@ -71,3 +71,7 @@ in their constructor.
 ## 05-24-19
 ### Tyler
 Today, I worked on innventory, tool, armor, and station class. I added a pointer to the inventory and a way for the player to move it up and down. I also added a way to interact with the items in the inventory. Under the game class, the keyPresssed function was modified to contain a way for the pointer to stay inside the inventory menu. Also, added new interface interactable, which will be implemented by armor, tool, and station class. This interface will allow the player to use the item in the inventory. For the tool class, I added a constructor. For armor and station class, I changed the constructor. In station, I added to the craft method to add any interactable items to the interactables list. 
+
+## 5-28-19
+### Tyler
+Today, I updated the README with the controls to play our game. 
