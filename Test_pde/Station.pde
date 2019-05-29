@@ -86,4 +86,7 @@ public class Station extends Item implements Interactable {
   }
   void interact() {
   }
+  String name() {
+    return "";
+  }
 }

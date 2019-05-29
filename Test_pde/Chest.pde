@@ -8,8 +8,10 @@ public class Chest extends Item implements Interactable, Placeable {
 
     return info;
   }
-  void place(){
-    
+  String name() {
+    return "";
+  }
+  void place() {
   }
   void interact() {
   }

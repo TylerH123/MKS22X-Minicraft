@@ -38,6 +38,12 @@ void setup() {
   }
   Armor a = new Armor(2, 2);
   items[2] = a; 
+  Armor b = new Armor(2, 1);
+  items[1] = b; 
+  Armor c = new Armor(2, 3);
+  items[3] = c; 
+  Armor d = new Armor(2, 4);
+  items[4] = d; 
   // rectMode(CENTER);
 }
 

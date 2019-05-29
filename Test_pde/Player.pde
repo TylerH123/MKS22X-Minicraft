@@ -2,7 +2,7 @@ public class Player {
   // static int x = 0;
   int dmg = 1; 
   float dmgReduction = 0.00; 
-  String[] equipped = new String[5]; 
+  Interactable[] equipped = new Interactable[5]; 
   public Player() {
   }
 
@@ -17,10 +17,10 @@ public class Player {
   }
   void updateArmor(){
     float armor = 0.00;
-    if (items[1] != null) armor += parseFloat(items[1].getInfo()[1]); 
-    if (items[2] != null) armor += parseFloat(items[2].getInfo()[1]); 
-    if (items[3] != null) armor += parseFloat(items[3].getInfo()[1]); 
-    if (items[4] != null) armor += parseFloat(items[4].getInfo()[1]); 
+    if (equipped[0] != null) armor += parseFloat(equipped[0].getInfo()[1]); 
+    if (equipped[1] != null) armor += parseFloat(equipped[1].getInfo()[1]); 
+    if (equipped[2] != null) armor += parseFloat(equipped[2].getInfo()[1]); 
+    if (equipped[3] != null) armor += parseFloat(equipped[3].getInfo()[1]); 
     dmgReduction = armor; 
   }
   void equip(int itemID){
