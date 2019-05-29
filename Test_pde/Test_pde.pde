@@ -23,7 +23,7 @@ void setup() {
   size(1000, 750);
   noStroke();
   smooth();
-  treeImg = loadImage("tree.jpg");
+  treeImg = loadImage("tree.png");
   treeImg.resize(50, 50); 
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
