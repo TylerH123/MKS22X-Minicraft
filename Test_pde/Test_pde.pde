@@ -20,6 +20,7 @@ String[] itemList = new String[25];
 Interactable[] items = new Interactable[25];
 int count = inv.getSize();
 void setup() {
+  rectMode(CENTER);
   size(1000, 750);
   noStroke();
   smooth();
@@ -28,11 +29,11 @@ void setup() {
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
       if (j == 4 && i == 4) {
-        t[i][j] = new Tree(i*50, j*50);
+        t[i][j] = new Tree(i, j);
       } else if (j == 0|| j == 99 || i == 0 || i == 99) {
-        t[i][j] = new Stone(i*50, j*50);
+        t[i][j] = new Stone(i, j);
       } else {
-        t[i][j] = new Grass(i*50, j*50);
+        t[i][j] = new Grass(i, j);
       }
     }
   }
@@ -81,7 +82,7 @@ void draw() {
       leanx = 5;
       direction = "east";
     }
-    if (keyz[3] && !p.Wcollide()) {
+    if (keyz[3]) {
       dy+= 5;
       leany = -5;
       direction = "north";
@@ -98,10 +99,11 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  currtilex = 9-(int)dx/50 - 1;
-  currtiley = 6-(int)dy/50 - 1;
-  Tile currtile = t[currtilex][currtiley-1];
-  text(currtile.getName()+"", 10, 30);
+  currtilex = 9-(int)dx/50;
+  currtiley = 6-(int)dy/50;
+  // Tile currtile = t[currtilex][currtiley-1];
+  // text(currtile.getName()+"", 10, 30);
+  text("You're at" + currtilex + ", " + currtiley, 10, 40);
   p.display();
   //System.out.println(items[2].getInfo()[1]);
 }
