@@ -15,6 +15,8 @@ public class Player {
     Tile currtile = t[currtilex][currtiley-1];
     if(currtile.getName().equals("stone")){
       if(dist(450, 300, currtile.x+dx + 25, (currtile.y - 1)+dy + 25) > hitboxrad + 35.35){
+        fill(100);
+        rect(currtile.x+dx + 25, (currtile.y - 1)+dy + 25, 10, 10 );
         return true;
         //true as in it's true you cannot go there
       }
