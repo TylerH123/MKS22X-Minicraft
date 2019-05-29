@@ -2,7 +2,7 @@ boolean keyz[] = new boolean [5];
 boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
-PImage treeImg, stoneImg; 
+PImage treeImg, stoneImg, grassImg; 
 static int currtilex;
 static int currtiley;
 
@@ -25,8 +25,10 @@ void setup() {
   smooth();
   treeImg = loadImage("tree.png");
   stoneImg = loadImage("stone.png");
+  grassImg = loadImage("grass.png");
   treeImg.resize(50, 50); 
   stoneImg.resize(50,50);
+  grassImg.resize(50,50);
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
       if (j == 4 && i == 4) {
@@ -55,7 +57,7 @@ void setup() {
 
 void draw() {
   // clear();
-  background(0, 0, 255);
+  background(#256d7b);
   stroke(#000000, 50);
   strokeWeight(2);
   for (int x = 0; x < 100; x++) {

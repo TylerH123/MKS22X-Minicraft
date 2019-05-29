@@ -4,9 +4,8 @@ public class Tree extends Tile implements Transversable {
     this.x = x;
     this.y = y; 
   }
-  void display(){
-    fill(0,255,0); 
-    rect(x+Test_pde.dx,y+Test_pde.dy,50,50);
+  void display(){ 
+    image(grassImg,x+Test_pde.dx,y+Test_pde.dy);
     image(treeImg,x+Test_pde.dx,y+Test_pde.dy);
   }
   boolean canWalk() {
