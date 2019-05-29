@@ -17,8 +17,9 @@ public class Stone extends Tile implements Transversable {
     }
 
     void display(){
-      fill(c);
+      fill(0,255,0);
       rect(x+Test_pde.dx,y+Test_pde.dy,50,50);
+      image(stoneImg,x+Test_pde.dx,y+Test_pde.dy);
     }
 
     public String getName(){

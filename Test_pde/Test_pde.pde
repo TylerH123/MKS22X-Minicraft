@@ -2,7 +2,7 @@ boolean keyz[] = new boolean [5];
 boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
-PImage treeImg; 
+PImage treeImg, stoneImg; 
 static int currtilex;
 static int currtiley;
 
@@ -24,7 +24,9 @@ void setup() {
   noStroke();
   smooth();
   treeImg = loadImage("tree.png");
+  stoneImg = loadImage("stone.png");
   treeImg.resize(50, 50); 
+  stoneImg.resize(50,50);
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
       if (j == 4 && i == 4) {
