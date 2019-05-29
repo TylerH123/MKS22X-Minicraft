@@ -43,7 +43,11 @@ void setup() {
   Armor c = new Armor(2, 3);
   items[3] = c; 
   Armor d = new Armor(2, 4);
-  items[4] = d; 
+  items[4] = d;
+  Tool t = new Tool(2, 13);
+  items[13] = t;
+  Tool t2 = new Tool(2,12); 
+  items[12] = t2;
   // rectMode(CENTER);
 }
 

@@ -10,6 +10,7 @@ public class Inventory {
   String chest = "none"; 
   String leg = "none";
   String boot = "none"; 
+  String tool = "fist";
   public Inventory() {
   }
   //displays the inventory menu
@@ -30,17 +31,20 @@ public class Inventory {
     fill(255, 0, 0);
     triangle(530, 305 + ypos, 530, 310 + ypos, 535, 307.5 + ypos);
     fill(255); 
-    rect(230, 300, 200, 85);
+    rect(230, 300, 200, 110);
     if (p.equipped[0] != null) hel = p.equipped[0].name(); 
     if (p.equipped[1] != null) chest = p.equipped[1].name(); 
     if (p.equipped[2] != null) leg = p.equipped[2].name(); 
     if (p.equipped[3] != null) boot = p.equipped[3].name(); 
+    if (p.equipped[4] != null) tool = p.equipped[4].name(); 
     fill(0);
     text("Helmet: " + hel, 235, 315);
     text("Chestpiece: " + chest, 235, 330);
     text("Leggings: " + leg, 235, 345);
     text("Boots: " + boot, 235, 360);
     text("Damage Reduction: " + (int)(p.dmgReduction) + "%", 255, 375);
+    text("Current Tool: " + tool, 235, 390);
+    text("Damage: " + p.dmg, 290, 405);
   }
   int getSize() {
     int size = 0;

@@ -23,6 +23,9 @@ public class Player {
     if (equipped[3] != null) armor += parseFloat(equipped[3].getInfo()[1]); 
     dmgReduction = armor; 
   }
+  void updateDamage(){
+    if (equipped[4] != null) dmg = parseInt(equipped[4].getInfo()[1]);
+  }
   void equip(int itemID){
      
   }
