@@ -1,4 +1,6 @@
 public class Player {
+
+  float hitboxrad = 28.284;
   // static int x = 0;
   int dmg = 1;
   float dmgReduction = 0.00;
@@ -8,6 +10,15 @@ public class Player {
 
   int currtiley = 6-(int)dy/50 - 1;
   int currtilex = 9-(int)dx/50 - 1;
+
+  boolean Wcollide(){
+    if(t[currtilex][currtiley-1].getName().equals("stone")){
+      if(dist(450, 300, x+dx, y+dy) > hitboxrad + 35.35){
+        return true;
+      }
+    }
+    return false;
+  }
 
   void display() {
     fill(100, 50, 118);
