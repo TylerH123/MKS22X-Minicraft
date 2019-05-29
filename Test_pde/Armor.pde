@@ -1,13 +1,11 @@
-public class Armor extends Item implements Interactable{
+public class Armor extends Item implements Interactable {
   int type;
   String piece;
   float dmgReduc;
   int pieceStrength;
-  int cost;
   Armor(int type, int id) {
     this.type = type;
     this.id = id;
-    dmgReduc = .015 * (type * pieceStrength);
     if (id == 1) {
       pieceStrength = 2;
       piece = "helmet";
@@ -24,7 +22,7 @@ public class Armor extends Item implements Interactable{
       pieceStrength = 1;
       piece = "boots";
     }
-    cost = costList[id][0];
+    dmgReduc = .015 * (type * pieceStrength) * 100;
     itemList[id] = name();
   }
   String name() {
@@ -34,13 +32,17 @@ public class Armor extends Item implements Interactable{
     if (type == 3) typeName = "moodstone";
     return typeName + " " + piece;
   }
-  String[] getInfo(){
-    String[] info = new String[10];
+  String[] getInfo() {
+    String[] info = new String[2];
     info[0] = name();
     info[1] = dmgReduc + "";
-    info[2] = "";
     return info;
   }
-  void interact(){
-  };
+  void interact() {
+    inv.remove(id,1);
+    itemList[id] = null;
+    p.equipped[id-1] = this; 
+    p.updateArmor();
+    items[id] = null;
+  }
 }

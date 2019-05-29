@@ -2,7 +2,7 @@ boolean keyz[] = new boolean [5];
 boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
-
+PImage treeImg; 
 static int currtilex;
 static int currtiley;
 
@@ -15,24 +15,39 @@ String direction = "";
 //list shows cost as first value and id of the material needed to create
 int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14}, {20, 15}, {5, 17}, {15, 15}, {5, 0}, {5, 0}, {2, 0}, {2, 0}, {7, 0} };
 //list with all the items in inventory
-String[] itemList = new String[50];
+String[] itemList = new String[25];
 //list with all items that player can interact with
-Interactable[] items = new Interactable[50];
+Interactable[] items = new Interactable[25];
 int count = inv.getSize();
 void setup() {
   size(1000, 750);
   noStroke();
   smooth();
+  treeImg = loadImage("tree.jpg");
+  treeImg.resize(50, 50); 
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
-      if (j == 0|| j == 99 || i == 0 || i == 99) {
+      if (j == 4 && i == 4) {
+        t[i][j] = new Tree(i*50, j*50);
+      } else if (j == 0|| j == 99 || i == 0 || i == 99) {
         t[i][j] = new Stone(i*50, j*50);
       } else {
         t[i][j] = new Grass(i*50, j*50);
       }
     }
   }
-
+  Armor a = new Armor(2, 2);
+  items[2] = a; 
+  Armor b = new Armor(2, 1);
+  items[1] = b; 
+  Armor c = new Armor(2, 3);
+  items[3] = c; 
+  Armor d = new Armor(2, 4);
+  items[4] = d;
+  Tool t = new Tool(2, 13);
+  items[13] = t;
+  Tool t2 = new Tool(2,12); 
+  items[12] = t2;
   // rectMode(CENTER);
 }
 
@@ -40,9 +55,6 @@ void draw() {
   // clear();
   background(0, 0, 255);
   stroke(#000000, 50);
-  itemList[0] = "chicken";
-  itemList[1] = "beef";
-  itemList[2] = "pork";
   strokeWeight(2);
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
@@ -97,14 +109,15 @@ void draw() {
   // text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
   // text("is my north blocked?: " + p.getW(), 10, 60);
   p.display();
+  //System.out.println(items[2].getInfo()[1]);
 }
 
 
-static boolean collideDetect(boolean keypress, boolean cannotwalk){
-  if (keypress && cannotwalk){
+static boolean collideDetect(boolean keypress, boolean cannotwalk) {
+  if (keypress && cannotwalk) {
     return false;
   }
-  if (keypress && !cannotwalk){
+  if (keypress && !cannotwalk) {
     return true;
   }
   return false;
@@ -129,6 +142,7 @@ void keyPressed() {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
+  if (key == 'o' && !isPaused) p.punch(); 
 
 
   if (isPaused) {
@@ -151,6 +165,13 @@ void keyPressed() {
           inv.moveDown();
         }
       }
+    }
+    if (key == 'o') {
+      //System.out.println(inv.current + "works");
+      inv.use();
+    }
+    if (key == 'u'){
+      inv.unequip();
     }
   }
 }

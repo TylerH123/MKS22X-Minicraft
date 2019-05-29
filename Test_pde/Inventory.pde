@@ -1,11 +1,16 @@
 public class Inventory {
-  int[] inventory = new int[50];
+  int[] inventory = new int[25];
   //array containing id of items that show up in the inventory menu
-  float[] position = new float[50];
+  int[] position = new int[25];
   int ypos = 0;
   //initial height of the pointer
   int y = 305;
   int current = 0;
+  String hel = "none";
+  String chest = "none"; 
+  String leg = "none";
+  String boot = "none"; 
+  String tool = "fist";
   public Inventory() {
   }
   //displays the inventory menu
@@ -25,6 +30,22 @@ public class Inventory {
     }
     fill(255, 0, 0);
     triangle(530, 305 + ypos, 530, 310 + ypos, 535, 307.5 + ypos);
+    fill(255); 
+    rect(230, 300, 200, 110);
+    if (p.equipped[0] != null) hel = p.equipped[0].name(); 
+    if (p.equipped[1] != null) chest = p.equipped[1].name(); 
+    if (p.equipped[2] != null) leg = p.equipped[2].name(); 
+    if (p.equipped[3] != null) boot = p.equipped[3].name(); 
+    if (p.equipped[4] != null) tool = p.equipped[4].name(); 
+    else tool = "fist";
+    fill(0);
+    text("Helmet: " + hel, 235, 315);
+    text("Chestpiece: " + chest, 235, 330);
+    text("Leggings: " + leg, 235, 345);
+    text("Boots: " + boot, 235, 360);
+    text("Damage Reduction: " + (int)(p.dmgReduction) + "%", 255, 375);
+    text("Current Tool: " + tool, 235, 390);
+    text("Damage: " + p.dmg, 290, 405);
   }
   int getSize() {
     int size = 0;
@@ -59,6 +80,20 @@ public class Inventory {
     current++;
   }
   void use() {
-    items[current].interact();
+    try {
+      items[position[current]].interact();
+    }
+    catch (NullPointerException e) {
+    }
+  }
+  void unequip() {
+    if (p.equipped[4] != null) {
+      int tempID = parseInt(p.equipped[4].getInfo()[2]);
+      inv.add(tempID);
+      itemList[tempID] = p.equipped[4].getInfo()[0];
+      items[tempID] = new Tool(parseInt(p.equipped[4].getInfo()[3]), tempID); 
+      p.equipped[4] = null;
+      p.updateDamage();
+    }
   }
 }

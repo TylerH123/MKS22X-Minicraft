@@ -1,7 +1,6 @@
 public class Resource extends Item {
 
-  Resource(int r){
+  Resource(int r) {
     id = r;
   }
-
 }
