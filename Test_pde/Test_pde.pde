@@ -81,7 +81,7 @@ void draw() {
       leanx = 5;
       direction = "east";
     }
-    if (keyz[3]) {
+    if (keyz[3] && !p.Wcollide()) {
       dy+= 5;
       leany = -5;
       direction = "north";
@@ -100,10 +100,8 @@ void draw() {
   //white board the nedded transformation to map dx and dy to their tile underneath
   currtilex = 9-(int)dx/50 - 1;
   currtiley = 6-(int)dy/50 - 1;
-  // text(t[currtilex][currtiley].getName(), 10, 30);
-  // text("You're at tile" + (currtilex) + ", " + (currtiley), 10, 40);
-  // text("thing to my north is: " + t[currtiley - 1][currtilex].getName(),  10, 50);
-  // text("is my north blocked?: " + p.getW(), 10, 60);
+  Tile currtile = t[currtilex][currtiley-1];
+  text(currtile.getName()+"", 10, 30);
   p.display();
   //System.out.println(items[2].getInfo()[1]);
 }

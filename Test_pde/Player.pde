@@ -12,9 +12,11 @@ public class Player {
   int currtilex = 9-(int)dx/50 - 1;
 
   boolean Wcollide(){
-    if(t[currtilex][currtiley-1].getName().equals("stone")){
-      if(dist(450, 300, x+dx, y+dy) > hitboxrad + 35.35){
+    Tile currtile = t[currtilex][currtiley-1];
+    if(currtile.getName().equals("stone")){
+      if(dist(450, 300, currtile.x+dx + 25, (currtile.y - 1)+dy + 25) > hitboxrad + 35.35){
         return true;
+        //true as in it's true you cannot go there
       }
     }
     return false;
