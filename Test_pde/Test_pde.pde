@@ -2,7 +2,7 @@ boolean keyz[] = new boolean [5];
 boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
-PImage treeImg; 
+PImage treeImg;
 static int currtilex;
 static int currtiley;
 
@@ -24,7 +24,7 @@ void setup() {
   noStroke();
   smooth();
   treeImg = loadImage("tree.jpg");
-  treeImg.resize(50, 50); 
+  treeImg.resize(50, 50);
   for (int i = 0; i < 100; i++) {
     for (int j = 0; j < 100; j++) {
       if (j == 4 && i == 4) {
@@ -37,16 +37,16 @@ void setup() {
     }
   }
   Armor a = new Armor(2, 2);
-  items[2] = a; 
+  items[2] = a;
   Armor b = new Armor(2, 1);
-  items[1] = b; 
+  items[1] = b;
   Armor c = new Armor(2, 3);
-  items[3] = c; 
+  items[3] = c;
   Armor d = new Armor(2, 4);
   items[4] = d;
   Tool t = new Tool(2, 13);
   items[13] = t;
-  Tool t2 = new Tool(2,12); 
+  Tool t2 = new Tool(2,12);
   items[12] = t2;
   // rectMode(CENTER);
 }
@@ -70,22 +70,22 @@ void draw() {
 
   if (!isPaused) {
     inv.ypos = 0;
-    if (collideDetect(keyz[0], cannotwalk[0])) {
+    if (keyz[0]) {
       dx+= 5;
       leanx = -5;
       direction = "west";
     }
-    if (collideDetect(keyz[1], cannotwalk[1])) {
+    if (keyz[1]) {
       dy-= 5;
       leany = 5;
       direction = "south";
     }
-    if (collideDetect(keyz[2], cannotwalk[2])) {
+    if (keyz[2]) {
       dx-= 5;
       leanx = 5;
       direction = "east";
     }
-    if (collideDetect(keyz[3], cannotwalk[3])) {
+    if (keyz[3]) {
       dy+= 5;
       leany = -5;
       direction = "north";
@@ -112,26 +112,7 @@ void draw() {
   //System.out.println(items[2].getInfo()[1]);
 }
 
-
-static boolean collideDetect(boolean keypress, boolean cannotwalk) {
-  if (keypress && cannotwalk) {
-    return false;
-  }
-  if (keypress && !cannotwalk) {
-    return true;
-  }
-  return false;
-
-  // return keypress;
-}
-
-
 void keyPressed() {
-  cannotwalk[0] = p.getA();
-  cannotwalk[1] = p.getS();
-  cannotwalk[2] = p.getD();
-  cannotwalk[3] = p.getW();
-
 
   if (key == 'a')  keyz[0] = true;
   if (key == 's')  keyz[1] = true;
@@ -142,7 +123,7 @@ void keyPressed() {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
-  if (key == 'o' && !isPaused) p.punch(); 
+  if (key == 'o' && !isPaused) p.punch();
 
 
   if (isPaused) {
