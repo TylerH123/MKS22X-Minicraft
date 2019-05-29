@@ -76,4 +76,4 @@ Today, I worked on innventory, tool, armor, and station class. I added a pointer
 
 ## 5-28-19
 ### Tyler
-Today, I updated the README with the controls to play our game and the description of our game. I also worked on the inventory class. I added a menu to show which armor is equipped and how much damage reduction the player currently has. I added a tree class. For player class, I added a method that checks if new armor has been equipped, so the damage reduction gets updated. 
+Today, I updated the README with the controls to play our game and the description of our game. I also worked on the inventory class. I added a menu to show which armor is equipped and how much damage reduction the player currently has. I added a tree class. For player class, I added a method that checks if new armor has been equipped, so the damage reduction gets updated. Under the armor class, I added a way to equip the armor from the inventory. 
