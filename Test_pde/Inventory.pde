@@ -37,6 +37,7 @@ public class Inventory {
     if (p.equipped[2] != null) leg = p.equipped[2].name(); 
     if (p.equipped[3] != null) boot = p.equipped[3].name(); 
     if (p.equipped[4] != null) tool = p.equipped[4].name(); 
+    else tool = "fist";
     fill(0);
     text("Helmet: " + hel, 235, 315);
     text("Chestpiece: " + chest, 235, 330);
@@ -83,6 +84,16 @@ public class Inventory {
       items[position[current]].interact();
     }
     catch (NullPointerException e) {
+    }
+  }
+  void unequip() {
+    if (p.equipped[4] != null) {
+      int tempID = parseInt(p.equipped[4].getInfo()[2]);
+      inv.add(tempID);
+      itemList[tempID] = p.equipped[4].getInfo()[0];
+      items[tempID] = new Tool(parseInt(p.equipped[4].getInfo()[3]), tempID); 
+      p.equipped[4] = null;
+      p.updateDamage();
     }
   }
 }

@@ -25,6 +25,7 @@ public class Player {
   }
   void updateDamage(){
     if (equipped[4] != null) dmg = parseInt(equipped[4].getInfo()[1]);
+    else dmg = 1; 
   }
   void equip(int itemID){
      

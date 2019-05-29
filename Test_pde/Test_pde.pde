@@ -170,6 +170,9 @@ void keyPressed() {
       //System.out.println(inv.current + "works");
       inv.use();
     }
+    if (key == 'u'){
+      inv.unequip();
+    }
   }
 }
 
