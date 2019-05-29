@@ -8,19 +8,18 @@ The game is a top down version of Minecraft where you have to gather resources a
 
 # How to Play 
 ```
-w,a,s,d to move around
-```
-```
 i to open inventory
 ```
 While inventory is opened: 
 ```
 o to interact with the item 
 w,s to move pointer up and down 
+u to unequip the current tool 
 ```
 While invetory is closed: 
 ```
 o to punch or use tool equipped
+w,a,s,d to move around
 ```
 # DevLog
 
@@ -76,4 +75,4 @@ Today, I worked on innventory, tool, armor, and station class. I added a pointer
 
 ## 5-28-19
 ### Tyler
-Today, I updated the README with the controls to play our game and the description of our game. I also worked on the inventory class. I added a menu to show which armor is equipped and how much damage reduction the player currently has. I added a tree class. For player class, I added a method that checks if new armor has been equipped, so the damage reduction gets updated. 
+Today, I updated the README with the controls to play our game and the description of our game. I also worked on the inventory class. I added a menu to show which armor is equipped and how much damage reduction the player currently has. I added a tree class. For player class, I added a method that checks if new armor has been equipped, so the damage reduction gets updated. Under the armor class, I added a way to equip the armor from the inventory. Finally, I worked on tool class. I added a method for the player to equip the tool from the inventory and swap between the tools.
