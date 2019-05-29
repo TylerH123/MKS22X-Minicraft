@@ -8,19 +8,18 @@ The game is a top down version of Minecraft where you have to gather resources a
 
 # How to Play 
 ```
-w,a,s,d to move around
-```
-```
 i to open inventory
 ```
 While inventory is opened: 
 ```
 o to interact with the item 
 w,s to move pointer up and down 
+u to unequip the current tool 
 ```
 While invetory is closed: 
 ```
 o to punch or use tool equipped
+w,a,s,d to move around
 ```
 # DevLog
 
