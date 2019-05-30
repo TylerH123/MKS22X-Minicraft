@@ -54,7 +54,7 @@ public class Tool extends Item implements Interactable {
       inv.add(tempID);
       itemList[tempID] = p.equipped[4].getInfo()[0];
       items[tempID] = new Tool(parseInt(p.equipped[4].getInfo()[3]), tempID); 
-      inv.remove(id,1);
+      inv.remove(id, 1);
       itemList[id] = null; 
       p.equipped[4] = this; 
       p.updateDamage();

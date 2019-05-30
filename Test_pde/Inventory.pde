@@ -4,7 +4,7 @@ public class Inventory {
   int[] position = new int[25];
   int ypos = 0;
   //initial height of the pointer
-  int y = 305;
+  int y = 285;
   int current = 0;
   String hel = "none";
   String chest = "none"; 
@@ -17,21 +17,21 @@ public class Inventory {
   void display() {
     fill(255);
     //menu
-    rect(520, 300, 200, 295);
+    rect(590, 430, 200, 300);
     //pos is used to place the items in inventory in the correct place
     int pos = 0;
     for (int i = 0; i < itemList.length; i++) {
       if (itemList[i] != null) {
         fill(0);
-        text(inventory[i] + "x " + itemList[i], 540, 313 + 10 * pos);
+        text(inventory[i] + "x " + itemList[i], 510, 293 + 10 * pos);
         position[pos] = i;
         pos++;
       }
     }
     fill(255, 0, 0);
-    triangle(530, 305 + ypos, 530, 310 + ypos, 535, 307.5 + ypos);
+    triangle(500, 285 + ypos, 500, 290 + ypos, 505, 287.5 + ypos);
     fill(255); 
-    rect(230, 300, 200, 110);
+    rect(310, 335, 200, 110);
     if (p.equipped[0] != null) hel = p.equipped[0].name(); 
     if (p.equipped[1] != null) chest = p.equipped[1].name(); 
     if (p.equipped[2] != null) leg = p.equipped[2].name(); 
@@ -39,13 +39,13 @@ public class Inventory {
     if (p.equipped[4] != null) tool = p.equipped[4].name(); 
     else tool = "fist";
     fill(0);
-    text("Helmet: " + hel, 235, 315);
-    text("Chestpiece: " + chest, 235, 330);
-    text("Leggings: " + leg, 235, 345);
-    text("Boots: " + boot, 235, 360);
-    text("Damage Reduction: " + (int)(p.dmgReduction) + "%", 255, 375);
-    text("Current Tool: " + tool, 235, 390);
-    text("Damage: " + p.dmg, 290, 405);
+    text("Helmet: " + hel, 215, 295);
+    text("Chestpiece: " + chest, 215, 310);
+    text("Leggings: " + leg, 215, 325);
+    text("Boots: " + boot, 215, 340);
+    text("Damage Reduction: " + (int)(p.dmgReduction) + "%", 240, 355);
+    text("Current Tool: " + tool, 215, 370);
+    text("Damage: " + p.dmg, 280, 385);
   }
   int getSize() {
     int size = 0;

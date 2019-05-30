@@ -34,8 +34,8 @@ void setup() {
   stoneImg = loadImage("stone.png");
   grassImg = loadImage("grass.png");
   treeImg.resize(50, 50);
-  stoneImg.resize(50,50);
-  grassImg.resize(50,50);
+  stoneImg.resize(50, 50);
+  grassImg.resize(50, 50);
   // for (int i = 0; i < 100; i++) {
   //   for (int j = 0; j < 100; j++) {
   //     if (j == 4 && i == 4) {
@@ -48,8 +48,8 @@ void setup() {
   //   }
   // }
 
-  for(int x = 0; x < 10; x++){
-    for(int y = 0; y < 10; y++){
+  for (int x = 0; x < 10; x++) {
+    for (int y = 0; y < 10; y++) {
       testarr[x][y] = new TestTile(x, y);
     }
   }
@@ -63,7 +63,7 @@ void setup() {
   items[4] = d;
   Tool t = new Tool(2, 13);
   items[13] = t;
-  Tool t2 = new Tool(2,12);
+  Tool t2 = new Tool(2, 12);
   items[12] = t2;
   // rectMode(CENTER);
 }
@@ -119,12 +119,13 @@ void draw() {
   currtilex = 9-(dx/50);
   currtiley = 6-(dy/50);
   // Tile currtile = t[currtilex][currtiley-1];
-  try{
-  TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
+  try {
+    TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
 
-  text(currtile.getName()+"", 10, 30);
+    text(currtile.getName()+"", 10, 30);
     text("You're at" + currtilex + ", " + currtiley, 10, 40);
-  } catch(Exception e){
+  } 
+  catch(Exception e) {
     text("COLLIDFE", 10, 40);
   }
 
@@ -150,16 +151,24 @@ void keyPressed() {
 
   if (isPaused) {
     if (key == 'w') {
-      if (inv.y - 10 >= 305) {
-        inv.y -= 10;
-        inv.moveUp();
+      count++;
+      if (inv.y - 10 >= 275) {
+        if (count > inv.getSize()) {
+          inv.y = (inv.getSize()-1) * 10 + 285;
+          inv.current = inv.position.length - 1;
+          inv.ypos = (inv.getSize()-1) * 10; 
+          count = 1; 
+        } else {
+          inv.y -= 10;
+          inv.moveUp();
+        }
       }
     }
     if (key == 's') {
       count--;
-      if (inv.y + 15 <= 590) {
+      if (inv.y + 15 <= 580) {
         if (count <= 0) {
-          inv.y = 305;
+          inv.y = 285;
           inv.current = 0;
           inv.ypos = 0;
           count = inv.getSize();
@@ -173,7 +182,7 @@ void keyPressed() {
       //System.out.println(inv.current + "works");
       inv.use();
     }
-    if (key == 'u'){
+    if (key == 'u') {
       inv.unequip();
     }
   }
