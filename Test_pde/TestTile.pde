@@ -10,4 +10,8 @@ public class TestTile{
     rect((x*50) + dx, (y*50) + dy, 50, 50);
   }
 
+  String getName(){
+    return "genericboi";
+  }
+
 }

@@ -116,8 +116,14 @@ void draw() {
   currtilex = 9-(int)dx/50;
   currtiley = 6-(int)dy/50;
   // Tile currtile = t[currtilex][currtiley-1];
-  // text(currtile.getName()+"", 10, 30);
-  text("You're at" + currtilex + ", " + currtiley, 10, 40);
+  try{
+  TestTile currtile = testarr[currtilex][currtiley-1];
+
+  text(currtile.getName()+"", 10, 30);
+    text("You're at" + currtilex + ", " + currtiley, 10, 40);
+  } catch(Exception e){
+    text("COLLIDFE", 10, 40);
+  }
   p.display();
   //System.out.println(items[2].getInfo()[1]);
 }
