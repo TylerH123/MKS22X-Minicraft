@@ -8,9 +8,6 @@ public class Player {
   public Player() {
   }
 
-  int currtiley = 6-(int)dy/50 - 1;
-  int currtilex = 9-(int)dx/50 - 1;
-
   // boolean Wcollide(){
   //   Tile currtile = t[currtilex][currtiley-1];
   //   println(currtile.getName());
@@ -24,6 +21,45 @@ public class Player {
   //   }
   //   return false;
   // }
+
+  void checkCollide(){
+    try{
+      // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
+      if (testarr[currtilex][currtiley - 1].isStone == true){
+        keyz[3] = false;
+      }
+    } catch (ArrayIndexOutOfBoundsException e){
+
+    }
+
+    try{
+      // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
+      if (testarr[currtilex + 1][currtiley].isStone == true){
+        keyz[2] = false;
+      }
+    } catch (ArrayIndexOutOfBoundsException e){
+
+    }
+
+    try{
+      // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
+      if (testarr[currtilex][currtiley + 1].isStone == true){
+        keyz[1] = false;
+      }
+    } catch (ArrayIndexOutOfBoundsException e){
+
+    }
+
+    try{
+      // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
+      if (testarr[currtilex - 1][currtiley].isStone == true){
+        keyz[0] = false;
+      }
+    } catch (ArrayIndexOutOfBoundsException e){
+
+    }
+  }
+
 
   void display() {
     fill(100, 50, 118);

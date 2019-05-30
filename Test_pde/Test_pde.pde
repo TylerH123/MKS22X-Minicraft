@@ -83,6 +83,8 @@ void draw() {
   leanx = 0;
   leany = 0;
 
+  p.checkCollide();
+
   if (!isPaused) {
     inv.ypos = 0;
     if (keyz[0]) {
@@ -141,6 +143,9 @@ void keyPressed() {
   if (key == 's')  keyz[1] = true;
   if (key == 'd')  keyz[2] = true;
   if (key == 'w')  keyz[3] = true;
+
+  // p.checkCollide();
+
   if (key == 'i') {
     count = inv.getSize();
     keyz[4] = !keyz[4];
