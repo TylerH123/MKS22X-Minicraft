@@ -80,3 +80,7 @@ Today, I updated the README with the controls to play our game and the descripti
 ## 5-29-19
 ### Tyler
 Today, I found images for tree, stone, and grass. I implemented these images into the code. 
+
+## 5-29-19
+### Tyler
+Today, I worked on readjusting the inventory. After Moody redid the tiless, the inventory menus were not in sync. I also addedd a way for the pointer to cycle when only moving upwards. 
