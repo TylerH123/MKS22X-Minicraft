@@ -8,6 +8,9 @@ static int currtiley;
 
 float leanx, leany;
 static Tile[][] t = new Tile[100][100];
+
+static TestTile[][] testarr= new TestTile[100][100];
+
 Inventory inv = new Inventory();
 Player p = new Player();
 //direction that player is facing
@@ -30,15 +33,21 @@ void setup() {
   treeImg.resize(50, 50);
   stoneImg.resize(50,50);
   grassImg.resize(50,50);
-  for (int i = 0; i < 100; i++) {
-    for (int j = 0; j < 100; j++) {
-      if (j == 4 && i == 4) {
-        t[i][j] = new Tree(i, j);
-      } else if (j == 0|| j == 99 || i == 0 || i == 99) {
-        t[i][j] = new Stone(i, j);
-      } else {
-        t[i][j] = new Grass(i, j);
-      }
+  // for (int i = 0; i < 100; i++) {
+  //   for (int j = 0; j < 100; j++) {
+  //     if (j == 4 && i == 4) {
+  //       t[i][j] = new Tree(i, j);
+  //     } else if (j == 0|| j == 99 || i == 0 || i == 99) {
+  //       t[i][j] = new Stone(i, j);
+  //     } else {
+  //       t[i][j] = new Grass(i, j);
+  //     }
+  //   }
+  // }
+
+  for(int x = 0; x < 100; x++){
+    for(int y = 0; y < 100; y++){
+      testarr[x][y] = new TestTile(x, y);
     }
   }
   Armor a = new Armor(2, 2);
@@ -63,7 +72,8 @@ void draw() {
   strokeWeight(2);
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
-      t[x][y].display();
+      // t[x][y].display();
+      testarr[x][y].display();
     }
   }
   leanx = 0;
