@@ -3,11 +3,11 @@ boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
 PImage treeImg, stoneImg, grassImg;
-// static int currtilex;
-// static int currtiley;
+static int currtilex;
+static int currtiley;
 
-static float currtilex;
-static float currtiley;
+// static float currtilex;
+// static float currtiley;
 
 float leanx, leany;
 static Tile[][] t = new Tile[10][10];
@@ -53,6 +53,7 @@ void setup() {
       testarr[x][y] = new TestTile(x, y);
     }
   }
+  testarr[3][3].makeStone();
   Armor a = new Armor(2, 2);
   items[2] = a;
   Armor b = new Armor(2, 1);
@@ -116,13 +117,13 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  currtilex = 9-(dx/50);
-  currtiley = 6-(dy/50);
+  currtilex = 9-((int)dx/50) ;
+  currtiley = 6-((int)dy/50) ;
   // Tile currtile = t[currtilex][currtiley-1];
   try{
-  TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
-
-  text(currtile.getName()+"", 10, 30);
+  // TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
+  //
+  // text(currtile.getName()+"", 10, 30);
     text("You're at" + currtilex + ", " + currtiley, 10, 40);
   } catch(Exception e){
     text("COLLIDFE", 10, 40);

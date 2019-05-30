@@ -28,6 +28,8 @@ public class Player {
   void display() {
     fill(100, 50, 118);
     text("PLAYER BOI", 442, 368);
+    fill(42, 171, 235);
+    text(direction, 442, 400);
     stroke(#000000, 50);
     rect(450 + leanx, 300 + leany, 40, 40);
   }
