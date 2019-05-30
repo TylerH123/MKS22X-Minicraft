@@ -3,11 +3,11 @@ boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
 PImage treeImg, stoneImg, grassImg;
-// static int currtilex;
-// static int currtiley;
+static int currtilex;
+static int currtiley;
 
-static float currtilex;
-static float currtiley;
+// static float currtilex;
+// static float currtiley;
 
 float leanx, leany;
 static Tile[][] t = new Tile[10][10];
@@ -127,6 +127,9 @@ void draw() {
   } catch(Exception e){
     text("COLLIDFE", 10, 40);
   }
+
+  text((dx > 450) + " left bound check", 10, 50);
+  text((dy > 300) + " up bound check", 10, 60);
   p.display();
   //System.out.println(items[2].getInfo()[1]);
 }
