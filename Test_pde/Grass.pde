@@ -8,8 +8,8 @@ public class Grass extends Tile {
   }
   void display() {
     fill(0,255,0);
-    rect(x+Test_pde.dx, y+Test_pde.dy, 50, 50);
-    image(grassImg,x+Test_pde.dx, y+Test_pde.dy);
+    rect((x*50)+Test_pde.dx, (y*50)+Test_pde.dy, 50, 50);
+    image(grassImg,(x*50)+Test_pde.dx, (y*50)+Test_pde.dy);
     fill(#1c0aad);
     text("" + (int)x + "\n" + (int)y, x+10 + Test_pde.dx, y+10 + Test_pde.dy);
   }
