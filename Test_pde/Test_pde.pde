@@ -3,13 +3,16 @@ boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
 PImage treeImg, stoneImg, grassImg;
-static int currtilex;
-static int currtiley;
+// static int currtilex;
+// static int currtiley;
+
+static float currtilex;
+static float currtiley;
 
 float leanx, leany;
-static Tile[][] t = new Tile[100][100];
+static Tile[][] t = new Tile[10][10];
 
-static TestTile[][] testarr= new TestTile[100][100];
+static TestTile[][] testarr= new TestTile[10][10];
 
 Inventory inv = new Inventory();
 Player p = new Player();
@@ -45,8 +48,8 @@ void setup() {
   //   }
   // }
 
-  for(int x = 0; x < 100; x++){
-    for(int y = 0; y < 100; y++){
+  for(int x = 0; x < 10; x++){
+    for(int y = 0; y < 10; y++){
       testarr[x][y] = new TestTile(x, y);
     }
   }
@@ -70,8 +73,8 @@ void draw() {
   background(#256d7b);
   stroke(#000000, 50);
   strokeWeight(2);
-  for (int x = 0; x < 100; x++) {
-    for (int y = 0; y < 100; y++) {
+  for (int x = 0; x < 10; x++) {
+    for (int y = 0; y < 10; y++) {
       // t[x][y].display();
       testarr[x][y].display();
     }
@@ -113,11 +116,11 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  currtilex = 9-(int)dx/50;
-  currtiley = 6-(int)dy/50;
+  currtilex = 9-(dx/50);
+  currtiley = 6-(dy/50);
   // Tile currtile = t[currtilex][currtiley-1];
   try{
-  TestTile currtile = testarr[currtilex][currtiley-1];
+  TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
 
   text(currtile.getName()+"", 10, 30);
     text("You're at" + currtilex + ", " + currtiley, 10, 40);
