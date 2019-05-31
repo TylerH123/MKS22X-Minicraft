@@ -18,7 +18,7 @@ u to unequip the current tool
 ```
 While invetory is closed: 
 ```
-o to punch or use tool equipped
+o to punch or use equipped tool or place station 
 w,a,s,d to move around
 ```
 # DevLog
@@ -81,6 +81,10 @@ Today, I updated the README with the controls to play our game and the descripti
 ### Tyler
 Today, I found images for tree, stone, and grass. I implemented these images into the code. 
 
-## 5-29-19
+## 5-30-19
 ### Tyler
 Today, I worked on readjusting the inventory. After Moody redid the tiless, the inventory menus were not in sync. I redid the invetory class by using an array list. I debugged all the code that had to do with the inventory. I also addedd a way for the pointer to cycle when only moving upwards. I worked on armor, tool, item, station, resource, and the game class. Finally, I deleted the Interactable interface and moved all its methods to the item class. I made them all abstract methods. 
+
+## 5-31-19
+### Tyler
+Today, I worked on the station class. I worked on a way for the stations to be placed. 
