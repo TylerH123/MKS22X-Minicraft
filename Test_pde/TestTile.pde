@@ -1,6 +1,7 @@
 public class TestTile{
 
   int x, y;
+  float radius = 84.85281;
   boolean isStone;
   public TestTile(int x, int y){
     this.x = x;
