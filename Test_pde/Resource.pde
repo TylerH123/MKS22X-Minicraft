@@ -6,6 +6,11 @@ public class Resource extends Item {
   String name() {
     return "";
   }
+  String[] getInfo(){
+   return new String[2]; 
+  }
+  void interact(){
+  }
   boolean canInteract() {
     return false;
   }

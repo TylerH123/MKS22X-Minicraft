@@ -23,7 +23,6 @@ public class Armor extends Item implements Interactable {
       piece = "boots";
     }
     dmgReduc = .015 * (type * pieceStrength) * 100;
-    itemList[id] = name();
   }
   String name() {
     String typeName = "";
@@ -43,7 +42,6 @@ public class Armor extends Item implements Interactable {
     itemList[id] = null;
     p.equipped[id-1] = this; 
     p.updateArmor();
-    items[id] = null;
   }
   boolean canInteract(){
     return true; 

@@ -1,4 +1,4 @@
-public abstract class Item{
+public abstract class Item implements Interactable{
   int id;
   public Item(){
   }

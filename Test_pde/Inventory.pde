@@ -1,17 +1,22 @@
 public class Inventory {
-  //array containing id of items that show up in the inventory menu
+  //array that acts as a dictionary for items. The index is the ID of the items
   int[] inventory = new int[25];
-  Interactable[] inter = new Interactable[15]; 
-  int[] position = new int[25];
+  //array list of interactables with no null values in between each element
+  ArrayList<Interactable> inter = new ArrayList<Interactable>(); 
+  //array list of the items in inventory with no null values in between each element
+  ArrayList<Item> invItem = new ArrayList<Item>();
   int ypos = 0;
   //initial height of the pointer
   int y = 285;
   int current = 0;
+  //variables for armor slots. default is none
   String hel = "none";
   String chest = "none"; 
   String leg = "none";
   String boot = "none"; 
+  //variable for tool slot. default is fist
   String tool = "fist";
+  
   public Inventory() {
   }
   //displays the inventory menu
@@ -19,14 +24,17 @@ public class Inventory {
     fill(255);
     //menu
     rect(590, 430, 200, 300);
-    //pos is used to place the items in inventory in the correct place
-    int pos = 0;
+    //space is used to space the items in inventory correctly
+    int space = 0;
     for (int i = 0; i < itemList.length; i++) {
       if (itemList[i] != null) {
+        if (itemList[i].canInteract()){
+          inter.add(itemList[i]);
+        }
+        invItem.add(itemList[i]);
         fill(0);
-        text(inventory[i] + "x " + itemList[i], 510, 293 + 10 * pos);
-        position[pos] = i;
-        pos++;
+        text(inventory[i] + "x " + itemList[i].name(), 510, 293 + 10 * space);
+        space++; 
       }
     }
     fill(255, 0, 0);
@@ -49,13 +57,7 @@ public class Inventory {
     text("Damage: " + p.dmg, 280, 385);
   }
   int getSize() {
-    int size = 0;
-    for (String s : itemList) {
-      if (s != null) {
-        size++;
-      }
-    }
-    return size;
+    return invItem.size();
   }
   //checks if the inventory contains an item, tgt, equal to or greater than amount
   boolean contains(int tgt, int amount) {
@@ -81,18 +83,15 @@ public class Inventory {
     current++;
   }
   void use() {
-    try {
-      items[position[current]].interact();
-    }
-    catch (NullPointerException e) {
-    }
+    
   }
   void unequip() {
     if (p.equipped[4] != null) {
       int tempID = parseInt(p.equipped[4].getInfo()[2]);
       inv.add(tempID);
-      itemList[tempID] = p.equipped[4].getInfo()[0];
-      items[tempID] = new Tool(parseInt(p.equipped[4].getInfo()[3]), tempID); 
+      Tool t = new Tool(parseInt(p.equipped[4].getInfo()[3]), tempID);
+      itemList[tempID] = t;
+      items[tempID] = t; 
       p.equipped[4] = null;
       p.updateDamage();
     }
