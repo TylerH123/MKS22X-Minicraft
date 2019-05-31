@@ -1,6 +1,7 @@
-public class Station extends Item implements Placeable {
+public class Station extends Item{
   String name;
   color c;
+  boolean isPlaced = false; 
   Station(int station) {
     id = station;
     //workbench
@@ -17,6 +18,9 @@ public class Station extends Item implements Placeable {
     if (station == 8) {
       name = "oven";
     }
+  }
+  void display(){
+    place(); 
   }
   /**first, checks your inventory to see if the item can be created. then creates it
    @param itemID is the id of the item you are trying to create
@@ -53,7 +57,9 @@ public class Station extends Item implements Placeable {
       }
       //if it is station then add it to itemList
       if (itemID >= 5 && itemID <= 8) {
-        itemList[itemID] = new Station(itemID);
+        Station s = new Station(itemID);
+        itemList[itemID] = s;
+        stations.add(s); 
       }
       //remove the resources required to craft
       inv.remove(rssID, c);
@@ -68,8 +74,9 @@ public class Station extends Item implements Placeable {
    **/
   void place() {
     if (direction.equals("north")) {
+      isPlaced = true; 
       fill(#654321);
-      rect(450, 325, 50, 50);
+      rect(450, 250, 50, 50);
     }
     if (direction.equals("south")) {
       fill(#654321);

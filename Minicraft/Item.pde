@@ -6,4 +6,6 @@ public abstract class Item {
   abstract boolean canInteract(); 
   abstract String[] getInfo();
   abstract void interact(int idx);
+  void place() {
+  };
 }

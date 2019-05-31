@@ -13,7 +13,6 @@ float leanx, leany;
 static Tile[][] t = new Tile[10][10];
 
 static TestTile[][] testarr= new TestTile[10][10];
-
 Inventory inv = new Inventory();
 Player p = new Player();
 //direction that player is facing
@@ -22,6 +21,7 @@ String direction = "";
 int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14}, {20, 15}, {5, 17}, {15, 15}, {5, 0}, {5, 0}, {2, 0}, {2, 0}, {7, 0} };
 //list with all the items in inventory
 Item[] itemList = new Item[25];      
+ArrayList<Station> stations = new ArrayList<Station>();
 void setup() {
   rectMode(CENTER);
   size(1000, 750);
@@ -126,7 +126,9 @@ void draw() {
   catch(Exception e) {
     text("COLLIDFE", 10, 40);
   }
-
+  for (Station s : stations){
+     if (s.isPlaced) s.display();  
+  }
   text((dx > 450) + " left bound check", 10, 50);
   text((dy > 300) + " up bound check", 10, 60);
   p.display();
@@ -144,7 +146,10 @@ void keyPressed() {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
-  if (key == 'o' && !isPaused) p.punch();
+  if (key == 'o' && !isPaused) {
+    if (p.equipped[5] != null) p.equipped[5].place();
+    else p.punch();
+  }
 
 
   if (isPaused) {
