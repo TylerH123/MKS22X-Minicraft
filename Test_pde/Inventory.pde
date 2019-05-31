@@ -1,6 +1,7 @@
 public class Inventory {
-  int[] inventory = new int[25];
   //array containing id of items that show up in the inventory menu
+  int[] inventory = new int[25];
+  Interactable[] inter = new Interactable[15]; 
   int[] position = new int[25];
   int ypos = 0;
   //initial height of the pointer

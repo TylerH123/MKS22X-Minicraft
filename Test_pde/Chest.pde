@@ -15,4 +15,7 @@ public class Chest extends Item implements Interactable, Placeable {
   }
   void interact() {
   }
+  boolean canInteract() {
+    return true;
+  }
 }

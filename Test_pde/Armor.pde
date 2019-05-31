@@ -45,4 +45,7 @@ public class Armor extends Item implements Interactable {
     p.updateArmor();
     items[id] = null;
   }
+  boolean canInteract(){
+    return true; 
+  }
 }

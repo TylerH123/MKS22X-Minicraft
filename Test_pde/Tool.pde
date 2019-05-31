@@ -61,4 +61,7 @@ public class Tool extends Item implements Interactable {
       items[id] = null;
     }
   }
+  boolean canInteract() {
+    return true;
+  }
 }
