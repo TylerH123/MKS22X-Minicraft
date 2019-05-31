@@ -51,7 +51,7 @@ public class Inventory {
     }
     //armor menu
     fill(255); 
-    rect(310, 345, 200, 125);
+    rect(310, 342.5, 200, 125);
     if (p.equipped[0] != null) hel = p.equipped[0].name(); 
     if (p.equipped[1] != null) chest = p.equipped[1].name(); 
     if (p.equipped[2] != null) leg = p.equipped[2].name(); 

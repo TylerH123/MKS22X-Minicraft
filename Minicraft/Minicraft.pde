@@ -64,6 +64,7 @@ void setup() {
   itemList[12] = t2;
   Station s = new Station(5);
   itemList[5] = s; 
+  stations.add(s);
 }
 
 void draw() {
@@ -128,6 +129,7 @@ void draw() {
   }
   for (Station s : stations){
      if (s.isPlaced) s.display();  
+     //System.out.println(s.isPlaced);
   }
   text((dx > 450) + " left bound check", 10, 50);
   text((dy > 300) + " up bound check", 10, 60);
