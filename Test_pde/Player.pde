@@ -24,40 +24,40 @@ public class Player {
 
   void checkCollide(){
     try{
-      // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
+      System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
       if (testarr[currtilex][currtiley - 1].isStone == true){
         keyz[3] = false;
       }
     } catch (ArrayIndexOutOfBoundsException e){
 
     }
-
-    try{
-      // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
-      if (testarr[currtilex + 1][currtiley].isStone == true){
-        keyz[2] = false;
-      }
-    } catch (ArrayIndexOutOfBoundsException e){
-
-    }
-
-    try{
-      // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
-      if (testarr[currtilex][currtiley + 1].isStone == true){
-        keyz[1] = false;
-      }
-    } catch (ArrayIndexOutOfBoundsException e){
-
-    }
-
-    try{
-      // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
-      if (testarr[currtilex - 1][currtiley].isStone == true){
-        keyz[0] = false;
-      }
-    } catch (ArrayIndexOutOfBoundsException e){
-
-    }
+  //
+  //   try{
+  //     // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
+  //     if (testarr[currtilex + 1][currtiley].isStone == true){
+  //       keyz[2] = false;
+  //     }
+  //   } catch (ArrayIndexOutOfBoundsException e){
+  //
+  //   }
+  //
+  //   try{
+  //     // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
+  //     if (testarr[currtilex][currtiley + 1].isStone == true){
+  //       keyz[1] = false;
+  //     }
+  //   } catch (ArrayIndexOutOfBoundsException e){
+  //
+  //   }
+  //
+  //   try{
+  //     // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
+  //     if (testarr[currtilex - 1][currtiley].isStone == true){
+  //       keyz[0] = false;
+  //     }
+  //   } catch (ArrayIndexOutOfBoundsException e){
+  //
+  //   }
   }
 
 
@@ -67,7 +67,7 @@ public class Player {
     fill(42, 171, 235);
     text(direction, 442, 400);
     stroke(#000000, 50);
-    rect(450 + leanx, 300 + leany, 40, 40);
+    rect(420 + leanx, 360 + leany, 40, 40);
   }
   void updateArmor(){
     float armor = 0.00;

@@ -27,6 +27,8 @@ Interactable[] items = new Interactable[25];
 int count = inv.getSize();
 void setup() {
   rectMode(CENTER);
+  loadPixels();
+  // frameRate(1);
   size(1000, 750);
   noStroke();
   smooth();
@@ -83,7 +85,7 @@ void draw() {
   leanx = 0;
   leany = 0;
 
-  p.checkCollide();
+  // p.checkCollide();
 
   if (!isPaused) {
     inv.ypos = 0;
@@ -119,8 +121,8 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  currtilex = 9-((int)dx/50) ;
-  currtiley = 6-((int)dy/50) ;
+  currtilex = 7 - ((int)dx/60);
+  currtiley = 6 - ((int)dy/60);
   // Tile currtile = t[currtilex][currtiley-1];
   try{
   // TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
@@ -134,6 +136,9 @@ void draw() {
   text((dx > 450) + " left bound check", 10, 50);
   text((dy > 300) + " up bound check", 10, 60);
   p.display();
+  println(get(420, 370));
+  set(420, 390, #000000);
+  // updatePixels();
   //System.out.println(items[2].getInfo()[1]);
 }
 
@@ -145,6 +150,11 @@ void keyPressed() {
   if (key == 'w')  keyz[3] = true;
 
   // p.checkCollide();
+  // if(get(420, 360) != -13980693){
+  //   System.exit(1);
+    println(get(420, 390));
+  // }
+  // println(pixels[370*width+420]);
 
   if (key == 'i') {
     count = inv.getSize();

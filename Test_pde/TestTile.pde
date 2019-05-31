@@ -10,11 +10,11 @@ public class TestTile{
   void display(){
     if(isStone){
       fill(157, 180, 119);
-      rect((x*80) + dx, (y*80) + dy, 80, 80);
+      rect((x*60) + dx, (y*60) + dy, 60, 60);
       return;
     }
     fill(100, 50, 118);
-    rect((x*50) + dx, (y*50) + dy, 50, 50);
+    rect((x*60) + dx, (y*60) + dy, 60, 60);
   }
 
   String getName(){
