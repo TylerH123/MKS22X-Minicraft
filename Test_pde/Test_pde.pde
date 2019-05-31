@@ -52,17 +52,17 @@ void setup() {
     }
   }
   Armor a = new Armor(2, 2);
-  items[2] = a;
+  itemList[2] = a;
   Armor b = new Armor(2, 1);
-  items[1] = b;
+  itemList[1] = b;
   Armor c = new Armor(2, 3);
-  items[3] = c;
+  itemList[3] = c;
   Armor d = new Armor(2, 4);
-  items[4] = d;
+  itemList[4] = d;
   Tool t = new Tool(2, 13);
-  items[13] = t;
+  itemList[13] = t;
   Tool t2 = new Tool(2, 12);
-  items[12] = t2;
+  itemList[12] = t2;
   // rectMode(CENTER);
 }
 
@@ -153,7 +153,7 @@ void keyPressed() {
       if (inv.y - 10 >= 275) {
         if (count > inv.getSize()) {
           inv.y = (inv.getSize()-1) * 10 + 285;
-          inv.current = inv.position.length - 1;
+          //inv.current = inv.position.length - 1;
           inv.ypos = (inv.getSize()-1) * 10; 
           count = 1; 
         } else {

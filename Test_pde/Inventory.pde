@@ -1,8 +1,8 @@
 public class Inventory {
   //array that acts as a dictionary for items. The index is the ID of the items
   int[] inventory = new int[25];
-  //array list of interactables with no null values in between each element
-  ArrayList<Interactable> inter = new ArrayList<Interactable>(); 
+  //array list of items that player can interact with. there are no null values in between each element
+  ArrayList<Item> inter = new ArrayList<Item>(); 
   //array list of the items in inventory with no null values in between each element
   ArrayList<Item> invItem = new ArrayList<Item>();
   int ypos = 0;
@@ -91,7 +91,6 @@ public class Inventory {
       inv.add(tempID);
       Tool t = new Tool(parseInt(p.equipped[4].getInfo()[3]), tempID);
       itemList[tempID] = t;
-      items[tempID] = t; 
       p.equipped[4] = null;
       p.updateDamage();
     }

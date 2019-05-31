@@ -1,4 +1,4 @@
-public class Station extends Item implements Interactable {
+public class Station extends Item{
   String name;
   Station(int station) {
     id = station;
@@ -15,7 +15,6 @@ public class Station extends Item implements Interactable {
     if (station == 8) {
       name = "oven";
     }
-    itemList[id] = name;
   }
   /**first, checks your inventory to see if the item can be created. then creates it
    @param itemID is the id of the item you are trying to create
@@ -38,7 +37,7 @@ public class Station extends Item implements Interactable {
         //add crafted item to inventory
         inv.add(itemID);
         //add the crafted tool to the interactables items list
-        items[itemID] = new Tool(rssID, itemID);
+        itemList[itemID] = new Tool(rssID, itemID);
         return "Successfully crafted";
       } else {
         return "Failed to craft";
@@ -46,13 +45,13 @@ public class Station extends Item implements Interactable {
     }
     //if anything else, check inventory for the resources
     if (inv.contains(rssID, c)) {
-      //if it is armor piece then add it to interactables items list
+      //if it is armor piece then add it to itemList
       if (itemID >= 1 && itemID <= 4) {
-        items[itemID] = new Armor(rss, itemID);
+        itemList[itemID] = new Armor(rss, itemID);
       }
-      //if it is station then add it to interactables items list
+      //if it is station then add it to itemList
       if (itemID >= 5 && itemID <= 8) {
-        items[itemID] = new Station(itemID);
+        itemList[itemID] = new Station(itemID);
       }
       //remove the resources required to craft
       inv.remove(rssID, c);

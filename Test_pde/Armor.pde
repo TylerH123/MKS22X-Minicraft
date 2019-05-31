@@ -1,4 +1,4 @@
-public class Armor extends Item implements Interactable {
+public class Armor extends Item{
   int type;
   String piece;
   float dmgReduc;
