@@ -1,4 +1,4 @@
-public class Tool extends Item{
+public class Tool extends Item {
   int type;
   String piece;
   int dmg;
@@ -47,14 +47,16 @@ public class Tool extends Item{
       itemList[id] = null;
       p.equipped[4] = this; 
       p.updateDamage();
+      inv.items.remove(idx);
+      inv.updateInventory();
+      if (inv.current == inv.items.size() - 1 && inv.y - 10 >= 275) {
+        inv.current--;
+        inv.ypos -= 10; 
+        inv.y -= 10;
+      }
     } else {
-      int tempID = parseInt(p.equipped[4].getInfo()[2]);
-      inv.add(tempID);
-      itemList[tempID] = new Tool(parseInt(p.equipped[4].getInfo()[3]), tempID); 
-      inv.remove(id, 1);
-      itemList[id] = null; 
-      p.equipped[4] = this; 
-      p.updateDamage();
+      inv.unequip();
+      this.interact(idx);
     }
   }
   boolean canInteract() {
