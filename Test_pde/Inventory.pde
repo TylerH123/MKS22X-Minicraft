@@ -103,6 +103,7 @@ public class Inventory {
       itemList[tempID] = t;
       p.equipped[4] = null;
       p.updateDamage();
+      updateInventory();
     }
   }
 }

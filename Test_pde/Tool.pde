@@ -49,7 +49,7 @@ public class Tool extends Item {
       p.updateDamage();
       inv.items.remove(idx);
       inv.updateInventory();
-      if (inv.current == inv.items.size() - 1 && inv.y - 10 >= 275) {
+      if (inv.current == inv.items.size() && inv.y - 10 > 275) {
         inv.current--;
         inv.ypos -= 10; 
         inv.y -= 10;

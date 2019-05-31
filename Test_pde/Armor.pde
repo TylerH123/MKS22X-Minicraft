@@ -44,7 +44,7 @@ public class Armor extends Item {
     p.updateArmor();
     inv.items.remove(idx);
     inv.updateInventory();
-    if (inv.current == inv.items.size() - 1) {
+    if (inv.current == inv.items.size()) {
       inv.current--;
       inv.ypos -= 10; 
       inv.y -= 10;
