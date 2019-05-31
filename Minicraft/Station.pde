@@ -1,9 +1,11 @@
-public class Station extends Item{
+public class Station extends Item implements Placeable {
   String name;
+  color c;
   Station(int station) {
     id = station;
     //workbench
     if (station == 5) {
+      c = color(#654321);
       name = "workbench";
     }
     if (station == 6) {
@@ -66,29 +68,53 @@ public class Station extends Item{
    **/
   void place() {
     if (direction.equals("north")) {
+      fill(#654321);
       rect(450, 325, 50, 50);
     }
     if (direction.equals("south")) {
+      fill(#654321);
       rect(450, 425, 50, 50);
     }
     if (direction.equals("east")) {
+      fill(#654321);
       rect(500, 375, 50, 50);
     }
     if (direction.equals("west")) {
+      fill(#654321);
       rect(400, 375, 50, 50);
     }
   }
   String[] getInfo() {
-    String[] info = new String[10];
-
+    String[] info = new String[4];
+    info[0] = name();
+    info[1] = id + "";
     return info;
   }
   void interact(int idx) {
+    if (!isPlaced) {
+      if (p.equipped[5] == null) {
+        inv.remove(id, 1);
+        itemList[id] = null;
+        p.equipped[5] = this; 
+        inv.items.remove(idx);
+        inv.updateInventory();
+        if (inv.current == inv.items.size() && inv.y - 10 > 275) {
+          inv.current--;
+          inv.ypos -= 10; 
+          inv.y -= 10;
+        }
+      } else {
+        inv.returnToInv();
+        this.interact(idx);
+      }
+    } else {
+      inv.display();
+    }
   }
   String name() {
     return name;
   }
-  boolean canInteract(){
-     return true;  
+  boolean canInteract() {
+    return true;
   }
 }

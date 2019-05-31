@@ -4,7 +4,7 @@ public class Player {
   // static int x = 0;
   int dmg = 1;
   float dmgReduction = 0.00;
-  Item[] equipped = new Item[5];
+  Item[] equipped = new Item[6];
   public Player() {
   }
 

@@ -62,7 +62,8 @@ void setup() {
   itemList[13] = t;
   Tool t2 = new Tool(2, 12);
   itemList[12] = t2;
-  // rectMode(CENTER);
+  Station s = new Station(5);
+  itemList[5] = s; 
 }
 
 void draw() {
@@ -175,7 +176,11 @@ void keyPressed() {
       inv.use();
     }
     if (key == 'u') {
-      inv.unequip();
+      if (p.equipped[5] == null) {
+        inv.unequip();
+      } else {
+        inv.returnToInv();
+      }
     }
   }
 }

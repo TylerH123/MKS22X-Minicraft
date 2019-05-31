@@ -16,7 +16,9 @@ public class Inventory {
   String boot = "none"; 
   //variable for tool slot. default is fist
   String tool = "fist";
-
+  //variable for holding stations. default is none 
+  String holding = "none"; 
+  
   public Inventory() {
   }
   void updateInventory() {
@@ -49,13 +51,15 @@ public class Inventory {
     }
     //armor menu
     fill(255); 
-    rect(310, 335, 200, 110);
+    rect(310, 345, 200, 125);
     if (p.equipped[0] != null) hel = p.equipped[0].name(); 
     if (p.equipped[1] != null) chest = p.equipped[1].name(); 
     if (p.equipped[2] != null) leg = p.equipped[2].name(); 
     if (p.equipped[3] != null) boot = p.equipped[3].name(); 
     if (p.equipped[4] != null) tool = p.equipped[4].name(); 
     else tool = "fist";
+    if (p.equipped[5] != null) holding = p.equipped[5].name();
+    else holding = "none";
     fill(0);
     text("Helmet: " + hel, 215, 295);
     text("Chestpiece: " + chest, 215, 310);
@@ -64,6 +68,7 @@ public class Inventory {
     text("Damage Reduction: " + (int)(p.dmgReduction) + "%", 240, 355);
     text("Current Tool: " + tool, 215, 370);
     text("Damage: " + p.dmg, 280, 385);
+    text("Station in Hand: " + holding, 215, 400);
   }
   //checks if the inventory contains an item, tgt, equal to or greater than amount
   boolean contains(int tgt, int amount) {
@@ -103,6 +108,16 @@ public class Inventory {
       itemList[tempID] = t;
       p.equipped[4] = null;
       p.updateDamage();
+      updateInventory();
+    }
+  }
+  void returnToInv(){
+    if (p.equipped[5] != null){
+      int tempID = parseInt(p.equipped[5].getInfo()[1]);
+      inv.add(tempID); 
+      Station s = new Station(tempID); 
+      itemList[tempID] = s; 
+      p.equipped[5] = null; 
       updateInventory();
     }
   }
