@@ -1,8 +1,6 @@
 public class Inventory {
   //array that acts as a dictionary for items. The index is the ID of the items
   int[] inventory = new int[25];
-  //array list of items that player can interact with. there are no null values in between each element
-  ArrayList<Item> inter = new ArrayList<Item>(); 
   //array list of the items in inventory with no null values in between each element
   ArrayList<Item> invItem = new ArrayList<Item>();
   int ypos = 0;
@@ -19,8 +17,9 @@ public class Inventory {
   
   public Inventory() {
   }
-  //displays the inventory menu
+  //displays the menus
   void display() {
+    //inventory menu
     fill(255);
     //menu
     rect(590, 430, 200, 300);
@@ -28,17 +27,16 @@ public class Inventory {
     int space = 0;
     for (int i = 0; i < itemList.length; i++) {
       if (itemList[i] != null) {
-        if (itemList[i].canInteract()){
-          inter.add(itemList[i]);
-        }
         invItem.add(itemList[i]);
         fill(0);
         text(inventory[i] + "x " + itemList[i].name(), 510, 293 + 10 * space);
         space++; 
       }
     }
+    //pointer
     fill(255, 0, 0);
     triangle(500, 285 + ypos, 500, 290 + ypos, 505, 287.5 + ypos);
+    //armor menu
     fill(255); 
     rect(310, 335, 200, 110);
     if (p.equipped[0] != null) hel = p.equipped[0].name(); 
@@ -56,9 +54,6 @@ public class Inventory {
     text("Current Tool: " + tool, 215, 370);
     text("Damage: " + p.dmg, 280, 385);
   }
-  int getSize() {
-    return invItem.size();
-  }
   //checks if the inventory contains an item, tgt, equal to or greater than amount
   boolean contains(int tgt, int amount) {
     if (inventory[tgt] >= amount) {
@@ -66,11 +61,11 @@ public class Inventory {
     }
     return false;
   }
-  //adds to the inventory at index itemID
+  //adds to the quantity of item itemID in inventory array
   void add(int itemID) {
     inventory[itemID]++;
   }
-  //reduces the amount of an item at index itemID by amt
+  //reduces the quantity of item itemID by amt in inventory array
   void remove(int itemID, int amt) {
     inventory[itemID] -= amt;
   }
@@ -83,7 +78,9 @@ public class Inventory {
     current++;
   }
   void use() {
-    
+    if (invItem.get(current).canInteract()){
+      invItem.get(current).interact();
+    }
   }
   void unequip() {
     if (p.equipped[4] != null) {
