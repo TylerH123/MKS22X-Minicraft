@@ -42,7 +42,13 @@ public class Armor extends Item {
     itemList[id] = null;
     p.equipped[id-1] = this; 
     p.updateArmor();
-    inv.invItem.remove(idx);
+    inv.items.remove(idx);
+    inv.updateInventory();
+    if (inv.current == inv.items.size() - 1) {
+      inv.current--;
+      inv.ypos -= 10; 
+      inv.y -= 10;
+    }
   }
   boolean canInteract() {
     return true;

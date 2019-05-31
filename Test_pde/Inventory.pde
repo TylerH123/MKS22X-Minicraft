@@ -2,10 +2,12 @@ public class Inventory {
   //array that acts as a dictionary for items. The index is the ID of the items
   int[] inventory = new int[25];
   //array list of the items in inventory with no null values in between each element
-  ArrayList<Item> invItem = new ArrayList<Item>();
-  int ypos = 0;
+  ArrayList<Item> items = new ArrayList<Item>();
   //initial height of the pointer
   int y = 285;
+  //change in height
+  int ypos = 0;
+  //points to the current index the player is looking at with the pointer
   int current = 0;
   //variables for armor slots. default is none
   String hel = "none";
@@ -18,10 +20,10 @@ public class Inventory {
   public Inventory() {
   }
   void updateInventory() {
-    invItem = new ArrayList<Item>();
+    items = new ArrayList<Item>();
     for (int i = 0; i < itemList.length; i++) {
       if (itemList[i] != null) {
-        invItem.add(itemList[i]);
+        items.add(itemList[i]);
       }
     }
   }
@@ -41,8 +43,10 @@ public class Inventory {
       }
     }
     //pointer
-    fill(255, 0, 0);
-    triangle(500, 285 + ypos, 500, 290 + ypos, 505, 287.5 + ypos);
+    if (items.size() > 0){
+      fill(255, 0, 0);
+      triangle(500, 285 + ypos, 500, 290 + ypos, 505, 287.5 + ypos);
+    }
     //armor menu
     fill(255); 
     rect(310, 335, 200, 110);
@@ -85,16 +89,9 @@ public class Inventory {
     current++;
   }
   void use() {
-    if (invItem.get(current).canInteract()) {
-      if (current == invItem.size() - 1) {
-        ypos -= 10; 
-        y -= 10;
-      }
-      invItem.get(current).interact(current);
-      if (current <= 0) {
-        current = 0;
-      } else {
-        current--;
+    if (items.size() > 0){
+      if (items.get(current).canInteract()) {
+        items.get(current).interact(current);
       }
     }
   }

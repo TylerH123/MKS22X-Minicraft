@@ -22,7 +22,6 @@ String direction = "";
 int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14}, {20, 15}, {5, 17}, {15, 15}, {5, 0}, {5, 0}, {2, 0}, {2, 0}, {7, 0} };
 //list with all the items in inventory
 Item[] itemList = new Item[25];      
-int count = 0; 
 void setup() {
   rectMode(CENTER);
   size(1000, 750);
@@ -141,7 +140,6 @@ void keyPressed() {
   if (key == 'w')  keyz[3] = true;
   if (key == 'i') {
     inv.updateInventory();
-    count = inv.invItem.size();
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
@@ -150,31 +148,25 @@ void keyPressed() {
 
   if (isPaused) {
     if (key == 'w') {
-      count++;
       if (inv.y - 10 >= 275) {
-        if (count > inv.invItem.size()) {
-          int i = inv.invItem.size();
+        inv.y -= 10;
+        inv.moveUp();
+        if (inv.current < 0) {
+          int i = inv.items.size();
           inv.y = (i-1) * 10 + 285;
           inv.ypos = (i-1) * 10; 
-          count = 1; 
           inv.current = i - 1;
-        } else {
-          inv.y -= 10;
-          inv.moveUp();
         }
       }
     }
     if (key == 's') {
-      count--;
       if (inv.y + 15 <= 580) {
-        if (count <= 0) {
+        inv.y += 10;
+        inv.moveDown();
+        if (inv.current >= inv.items.size()) {
           inv.y = 285;
           inv.current = 0;
           inv.ypos = 0;
-          count = inv.invItem.size();
-        } else {
-          inv.y += 10;
-          inv.moveDown();
         }
       }
     }
@@ -187,7 +179,6 @@ void keyPressed() {
     }
   }
 }
-
 void keyReleased() {
   if (key == 'a')  keyz[0] = false;
   if (key == 's')  keyz[1] = false;
