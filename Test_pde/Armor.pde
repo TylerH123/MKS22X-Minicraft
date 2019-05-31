@@ -1,4 +1,4 @@
-public class Armor extends Item{
+public class Armor extends Item {
   int type;
   String piece;
   float dmgReduc;
@@ -37,13 +37,14 @@ public class Armor extends Item{
     info[1] = dmgReduc + "";
     return info;
   }
-  void interact() {
-    inv.remove(id,1);
+  void interact(int idx) {
+    inv.remove(id, 1);
     itemList[id] = null;
     p.equipped[id-1] = this; 
     p.updateArmor();
+    inv.invItem.remove(idx);
   }
-  boolean canInteract(){
-    return true; 
+  boolean canInteract() {
+    return true;
   }
 }

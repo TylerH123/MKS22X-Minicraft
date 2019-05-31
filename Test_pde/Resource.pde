@@ -9,7 +9,7 @@ public class Resource extends Item {
   String[] getInfo(){
    return new String[2]; 
   }
-  void interact(){
+  void interact(int idx){
   }
   boolean canInteract() {
     return false;

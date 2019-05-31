@@ -1,4 +1,4 @@
 public interface Interactable{
   String[] getInfo();
-  void interact();
+  void interact(int idx);
 }

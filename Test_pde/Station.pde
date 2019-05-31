@@ -83,7 +83,7 @@ public class Station extends Item{
 
     return info;
   }
-  void interact() {
+  void interact(int idx) {
   }
   String name() {
     return "";

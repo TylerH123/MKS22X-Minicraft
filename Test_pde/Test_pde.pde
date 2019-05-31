@@ -140,6 +140,7 @@ void keyPressed() {
   if (key == 'd')  keyz[2] = true;
   if (key == 'w')  keyz[3] = true;
   if (key == 'i') {
+    inv.updateInventory();
     count = inv.invItem.size();
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
@@ -156,7 +157,7 @@ void keyPressed() {
           inv.y = (i-1) * 10 + 285;
           inv.ypos = (i-1) * 10; 
           count = 1; 
-          inv.current = i;
+          inv.current = i - 1;
         } else {
           inv.y -= 10;
           inv.moveUp();

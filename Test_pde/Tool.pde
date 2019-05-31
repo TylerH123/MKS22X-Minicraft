@@ -41,7 +41,7 @@ public class Tool extends Item{
     info[3] = type + "";
     return info;
   }
-  void interact() {
+  void interact(int idx) {
     if (p.equipped[4] == null) {
       inv.remove(id, 1);
       itemList[id] = null;

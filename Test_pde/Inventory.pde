@@ -14,8 +14,16 @@ public class Inventory {
   String boot = "none"; 
   //variable for tool slot. default is fist
   String tool = "fist";
-  
+
   public Inventory() {
+  }
+  void updateInventory() {
+    invItem = new ArrayList<Item>();
+    for (int i = 0; i < itemList.length; i++) {
+      if (itemList[i] != null) {
+        invItem.add(itemList[i]);
+      }
+    }
   }
   //displays the menus
   void display() {
@@ -27,10 +35,9 @@ public class Inventory {
     int space = 0;
     for (int i = 0; i < itemList.length; i++) {
       if (itemList[i] != null) {
-        invItem.add(itemList[i]);
         fill(0);
         text(inventory[i] + "x " + itemList[i].name(), 510, 293 + 10 * space);
-        space++; 
+        space++;
       }
     }
     //pointer
@@ -78,8 +85,17 @@ public class Inventory {
     current++;
   }
   void use() {
-    if (invItem.get(current).canInteract()){
-      invItem.get(current).interact();
+    if (invItem.get(current).canInteract()) {
+      if (current == invItem.size() - 1) {
+        ypos -= 10; 
+        y -= 10;
+      }
+      invItem.get(current).interact(current);
+      if (current <= 0) {
+        current = 0;
+      } else {
+        current--;
+      }
     }
   }
   void unequip() {

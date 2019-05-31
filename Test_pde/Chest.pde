@@ -13,7 +13,7 @@ public class Chest extends Item implements Placeable {
   }
   void place() {
   }
-  void interact() {
+  void interact(int idx) {
   }
   boolean canInteract() {
     return true;
