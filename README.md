@@ -83,4 +83,4 @@ Today, I found images for tree, stone, and grass. I implemented these images int
 
 ## 5-29-19
 ### Tyler
-Today, I worked on readjusting the inventory. After Moody redid the tiless, the inventory menus were not in sync. I also addedd a way for the pointer to cycle when only moving upwards. 
+Today, I worked on readjusting the inventory. After Moody redid the tiless, the inventory menus were not in sync. I redid the invetory class by using an array list. I debugged all the code that had to do with the inventory. I also addedd a way for the pointer to cycle when only moving upwards. I worked on armor, tool, item, station, resource, and the game class. Finally, I deleted the Interactable interface and moved all its methods to the item class. I made them all abstract methods. 
