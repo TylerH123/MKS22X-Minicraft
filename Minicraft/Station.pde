@@ -86,7 +86,7 @@ public class Station extends Item{
   void interact(int idx) {
   }
   String name() {
-    return "";
+    return name;
   }
   boolean canInteract(){
      return true;  
