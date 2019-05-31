@@ -1,7 +1,8 @@
-public class Station extends Item{
+public class Station extends Item {
   String name;
   color c;
   boolean isPlaced = false; 
+  float x, y; 
   Station(int station) {
     id = station;
     //workbench
@@ -19,8 +20,11 @@ public class Station extends Item{
       name = "oven";
     }
   }
-  void display(){
-    place(); 
+  void display() {
+    if (isPlaced) {
+      fill(c);
+      rect(x,y,50,50);
+    }
   }
   /**first, checks your inventory to see if the item can be created. then creates it
    @param itemID is the id of the item you are trying to create
@@ -59,7 +63,7 @@ public class Station extends Item{
       if (itemID >= 5 && itemID <= 8) {
         Station s = new Station(itemID);
         itemList[itemID] = s;
-        stations.add(s); 
+        stations.add(s);
       }
       //remove the resources required to craft
       inv.remove(rssID, c);
@@ -73,22 +77,22 @@ public class Station extends Item{
    @param station determines the picture of the station
    **/
   void place() {
+    isPlaced = true;
     if (direction.equals("north")) {
-      isPlaced = true; 
-      fill(#654321);
-      rect(450, 250, 50, 50);
+      x = 450; 
+      y = 250;
     }
     if (direction.equals("south")) {
-      fill(#654321);
-      rect(450, 425, 50, 50);
+      x = 450;
+      y = 425;
     }
     if (direction.equals("east")) {
-      fill(#654321);
-      rect(500, 375, 50, 50);
+      x = 500;
+      y = 375;
     }
     if (direction.equals("west")) {
-      fill(#654321);
-      rect(400, 375, 50, 50);
+      x = 400;
+      y = 375;
     }
   }
   String[] getInfo() {
