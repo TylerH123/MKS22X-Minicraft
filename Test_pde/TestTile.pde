@@ -1,4 +1,4 @@
-public class TestTile{
+public class TestTile implements Comparable<TestTile>{
 
   int x, y;
   float radius = 84.85281;
@@ -24,6 +24,16 @@ public class TestTile{
 
   void makeStone(){
     isStone = true;
+  }
+
+  int compareTo(TestTile other){
+    if (this.x < other.x){
+      return -1;
+    }
+    if (this.x > other.x){
+      return 1;
+    }
+    return 0;
   }
 
 }
