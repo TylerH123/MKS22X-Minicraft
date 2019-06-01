@@ -21,9 +21,9 @@ public class Player {
             if( ( mid == 0 || e > arr[mid-1].x) && arr[mid].x == e)
             return mid;
             else if(e > arr[mid].x)
-            return firstx(arr, (mid + 1), high, e, n, mode);
+            return first(arr, (mid + 1), high, e, n, mode);
             else
-            return firstx(arr, low, (mid -1), e, n, mode);
+            return first(arr, low, (mid -1), e, n, mode);
           }
 
           else{
@@ -31,9 +31,9 @@ public class Player {
             if( ( mid == 0 || e > arr[mid-1].y) && arr[mid].y == e)
             return mid;
             else if(e > arr[mid].y)
-            return firstx(arr, (mid + 1), high, e, n, mode);
+            return first(arr, (mid + 1), high, e, n, mode);
             else
-            return firstx(arr, low, (mid -1), e, n, mode);
+            return first(arr, low, (mid -1), e, n, mode);
           }
         }
     return -1;
@@ -42,17 +42,28 @@ public class Player {
     /* if x is present in arr[] then returns the index of
     LAST occurrence of x in arr[0..n-1], otherwise
     returns -1 */
-    public int lastx(TestTile[] arr, int low, int high, int e, int n)
+    public int last(TestTile[] arr, int low, int high, int e, int n, char mode)
     {
         if (high >= low)
         {
+          if (mode == 'x'){
             int mid = low + (high - low)/2;
             if (( mid == n-1 || e < arr[mid+1].x) && arr[mid].x == e)
-                 return mid;
+            return mid;
             else if (e < arr[mid].x)
-                return lastx(arr, low, (mid -1), e, n);
+            return last(arr, low, (mid -1), e, n, mode);
             else
-                return lastx(arr, (mid + 1), high, e, n);
+            return last(arr, (mid + 1), high, e, n, mode);
+          }
+          else{
+            int mid = low + (high - low)/2;
+            if (( mid == n-1 || e < arr[mid+1].y) && arr[mid].y == e)
+                 return mid;
+            else if (e < arr[mid].y)
+                return last(arr, low, (mid -1), e, n, mode);
+            else
+                return last(arr, (mid + 1), high, e, n, mode);
+          }
         }
     return -1;
     }
