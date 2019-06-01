@@ -8,57 +8,42 @@ public class Player {
   public Player() {
   }
 
-  // boolean Wcollide(){
-  //   Tile currtile = t[currtilex][currtiley-1];
-  //   println(currtile.getName());
-  //   if(currtile.getName().equals("stone")){
-  //     if(dist(450, 300, currtile.x+dx + 25, (currtile.y - 1)+dy + 25) > hitboxrad + 35.35){
-  //       fill(100);
-  //       rect(currtile.x+dx + 25, (currtile.y - 1)+dy + 25, 10, 10 );
-  //       return true;
-  //       //true as in it's true you cannot go there
-  //     }
-  //   }
-  //   return false;
-  // }
 
-  void checkCollide(){
-    try{
-      System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
-      if (testarr[currtilex][currtiley - 1].isStone == true){
-        keyz[3] = false;
-      }
-    } catch (ArrayIndexOutOfBoundsException e){
-
+  /* if x is present in arr[] then returns the index of
+    FIRST occurrence of x in arr[0..n-1], otherwise
+    returns -1 */
+    public int firstx(TestTile[] arr, int low, int high, int e, int n)
+    {
+        if(high >= low)
+        {
+            int mid = low + (high - low)/2;
+            if( ( mid == 0 || e > arr[mid-1].x) && arr[mid].x == e)
+                return mid;
+             else if(e > arr[mid].x)
+                return firstx(arr, (mid + 1), high, e, n);
+            else
+                return firstx(arr, low, (mid -1), e, n);
+        }
+    return -1;
     }
-  //
-  //   try{
-  //     // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
-  //     if (testarr[currtilex + 1][currtiley].isStone == true){
-  //       keyz[2] = false;
-  //     }
-  //   } catch (ArrayIndexOutOfBoundsException e){
-  //
-  //   }
-  //
-  //   try{
-  //     // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
-  //     if (testarr[currtilex][currtiley + 1].isStone == true){
-  //       keyz[1] = false;
-  //     }
-  //   } catch (ArrayIndexOutOfBoundsException e){
-  //
-  //   }
-  //
-  //   try{
-  //     // System.out.println("thing to my north: " + testarr[currtilex][currtiley - 1].isStone);
-  //     if (testarr[currtilex - 1][currtiley].isStone == true){
-  //       keyz[0] = false;
-  //     }
-  //   } catch (ArrayIndexOutOfBoundsException e){
-  //
-  //   }
-  }
+
+    /* if x is present in arr[] then returns the index of
+    LAST occurrence of x in arr[0..n-1], otherwise
+    returns -1 */
+    public int lastx(TestTile[] arr, int low, int high, int e, int n)
+    {
+        if (high >= low)
+        {
+            int mid = low + (high - low)/2;
+            if (( mid == n-1 || e < arr[mid+1].x) && arr[mid].x == e)
+                 return mid;
+            else if (e < arr[mid].x)
+                return lastx(arr, low, (mid -1), e, n);
+            else
+                return lastx(arr, (mid + 1), high, e, n);
+        }
+    return -1;
+    }
 
 
   void display() {
