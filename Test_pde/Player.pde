@@ -12,17 +12,29 @@ public class Player {
   /* if x is present in arr[] then returns the index of
     FIRST occurrence of x in arr[0..n-1], otherwise
     returns -1 */
-    public int firstx(TestTile[] arr, int low, int high, int e, int n)
+    public int first(TestTile[] arr, int low, int high, int e, int n, char mode)
     {
         if(high >= low)
         {
+          if (mode == 'x'){
             int mid = low + (high - low)/2;
             if( ( mid == 0 || e > arr[mid-1].x) && arr[mid].x == e)
-                return mid;
-             else if(e > arr[mid].x)
-                return firstx(arr, (mid + 1), high, e, n);
+            return mid;
+            else if(e > arr[mid].x)
+            return firstx(arr, (mid + 1), high, e, n, mode);
             else
-                return firstx(arr, low, (mid -1), e, n);
+            return firstx(arr, low, (mid -1), e, n, mode);
+          }
+
+          else{
+            int mid = low + (high - low)/2;
+            if( ( mid == 0 || e > arr[mid-1].y) && arr[mid].y == e)
+            return mid;
+            else if(e > arr[mid].y)
+            return firstx(arr, (mid + 1), high, e, n, mode);
+            else
+            return firstx(arr, low, (mid -1), e, n, mode);
+          }
         }
     return -1;
     }
