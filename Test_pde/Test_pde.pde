@@ -127,12 +127,19 @@ void draw() {
   currtilex = 7 - ((int)dx/60);
   currtiley = 6 - ((int)dy/60);
   p.display();
+  text("You're at" + currtilex + ", " + currtiley, 10, 40);
+  try{
+    TestTile x = testarr[currtilex][currtiley];
+    text("there is a tile here at: " + currtilex + ", " + currtiley, 10, 50);
+  } catch (Exception e){
+    text("NO ONE HERE", 10, 50);
+  }
+
   // Tile currtile = t[currtilex][currtiley-1];
   // try{
   // TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
   //
   // text(currtile.getName()+"", 10, 30);
-  //   text("You're at" + currtilex + ", " + currtiley, 10, 40);
   // } catch(Exception e){
   //   text("COLLIDFE", 10, 40);
   // }
