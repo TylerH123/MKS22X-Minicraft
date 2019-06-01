@@ -13,6 +13,7 @@ float leanx, leany;
 static Tile[][] t = new Tile[10][10];
 
 static TestTile[][] testarr= new TestTile[10][10];
+ArrayList<TestTile> stones = new ArrayList<TestTile>();
 
 Inventory inv = new Inventory();
 Player p = new Player();
@@ -56,6 +57,8 @@ void setup() {
     }
   }
   testarr[3][3].makeStone();
+  stones.add(testarr[3][3]);
+
   Armor a = new Armor(2, 2);
   items[2] = a;
   Armor b = new Armor(2, 1);
