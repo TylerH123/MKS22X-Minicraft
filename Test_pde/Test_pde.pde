@@ -126,23 +126,25 @@ void draw() {
   //white board the nedded transformation to map dx and dy to their tile underneath
   currtilex = 7 - ((int)dx/60);
   currtiley = 6 - ((int)dy/60);
+  p.display();
   // Tile currtile = t[currtilex][currtiley-1];
-  try{
+  // try{
   // TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
   //
   // text(currtile.getName()+"", 10, 30);
-    text("You're at" + currtilex + ", " + currtiley, 10, 40);
-  } catch(Exception e){
-    text("COLLIDFE", 10, 40);
-  }
-
-  text((dx > 450) + " left bound check", 10, 50);
-  text((dy > 300) + " up bound check", 10, 60);
-  p.display();
-  println(get(420, 370));
-  set(420, 390, #000000);
+  //   text("You're at" + currtilex + ", " + currtiley, 10, 40);
+  // } catch(Exception e){
+  //   text("COLLIDFE", 10, 40);
+  // }
+  //
+  // text((dx > 450) + " left bound check", 10, 50);
+  // text((dy > 300) + " up bound check", 10, 60);
+  // p.display();
+  // println(get(420, 370));
+  // set(420, 390, #000000);
   // updatePixels();
   //System.out.println(items[2].getInfo()[1]);
+// }
 }
 
 void keyPressed() {
