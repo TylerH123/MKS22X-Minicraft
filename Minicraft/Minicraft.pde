@@ -1,4 +1,6 @@
 import java.util.Comparator;
+import java.util.Collections;
+
 
 
 boolean keyz[] = new boolean[6];
@@ -69,6 +71,13 @@ void setup() {
   stonesx.add(testarr[3][3]);
   stonesy.add(testarr[3][3]);
 
+  TileXComparator xs = new TileXComparator();
+  TileYComparator ys = new TileYComparator();
+
+  Collections.sort(stonesx, xs);
+  Collections.sort(stonesy, ys);
+
+  
   Armor a = new Armor(2, 2);
   itemList[2] = a;
   Armor b = new Armor(2, 1);
