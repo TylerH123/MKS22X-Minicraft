@@ -15,6 +15,14 @@ While inventory is opened:
 o to interact with the item 
 w,s to move pointer up and down 
 u to unequip the current tool 
+i to close inventory
+```
+While station menu is opened: 
+```
+o to interact with the itme
+w,s to move pointer up and down
+↑, ↓ to move second pointer up and down
+i to close inventory
 ```
 While invetory is closed: 
 ```
@@ -96,4 +104,4 @@ Today, I worked on the inventory, player, resource, and the game class. Under th
 
 ## 6-2-19
 ### Tyler
-Today, I worked on station, and game class. For station, I fixed the placement of the stations, so now after placing, stations do not move around. For the game class, I fixed up sprinting. It no longer uses twice as much stamina when moving diagonally. 
+Today, I worked on station, and game class. For station, I fixed the placement of the stations, so now after placing, stations do not move around. I also added a way for the player to craft the items they want. If the player already has the armor piece or tool in their inventory, the item will not be crafted. For the game class, I fixed up sprinting. It no longer uses twice as much stamina when moving diagonally. 
