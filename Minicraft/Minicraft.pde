@@ -1,4 +1,4 @@
-boolean keyz[] = new boolean [6];
+boolean keyz[] = new boolean[6];
 boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
@@ -13,6 +13,7 @@ static float ycoor;
 
 float leanx, leany;
 static Tile[][] t = new Tile[10][10];
+static ArrayList<TestTile> stones = new ArrayList<TestTile>();
 
 static TestTile[][] testarr= new TestTile[10][10];
 Inventory inv = new Inventory();
@@ -52,6 +53,9 @@ void setup() {
       testarr[x][y] = new TestTile(x, y);
     }
   }
+
+  testarr[3][3].makeStone();
+  stones.add(testarr[3][3]);
   Armor a = new Armor(2, 2);
   itemList[2] = a;
   Armor b = new Armor(2, 1);
@@ -86,25 +90,22 @@ void draw() {
   if (!isPaused) {
     inv.ypos = 0;
     if (keyz[0]) {
-      dx+= (5 + p.vel);
+      dx+= 5;
       leanx = -5;
       direction = "west";
-      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[1]) {
-      dy-= (5 + p.vel);
+      dy-= 5;
       leany = 5;
       direction = "south";
-      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[2]) {
-      dx-= (5 + p.vel);
+      dx-= 5;
       leanx = 5;
       direction = "east";
-      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[3]) {
-      dy+= (5 + p.vel);
+      dy+= 5;
       leany = -5;
       direction = "north";
       if (keyz[5]) p.stamina -= 0.1;
@@ -178,7 +179,6 @@ void keyPressed() {
     isPaused = !isPaused;
     inv.current = 0;
   }
-  if (key == 'k') keyz[5] = !keyz[5]; 
   if (key == 'o' && !isPaused) {
     if (p.equipped[5] != null) p.equipped[5].place();
     else p.punch();

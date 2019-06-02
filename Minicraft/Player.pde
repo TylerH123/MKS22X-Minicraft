@@ -3,10 +3,10 @@ public class Player {
   float hitboxrad = 28.284;
   // static int x = 0;
   int dmg = 1;
-  int hp = 100; 
-  float stamina = 100; 
+  int hp = 100;
+  float stamina = 100;
   float dmgReduction = 0.00;
-  int vel = 0; 
+  int vel = 0;
   Item[] equipped = new Item[6];
   public Player() {
   }
@@ -81,13 +81,13 @@ public class Player {
     return false;
   }
 
-  
+
   void display() {
     fill(100, 50, 118);
     //text("PLAYER BOI", 442, 368);
     stroke(#000000, 50);
     rect(450 + leanx, 300 + leany, 40, 40);
-    fill(255); 
+    fill(255);
     rect(width-50,20,100,40);
     fill(255,0,0);
     text("HP: " + hp, width - 60, 15);
