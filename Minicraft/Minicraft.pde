@@ -30,7 +30,7 @@ int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14},
 Item[] itemList = new Item[25];
 ArrayList<Station> stations = new ArrayList<Station>();
 Station currentStation;
-String[][] craftables = new String[][] { {"helmet", "10"} , {"chestpiece", "20"} , {"leggings", "15"} , {"foot", "5"} , {"workbench", "20"} , {"furnace", "20"} , {"anvil", "5"} , {"oven", "15"} , {"pickaxe", "5"} , {"axe", "5"} , {"shovel", "2"}, {"hoe", "2"}, {"shovel", "7"} };
+Item[] craftables = new Item[] { new Armor(1), new Armor(2), new Armor(3), new Armor(4), new Station(5, 1), new Station(6, 1), new Station(7, 1), new Station(8, 1), new Tool(9), new Tool(10), new Tool(11), new Tool(12), new Tool(13) };
 void setup() {
   rectMode(CENTER);
   size(1000, 750);
@@ -59,16 +59,16 @@ void setup() {
       testarr[x][y] = new TestTile(x, y);
     }
   }
-  
+
   testarr[3][3].makeStone();
   stones.add(testarr[3][3]);
-  Armor a = new Armor(2, 2);
+  Armor a = new Armor(14, 2);
   itemList[2] = a;
-  Armor b = new Armor(2, 1);
+  Armor b = new Armor(15, 1);
   itemList[1] = b;
-  Armor c = new Armor(2, 3);
+  Armor c = new Armor(17, 3);
   itemList[3] = c;
-  Armor d = new Armor(2, 4);
+  Armor d = new Armor(18, 4);
   itemList[4] = d;
   Tool t = new Tool(2, 13);
   itemList[13] = t;
@@ -77,6 +77,8 @@ void setup() {
   Station s = new Station(5);
   itemList[5] = s;
   stations.add(s);
+  inv.inventory[14] = 100;
+  itemList[14] = new Resource(14); 
 }
 
 void draw() {
@@ -202,7 +204,6 @@ void keyPressed() {
       isPaused = !isPaused;
       inv.current = 0;
     }
-    
   }
 
   if (isPaused) {
@@ -256,12 +257,41 @@ void keyPressed() {
     }
     if (key == 'o') {
       if (!stationMenu) inv.use();
+      else currentStation.interact();
     }
     if (key == 'u') {
       if (p.equipped[5] == null) {
         inv.unequip();
       } else {
         inv.returnToInv();
+      }
+    }
+    if (key == CODED && stationMenu) {
+      if (keyCode == DOWN) {
+        if ((currentStation.current >= 0 && currentStation.current <= 3) || (currentStation.current >= 8 && currentStation.current <= 12)) {
+          if (currentStation.c2y + 10 <= 365) {
+            currentStation.c2y += 10; 
+            currentStation.moveDown2();
+            if (currentStation.current2 >= 4) {
+              currentStation.c2y = 40; 
+              currentStation.current2 = 0; 
+              currentStation.c2ypos = 0;
+            }
+          }
+        }
+      }
+      if (keyCode == UP) {
+        if ((currentStation.current >= 0 && currentStation.current <= 3) || (currentStation.current >= 8 && currentStation.current <= 12)) {
+          if (currentStation.c2y - 10 >= 30) {
+            currentStation.c2y -= 10;
+            currentStation.moveUp2();
+            if (currentStation.current2 < 0) {
+              currentStation.c2y = 70; 
+              currentStation.c2ypos = 30; 
+              currentStation.current2 = 3;
+            }
+          }
+        }
       }
     }
   }

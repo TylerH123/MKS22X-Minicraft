@@ -4,9 +4,12 @@ public class Station extends Item {
   boolean isPlaced = false;
   float x, y; 
   float px, py; 
-  int cy = 40;  
+  int cy = 40;
+  int c2y = 40;
   int cypos = 0; 
+  int c2ypos = 0; 
   int current = 0;
+  int current2 = 0; 
   Station(int station) {
     id = station;
     //workbench
@@ -23,9 +26,27 @@ public class Station extends Item {
     if (station == 8) {
       name = "oven";
     }
+    basic = name; 
     px = 0;
     py = 0;
     inv.inventory[id]++;
+  }
+  Station(int s, int g) {
+    id = s;
+    //workbench
+    if (s == 5) {
+      name = "workbench";
+    }
+    if (s == 6) {
+      name = "furnace";
+    }
+    if (s == 7) {
+      name = "anvil";
+    }
+    if (s == 8) {
+      name = "oven";
+    }
+    basic = name;
   }
   void display() {
     if (isPlaced) {
@@ -37,7 +58,7 @@ public class Station extends Item {
    @param itemID is the id of the item you are trying to create
    @param rss is the main resource to create the item. this is only required for tools and armor.
    **/
-  String craft(int itemID, int rss) {
+  void craft(int itemID, int rss) {
     //get the resourceID from cost list array
     int rssID = costList[itemID][1];
     //if item is either armor piece or tool
@@ -46,18 +67,17 @@ public class Station extends Item {
     }
     int c = costList[itemID][0];
     //if its a tool, also cehck if inventory has 5 wood
-    if (itemID >= 14 || itemID <= 18) {
+    if (itemID >= 14 && itemID <= 18) {
       if (inv.contains(rssID, c) && inv.contains(14, 5)) {
         //remove the resources required to craft
         inv.removeAmt(rssID, c);
         inv.removeAmt(14, 5);
-        //add crafted item to inventory
-        inv.addToInv(itemID);
         //add the crafted tool to the interactables items list
         itemList[itemID] = new Tool(rssID, itemID);
-        return "Successfully crafted";
+        inv.updateInventory();
+        return;
       } else {
-        return "Failed to craft";
+        return;
       }
     }
     //if anything else, check inventory for the resources
@@ -65,21 +85,22 @@ public class Station extends Item {
       //if it is armor piece then add it to itemList
       if (itemID >= 1 && itemID <= 4) {
         itemList[itemID] = new Armor(rss, itemID);
+        //remove the resources required to craft
+        inv.removeAmt(rssID, c);
+        inv.updateInventory();
       }
       //if it is station then add it to itemList
       if (itemID >= 5 && itemID <= 8) {
         Station s = new Station(itemID);
         itemList[itemID] = s;
         stations.add(s);
+        //remove the resources required to craft
+        inv.removeAmt(rssID, c);
+        inv.updateInventory();
       }
-      //remove the resources required to craft
-      inv.removeAmt(rssID, c);
-      //add crafted item to inventory
-      inv.addToInv(itemID);
-      return "Successfully crafted";
+      return;
     }
-    inv.updateInventory();
-    return "Failed to craft";
+    return;
   }
   /**place the station 50 units in front of player according to direction
    @param station determines the picture of the station
@@ -127,13 +148,22 @@ public class Station extends Item {
         inv.returnToInv();
         interact(idx);
       }
-    } else {// else if (stationMenu) {
-      //if (id == 5) craft();}
+    } else {
       isPaused = true;
       currentStation = this; 
       stationMenu = true; 
       inv.display();
       display(id);
+    }
+  }
+  void interact() {
+    if (id == 5) {  
+      int rssID = 0; 
+      if (current2 == 0) rssID = 14; 
+      if (current2 == 1) rssID = 15; 
+      if (current2 == 2) rssID = 17; 
+      if (current2 == 3) rssID = 18; 
+      craft(craftables[current].id, rssID);
     }
   }
   String name() {
@@ -152,7 +182,18 @@ public class Station extends Item {
       triangle(355, 40 + cypos, 355, 45 + cypos, 360, 42.5 + cypos);
       for (int i = 0; i < craftables.length; i++) {
         fill(0);
-        text(craftables[i][0], 365, 48 + i * 10); 
+        text(craftables[i].basic, 365, 48 + i * 10); 
+        if ((current >= 0 && current <= 3) || (current >= 8 && current <= 12)) {
+          fill(255, 0, 0);
+          triangle(445, 40 + c2ypos, 445, 45 + c2ypos, 450, 42.5 + c2ypos);
+          fill(0);
+          text(costList[craftables[current].id][0] + "x wood", 455, 48);
+          text(costList[craftables[current].id][0] + "x stone", 455, 58);
+          text(costList[craftables[current].id][0] + "x iron", 455, 68);
+          text(costList[craftables[current].id][0] + "x moodstone", 455, 78);
+        } else {
+          current2 = 0;
+        }
       }
     }
   }
@@ -163,5 +204,13 @@ public class Station extends Item {
   void moveDown() {
     cypos += 10;
     current++;
+  }
+  void moveUp2() {
+    c2ypos -= 10; 
+    current2--;
+  }
+  void moveDown2() {
+    c2ypos += 10; 
+    current2++;
   }
 }

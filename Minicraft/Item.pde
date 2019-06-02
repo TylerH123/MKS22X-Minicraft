@@ -1,5 +1,6 @@
 public abstract class Item {
   int id;
+  String basic; 
   public Item(){
   }
   abstract String name();

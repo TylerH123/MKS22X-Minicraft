@@ -2,6 +2,25 @@ public class Tool extends Item {
   int type;
   String piece;
   int dmg;
+  Tool(int id) {
+    this.id = id; 
+    if (id == 9) {
+      piece = "pickaxe";
+    }
+    if (id == 10) {
+      piece = "axe";
+    }
+    if (id == 11) {
+      piece = "shovel";
+    }
+    if (id == 12) {
+      piece = "hoe";
+    }
+    if (id == 13) {
+      piece = "sword";
+    }
+    basic = piece; 
+  }
   Tool(int type, int id) {
     this.id = id; 
     this.type = type; 
@@ -25,6 +44,7 @@ public class Tool extends Item {
       dmg = 5 * type; 
       piece = "sword";
     }
+    basic = piece; 
     inv.inventory[id]++;
   }
   String name() {
