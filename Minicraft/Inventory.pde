@@ -121,4 +121,14 @@ public class Inventory {
       updateInventory();
     }
   }
+  void unequipArmor(int armorID){
+    if (p.equipped[armorID-1] != null) {
+      inv.add(armorID);
+      Armor a = new Armor(parseInt(p.equipped[armorID].getInfo()[2]), armorID);
+      itemList[armorID] = a;
+      p.equipped[armorID-1] = null;
+      p.updateArmor();
+      updateInventory();
+    }
+  }
 }

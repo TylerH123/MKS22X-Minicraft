@@ -22,6 +22,7 @@ public class Armor extends Item {
       pieceStrength = 1;
       piece = "boots";
     }
+    inv.inventory[id]++;
     dmgReduc = .015 * (type * pieceStrength) * 100;
   }
   String name() {
@@ -32,22 +33,29 @@ public class Armor extends Item {
     return typeName + " " + piece;
   }
   String[] getInfo() {
-    String[] info = new String[2];
+    String[] info = new String[3];
     info[0] = name();
     info[1] = dmgReduc + "";
+    info[2] = type + "";
     return info;
   }
   void interact(int idx) {
-    inv.remove(id, 1);
-    itemList[id] = null;
-    p.equipped[id-1] = this; 
-    p.updateArmor();
-    inv.items.remove(idx);
-    inv.updateInventory();
-    if (inv.current == inv.items.size()) {
-      inv.current--;
-      inv.ypos -= 10; 
-      inv.y -= 10;
+    if (p.equipped[this.id - 1] == null) {
+      inv.remove(id, 1);
+      itemList[id] = null;
+      p.equipped[id-1] = this; 
+      p.updateArmor();
+      inv.items.remove(idx);
+      inv.updateInventory();
+      if (inv.current == inv.items.size()) {
+        inv.current--;
+        inv.ypos -= 10; 
+        inv.y -= 10;
+      }
+    }
+    else {
+      inv.unequipArmor(this.id);
+      interact(idx);
     }
   }
   boolean canInteract() {

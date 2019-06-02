@@ -25,6 +25,7 @@ public class Tool extends Item {
       dmg = 5 * type; 
       piece = "sword";
     }
+    inv.inventory[id]++;
   }
   String name() {
     String typeName = "";
@@ -57,7 +58,7 @@ public class Tool extends Item {
         }
       } else {
         inv.unequip();
-        this.interact(idx);
+        interact(idx);
       }
     }
   }

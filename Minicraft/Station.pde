@@ -19,11 +19,12 @@ public class Station extends Item {
     if (station == 8) {
       name = "oven";
     }
+    inv.inventory[id]++;
   }
   void display() {
     if (isPlaced) {
       fill(c);
-      rect(x,y,50,50);
+      rect(x, y, 50, 50);
     }
   }
   /**first, checks your inventory to see if the item can be created. then creates it
@@ -116,7 +117,7 @@ public class Station extends Item {
         }
       } else {
         inv.returnToInv();
-        this.interact(idx);
+        interact(idx);
       }
     } else {
       inv.display();
