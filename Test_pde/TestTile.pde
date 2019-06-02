@@ -1,4 +1,4 @@
-public class TestTile implements Comparable<TestTile>{
+public class TestTile{
 
   int x, y;
   float radius = 84.85281;
