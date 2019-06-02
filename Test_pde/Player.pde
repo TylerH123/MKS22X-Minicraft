@@ -68,6 +68,16 @@ public class Player {
     return -1;
     }
 
+    boolean isCollide(TestTile other){
+      float deltay = abs(other.y - ycoor);
+      float deltax = abs(other.x - xcoor);
+      float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
+      if (dist < hitboxrad + other.radius){
+        return true;
+      }
+      return false;
+    }
+
 
   void display() {
     fill(100, 50, 118);
