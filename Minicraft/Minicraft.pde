@@ -1,4 +1,4 @@
-boolean keyz[] = new boolean [6];
+boolean keyz[] = new boolean [5];
 boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
@@ -13,6 +13,7 @@ static float ycoor;
 
 float leanx, leany;
 static Tile[][] t = new Tile[10][10];
+static ArrayList<TestTile> stones = new ArrayList<TestTile>();
 
 static TestTile[][] testarr= new TestTile[10][10];
 Inventory inv = new Inventory();
@@ -34,7 +35,7 @@ void setup() {
   grassImg = loadImage("grass.png");
   treeImg.resize(50, 50);
   stoneImg.resize(50, 50);
-  grassImg.resize(60, 60);
+  grassImg.resize(50, 50);
   // for (int i = 0; i < 100; i++) {
   //   for (int j = 0; j < 100; j++) {
   //     if (j == 4 && i == 4) {
@@ -52,6 +53,9 @@ void setup() {
       testarr[x][y] = new TestTile(x, y);
     }
   }
+
+  testarr[3][3].makeStone();
+  stones.add(testarr[3][3]);
   Armor a = new Armor(2, 2);
   itemList[2] = a;
   Armor b = new Armor(2, 1);
@@ -86,43 +90,24 @@ void draw() {
   if (!isPaused) {
     inv.ypos = 0;
     if (keyz[0]) {
-      dx+= (5 + p.vel);
+      dx+= 5;
       leanx = -5;
       direction = "west";
-      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[1]) {
-      dy-= (5 + p.vel);
+      dy-= 5;
       leany = 5;
       direction = "south";
-      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[2]) {
-      dx-= (5 + p.vel);
+      dx-= 5;
       leanx = 5;
       direction = "east";
-      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[3]) {
-      dy+= (5 + p.vel);
+      dy+= 5;
       leany = -5;
       direction = "north";
-      if (keyz[5]) p.stamina -= 0.1;
-    }
-    if (keyz[5]) {
-      if (p.stamina > 0) {
-        p.vel = 5;
-      } else {
-        p.vel = 0;
-        keyz[5] = !keyz[5];
-      }
-    } else{
-      if (p.stamina < 100.0)p.stamina += 0.1;
-    }
-    if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
-      if (p.stamina < 100.0) {
-        p.stamina += 0.1;
-      }
     }
   }
 
@@ -150,14 +135,12 @@ void draw() {
   catch(Exception e) {
     text("COLLIDFE", 10, 40);
   }
-  for (Station s : stations) {
-    if (s.isPlaced) s.display();
-    //System.out.println(s.isPlaced);
+  for (Station s : stations){
+     if (s.isPlaced) s.display();
+     //System.out.println(s.isPlaced);
   }
   text((dx > 450) + " left bound check", 10, 50);
   text((dy > 300) + " up bound check", 10, 60);
-  text("Sprinting: " + keyz[5], 10, 70);
-  text("Velocity:  " + p.vel, 10, 80);
   p.display();
   //System.out.println(items[2].getInfo()[1]);
 }
@@ -173,7 +156,6 @@ void keyPressed() {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
-  if (key == 'k') keyz[5] = !keyz[5]; 
   if (key == 'o' && !isPaused) {
     if (p.equipped[5] != null) p.equipped[5].place();
     else p.punch();
