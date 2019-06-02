@@ -1,9 +1,13 @@
-public class Station extends Item{
+public class Station extends Item {
   String name;
+  color c;
+  boolean isPlaced = false; 
+  float x, y; 
   Station(int station) {
     id = station;
     //workbench
     if (station == 5) {
+      c = color(#654321);
       name = "workbench";
     }
     if (station == 6) {
@@ -14,6 +18,12 @@ public class Station extends Item{
     }
     if (station == 8) {
       name = "oven";
+    }
+  }
+  void display() {
+    if (isPlaced) {
+      fill(c);
+      rect(x,y,50,50);
     }
   }
   /**first, checks your inventory to see if the item can be created. then creates it
@@ -51,7 +61,9 @@ public class Station extends Item{
       }
       //if it is station then add it to itemList
       if (itemID >= 5 && itemID <= 8) {
-        itemList[itemID] = new Station(itemID);
+        Station s = new Station(itemID);
+        itemList[itemID] = s;
+        stations.add(s);
       }
       //remove the resources required to craft
       inv.remove(rssID, c);
@@ -65,30 +77,55 @@ public class Station extends Item{
    @param station determines the picture of the station
    **/
   void place() {
+    isPlaced = true;
     if (direction.equals("north")) {
-      rect(450, 325, 50, 50);
+      x = 450; 
+      y = 250;
     }
     if (direction.equals("south")) {
-      rect(450, 425, 50, 50);
+      x = 450;
+      y = 425;
     }
     if (direction.equals("east")) {
-      rect(500, 375, 50, 50);
+      x = 500;
+      y = 375;
     }
     if (direction.equals("west")) {
-      rect(400, 375, 50, 50);
+      x = 400;
+      y = 375;
     }
   }
   String[] getInfo() {
-    String[] info = new String[10];
-
+    String[] info = new String[4];
+    info[0] = name();
+    info[1] = id + "";
     return info;
   }
   void interact(int idx) {
+    if (!isPlaced) {
+      if (p.equipped[5] == null) {
+        inv.remove(id, 1);
+        itemList[id] = null;
+        p.equipped[5] = this; 
+        inv.items.remove(idx);
+        inv.updateInventory();
+        if (inv.current == inv.items.size() && inv.y - 10 > 275) {
+          inv.current--;
+          inv.ypos -= 10; 
+          inv.y -= 10;
+        }
+      } else {
+        inv.returnToInv();
+        this.interact(idx);
+      }
+    } else {
+      inv.display();
+    }
   }
   String name() {
-    return "";
+    return name;
   }
-  boolean canInteract(){
-     return true;  
+  boolean canInteract() {
+    return true;
   }
 }

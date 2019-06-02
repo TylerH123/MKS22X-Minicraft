@@ -1,4 +1,4 @@
-public class Chest extends Item implements Placeable {
+public class Chest extends Item{
   Inventory chestInv = new Inventory();
   Chest() {
     id = 22;

@@ -42,21 +42,23 @@ public class Tool extends Item {
     return info;
   }
   void interact(int idx) {
-    if (p.equipped[4] == null) {
-      inv.remove(id, 1);
-      itemList[id] = null;
-      p.equipped[4] = this; 
-      p.updateDamage();
-      inv.items.remove(idx);
-      inv.updateInventory();
-      if (inv.current == inv.items.size() && inv.y - 10 > 275) {
-        inv.current--;
-        inv.ypos -= 10; 
-        inv.y -= 10;
+    if (p.equipped[5] == null) {
+      if (p.equipped[4] == null) {
+        inv.remove(id, 1);
+        itemList[id] = null;
+        p.equipped[4] = this; 
+        p.updateDamage();
+        inv.items.remove(idx);
+        inv.updateInventory();
+        if (inv.current == inv.items.size() && inv.y - 10 > 275) {
+          inv.current--;
+          inv.ypos -= 10; 
+          inv.y -= 10;
+        }
+      } else {
+        inv.unequip();
+        this.interact(idx);
       }
-    } else {
-      inv.unequip();
-      this.interact(idx);
     }
   }
   boolean canInteract() {

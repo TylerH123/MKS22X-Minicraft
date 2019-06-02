@@ -3,21 +3,16 @@ boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
 PImage treeImg, stoneImg, grassImg;
-static int currtilex;
-static int currtiley;
+// static int currtilex;
+// static int currtiley;
 
-static float xcoor;
-static float ycoor;
-
-// static float currtilex;
-// static float currtiley;
+static float currtilex;
+static float currtiley;
 
 float leanx, leany;
 static Tile[][] t = new Tile[10][10];
 
 static TestTile[][] testarr= new TestTile[10][10];
-ArrayList<TestTile> stones = new ArrayList<TestTile>();
-
 Inventory inv = new Inventory();
 Player p = new Player();
 //direction that player is facing
@@ -25,11 +20,10 @@ String direction = "";
 //list shows cost as first value and id of the material needed to create
 int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14}, {20, 15}, {5, 17}, {15, 15}, {5, 0}, {5, 0}, {2, 0}, {2, 0}, {7, 0} };
 //list with all the items in inventory
-Item[] itemList = new Item[25];
+Item[] itemList = new Item[25];      
+ArrayList<Station> stations = new ArrayList<Station>();
 void setup() {
   rectMode(CENTER);
-  loadPixels();
-  // frameRate(1);
   size(1000, 750);
   noStroke();
   smooth();
@@ -56,9 +50,6 @@ void setup() {
       testarr[x][y] = new TestTile(x, y);
     }
   }
-  testarr[3][3].makeStone();
-  stones.add(testarr[3][3]);
-
   Armor a = new Armor(2, 2);
   itemList[2] = a;
   Armor b = new Armor(2, 1);
@@ -71,7 +62,9 @@ void setup() {
   itemList[13] = t;
   Tool t2 = new Tool(2, 12);
   itemList[12] = t2;
-  // rectMode(CENTER);
+  Station s = new Station(5);
+  itemList[5] = s; 
+  stations.add(s);
 }
 
 void draw() {
@@ -87,16 +80,6 @@ void draw() {
   }
   leanx = 0;
   leany = 0;
-
-  // p.checkCollide();
-
-  // assume sorted ArrayList
-  // implement seperate x and y comparator classes later
-
-  boolean amCollide = p.isCollide(testarr[3][3]);
-  if (direction.equals("north") && amCollide){
-    keyz[3] = false;
-  }
 
   if (!isPaused) {
     inv.ypos = 0;
@@ -132,36 +115,26 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  currtilex = 7 - ((int)dx/60);
-  currtiley = 6 - ((int)dy/60);
-  xcoor = (dx/60);
-  ycoor = (dy/60);
-  p.display();
-  text("You're at" + currtilex + ", " + currtiley, 10, 40);
-  try{
-    TestTile x = testarr[currtilex][currtiley];
-    text("there is a tile here at: " + ycoor + ", " + xcoor, 10, 50);
-  } catch (Exception e){
-    text("NO ONE HERE", 10, 50);
-  }
-
+  currtilex = 9-(dx/50);
+  currtiley = 6-(dy/50);
   // Tile currtile = t[currtilex][currtiley-1];
-  // try{
-  // TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
-  //
-  // text(currtile.getName()+"", 10, 30);
-  // } catch(Exception e){
-  //   text("COLLIDFE", 10, 40);
-  // }
-  //
-  // text((dx > 450) + " left bound check", 10, 50);
-  // text((dy > 300) + " up bound check", 10, 60);
-  // p.display();
-  // println(get(420, 370));
-  // set(420, 390, #000000);
-  // updatePixels();
+  try {
+    TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
+
+    text(currtile.getName()+"", 10, 30);
+    text("You're at" + currtilex + ", " + currtiley, 10, 40);
+  } 
+  catch(Exception e) {
+    text("COLLIDFE", 10, 40);
+  }
+  for (Station s : stations){
+     if (s.isPlaced) s.display();  
+     //System.out.println(s.isPlaced);
+  }
+  text((dx > 450) + " left bound check", 10, 50);
+  text((dy > 300) + " up bound check", 10, 60);
+  p.display();
   //System.out.println(items[2].getInfo()[1]);
-// }
 }
 
 void keyPressed() {
@@ -170,20 +143,15 @@ void keyPressed() {
   if (key == 's')  keyz[1] = true;
   if (key == 'd')  keyz[2] = true;
   if (key == 'w')  keyz[3] = true;
-
-  // p.checkCollide();
-  // if(get(420, 360) != -13980693){
-  //   System.exit(1);
-    // println(get(420, 390));
-  // }
-  // println(pixels[370*width+420]);
-
   if (key == 'i') {
     inv.updateInventory();
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
-  if (key == 'o' && !isPaused) p.punch();
+  if (key == 'o' && !isPaused) {
+    if (p.equipped[5] != null) p.equipped[5].place();
+    else p.punch();
+  }
 
 
   if (isPaused) {
@@ -194,7 +162,7 @@ void keyPressed() {
         if (inv.current < 0) {
           int i = inv.items.size();
           inv.y = (i-1) * 10 + 285;
-          inv.ypos = (i-1) * 10;
+          inv.ypos = (i-1) * 10; 
           inv.current = i - 1;
         }
       }
@@ -215,7 +183,11 @@ void keyPressed() {
       inv.use();
     }
     if (key == 'u') {
-      inv.unequip();
+      if (p.equipped[5] == null) {
+        inv.unequip();
+      } else {
+        inv.returnToInv();
+      }
     }
   }
 }
