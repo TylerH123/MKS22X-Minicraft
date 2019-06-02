@@ -1,4 +1,4 @@
-boolean keyz[] = new boolean [5];
+boolean keyz[] = new boolean [6];
 boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
@@ -86,24 +86,36 @@ void draw() {
   if (!isPaused) {
     inv.ypos = 0;
     if (keyz[0]) {
-      dx+= 5;
+      dx+= (5 + p.vel);
       leanx = -5;
       direction = "west";
     }
     if (keyz[1]) {
-      dy-= 5;
+      dy-= (5 + p.vel);
       leany = 5;
       direction = "south";
     }
     if (keyz[2]) {
-      dx-= 5;
+      dx-= (5 + p.vel);
       leanx = 5;
       direction = "east";
     }
     if (keyz[3]) {
-      dy+= 5;
+      dy+= (5 + p.vel);
       leany = -5;
       direction = "north";
+    }
+    if (keyz[5]) {
+      if (p.stamina > 0) {
+        p.vel = 5; 
+        p.stamina -= 0.1;
+      }
+      else{
+        keyz[5] = !keyz[5];
+        p.vel = 0;
+      }
+    } else if (p.stamina < 100.0) {
+      p.stamina += 0.1;
     }
   }
 
@@ -131,9 +143,9 @@ void draw() {
   catch(Exception e) {
     text("COLLIDFE", 10, 40);
   }
-  for (Station s : stations){
-     if (s.isPlaced) s.display();
-     //System.out.println(s.isPlaced);
+  for (Station s : stations) {
+    if (s.isPlaced) s.display();
+    //System.out.println(s.isPlaced);
   }
   text((dx > 450) + " left bound check", 10, 50);
   text((dy > 300) + " up bound check", 10, 60);
@@ -152,6 +164,7 @@ void keyPressed() {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
   }
+  if (key == 'k') keyz[5] = !keyz[5]; 
   if (key == 'o' && !isPaused) {
     if (p.equipped[5] != null) p.equipped[5].place();
     else p.punch();

@@ -16,8 +16,8 @@ public class Resource extends Item {
    info[0] = id + ""; 
    info[1] = name; 
    return info; 
-   
   }
+   
   void interact(int idx){
   }
   boolean canInteract() {
