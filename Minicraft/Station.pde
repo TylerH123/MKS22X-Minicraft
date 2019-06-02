@@ -152,10 +152,8 @@ public class Station extends Item {
         inv.returnToInv();
         interact(idx);
       }
-    } else {
-      isPaused = true;
+    } else if (stationMenu) {
       currentStation = this; 
-      stationMenu = true; 
       inv.display();
       display(id);
     }

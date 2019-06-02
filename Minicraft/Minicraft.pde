@@ -203,6 +203,9 @@ void keyPressed() {
       keyz[4] = !keyz[4];
       isPaused = !isPaused;
       inv.current = 0;
+    } else {
+      stationMenu = !stationMenu;
+      isPaused = !isPaused; 
     }
   }
 
