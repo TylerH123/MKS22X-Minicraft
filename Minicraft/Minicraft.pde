@@ -108,11 +108,24 @@ void draw() {
       dy+= 5;
       leany = -5;
       direction = "north";
+      if (keyz[5]) p.stamina -= 0.1;
     }
-  }
-
-  if (keyz[4]) {
-    inv.display();
+    if (keyz[5]) {
+      if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
+        if (p.stamina < 100.0) {
+          p.stamina += 0.1;
+        }
+      }
+      if (p.stamina > 0) {
+        p.vel = 5;
+      } else {
+        p.vel = 0;
+        keyz[5] = !keyz[5];
+      }
+    } else {
+      p.vel = 0;
+      if (p.stamina < 100.0)p.stamina += 0.1;
+    }
   }
 
   fill(5);
@@ -135,12 +148,21 @@ void draw() {
   catch(Exception e) {
     text("COLLIDFE", 10, 40);
   }
-  for (Station s : stations){
-     if (s.isPlaced) s.display();
-     //System.out.println(s.isPlaced);
+  for (Station s : stations) {
+    s.display();
+    if (keyz[0]) s.px -= (5 + p.vel);
+    if (keyz[1]) s.py += (5 + p.vel);
+    if (keyz[2]) s.px += (5 + p.vel);
+    if (keyz[3]) s.py -= (5 + p.vel);
+    //System.out.println(s.isPlaced);
   }
   text((dx > 450) + " left bound check", 10, 50);
   text((dy > 300) + " up bound check", 10, 60);
+  text("Sprinting: " + keyz[5], 10, 70);
+  text("Velocity:  " + p.vel, 10, 80);
+  if (keyz[4]) {
+    inv.display();
+  }
   p.display();
   //System.out.println(items[2].getInfo()[1]);
 }
