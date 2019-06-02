@@ -117,6 +117,7 @@ void draw() {
       if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
         if (p.stamina < 100.0) {
           p.stamina += 0.1;
+          p.isSprinting = false;
         }
       }
       if (p.stamina > 0) {
@@ -128,12 +129,10 @@ void draw() {
       }
     } else {
       p.vel = 0;
-      if (p.stamina < 100.0)p.stamina += 0.1;
-    }
-    if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
       p.isSprinting = false;
+      if (p.stamina < 100.0) p.stamina += 0.1;
     }
-    if (p.isSprinting) p.stamina -= .1; 
+    if (p.isSprinting) p.stamina -= .1;
   }
 
   fill(5);
