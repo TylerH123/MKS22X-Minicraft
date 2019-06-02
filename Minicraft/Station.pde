@@ -141,7 +141,7 @@ public class Station extends Item {
         inv.removeAmt(id, 1);
         if (inv.inventory[id] == 0) itemList[id] = null;
         p.equipped[5] = this; 
-        inv.items.remove(idx);
+        if (inv.inventory[id] == 0) inv.items.remove(idx);
         inv.updateInventory();
         if (inv.current == inv.items.size() && inv.y - 10 > 275) {
           inv.current--;

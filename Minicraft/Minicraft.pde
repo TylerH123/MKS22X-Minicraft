@@ -77,8 +77,9 @@ void setup() {
   Station s = new Station(5);
   itemList[5] = s;
   stations.add(s);
-  inv.inventory[14] = 100;
-  itemList[14] = new Resource(14); 
+  itemList[14] = new Resource(14,100); 
+  Consumable ap = new Consumable(19);
+  itemList[19] = ap;
 }
 
 void draw() {

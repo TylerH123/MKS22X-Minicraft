@@ -1,12 +1,13 @@
 public class Resource extends Item {
   String name;
-  Resource(int r) {
+  Resource(int r, int amt) {
     id = r;
-    if (r == 14) name = "wood";
-    if (r == 15) name = "stone";
-    if (r == 16) name = "sand";
-    if (r == 17) name = "iron";
-    if (r == 18) name = "moodstone";
+    if (id == 14) name = "wood";
+    if (id == 15) name = "stone";
+    if (id == 16) name = "sand";
+    if (id == 17) name = "iron";
+    if (id == 18) name = "moodstone";
+    inv.inventory[id] = amt;
   }
   String name() {
     return name;

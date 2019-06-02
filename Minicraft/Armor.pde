@@ -65,12 +65,12 @@ public class Armor extends Item {
   void interact(int idx) {
     if (p.equipped[this.id - 1] == null) {
       inv.removeAmt(id, 1);
-      itemList[id] = null;
+      if (inv.inventory[id] == 0) itemList[id] = null;
       p.equipped[id-1] = this; 
       p.updateArmor();
-      inv.items.remove(idx);
+      if (inv.inventory[id] == 0) inv.items.remove(idx);
       inv.updateInventory();
-      if (inv.current == inv.items.size()) {
+      if (inv.current == inv.items.size() && inv.inventory[id] == 0) {
         inv.current--;
         inv.ypos -= 10; 
         inv.y -= 10;
