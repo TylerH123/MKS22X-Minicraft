@@ -96,6 +96,10 @@ void draw() {
   // assume sorted ArrayList
   // implement seperate x and y comparator classes later
 
+  boolean amCollide = p.isCollide(testarr[3][3]);
+  if (direction.equals("north") && amCollide){
+    keyz[3] = false;
+  }
 
   if (!isPaused) {
     inv.ypos = 0;
@@ -133,13 +137,13 @@ void draw() {
   //white board the nedded transformation to map dx and dy to their tile underneath
   currtilex = 7 - ((int)dx/60);
   currtiley = 6 - ((int)dy/60);
-  xcoor = 7 - (dx/60);
-  ycoor = 6 - (dy/60);
+  xcoor = (dx/60);
+  ycoor = (dy/60);
   p.display();
   text("You're at" + currtilex + ", " + currtiley, 10, 40);
   try{
     TestTile x = testarr[currtilex][currtiley];
-    text("there is a tile here at: " + currtilex + ", " + currtiley, 10, 50);
+    text("there is a tile here at: " + ycoor + ", " + xcoor, 10, 50);
   } catch (Exception e){
     text("NO ONE HERE", 10, 50);
   }
@@ -173,7 +177,7 @@ void keyPressed() {
   // p.checkCollide();
   // if(get(420, 360) != -13980693){
   //   System.exit(1);
-    println(get(420, 390));
+    // println(get(420, 390));
   // }
   // println(pixels[370*width+420]);
 
