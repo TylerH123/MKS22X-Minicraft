@@ -21,7 +21,7 @@ While station menu is opened:
 ```
 o to interact with the itme
 w,s to move pointer up and down
-↑, ↓ to move second pointer up and down
+↑,↓ to move second pointer up and down
 i to close inventory
 ```
 While invetory is closed: 
