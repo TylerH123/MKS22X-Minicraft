@@ -11,20 +11,74 @@ public class Player {
   int currtiley = 6-(int)dy/50 - 1;
   int currtilex = 9-(int)dx/50 - 1;
 
-  // boolean Wcollide(){
-  //   Tile currtile = t[currtilex][currtiley-1];
-  //   println(currtile.getName());
-  //   if(currtile.getName().equals("stone")){
-  //     if(dist(450, 300, currtile.x+dx + 25, (currtile.y - 1)+dy + 25) > hitboxrad + 35.35){
-  //       fill(100);
-  //       rect(currtile.x+dx + 25, (currtile.y - 1)+dy + 25, 10, 10 );
-  //       return true;
-  //       //true as in it's true you cannot go there
-  //     }
-  //   }
-  //   return false;
-  // }
+  public int first(TestTile[] arr, int low, int high, int e, int n, char mode)
+  {
+      if(high >= low)
+      {
+        if (mode == 'x'){
+          int mid = low + (high - low)/2;
+          if( ( mid == 0 || e > arr[mid-1].x) && arr[mid].x == e)
+          return mid;
+          else if(e > arr[mid].x)
+          return first(arr, (mid + 1), high, e, n, mode);
+          else
+          return first(arr, low, (mid -1), e, n, mode);
+        }
 
+        else{
+          int mid = low + (high - low)/2;
+          if( ( mid == 0 || e > arr[mid-1].y) && arr[mid].y == e)
+          return mid;
+          else if(e > arr[mid].y)
+          return first(arr, (mid + 1), high, e, n, mode);
+          else
+          return first(arr, low, (mid -1), e, n, mode);
+        }
+      }
+  return -1;
+  }
+
+  /* if x is present in arr[] then returns the index of
+  LAST occurrence of x in arr[0..n-1], otherwise
+  returns -1 */
+  public int last(TestTile[] arr, int low, int high, int e, int n, char mode)
+  {
+      if (high >= low)
+      {
+        if (mode == 'x'){
+          int mid = low + (high - low)/2;
+          if (( mid == n-1 || e < arr[mid+1].x) && arr[mid].x == e)
+          return mid;
+          else if (e < arr[mid].x)
+          return last(arr, low, (mid -1), e, n, mode);
+          else
+          return last(arr, (mid + 1), high, e, n, mode);
+        }
+        else{
+          int mid = low + (high - low)/2;
+          if (( mid == n-1 || e < arr[mid+1].y) && arr[mid].y == e)
+               return mid;
+          else if (e < arr[mid].y)
+              return last(arr, low, (mid -1), e, n, mode);
+          else
+              return last(arr, (mid + 1), high, e, n, mode);
+        }
+      }
+  return -1;
+  }
+
+  boolean isCollide(TestTile other){
+    float deltay = abs(other.y - ycoor) * 60;
+    float deltax = abs(other.x - xcoor) * 60;
+    float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
+    println(dist + ", " + (hitboxrad + other.radius));
+    if (dist < hitboxrad + other.radius){
+      return true;
+    }
+    return false;
+  }
+
+  
   void display() {
     fill(100, 50, 118);
     //text("PLAYER BOI", 442, 368);
