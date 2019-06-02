@@ -87,4 +87,4 @@ Today, I worked on readjusting the inventory. After Moody redid the tiless, the 
 
 ## 5-31-19
 ### Tyler
-Today, I worked on the station class. I worked on a way for the stations to be placed. 
+Today, I worked on the station class. I worked on a way for the stations to be placed. I added a way for stations to be equipped via inventory. While equipped, the player can either place down the station or unequip the station. They are not allowed to punch or use a tool. To place or unequip the station, the player can use the same keys as they would to punch or unequip a tool. 
