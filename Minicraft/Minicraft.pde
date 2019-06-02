@@ -1,3 +1,6 @@
+import java.util.Comparator;
+
+
 boolean keyz[] = new boolean[6];
 boolean isPaused = false;
 static boolean cannotwalk[] = new boolean[4];
