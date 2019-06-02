@@ -3,6 +3,7 @@ public class Station extends Item {
   color c;
   boolean isPlaced = false; 
   float x, y; 
+  float px, py; 
   Station(int station) {
     id = station;
     //workbench
@@ -19,12 +20,14 @@ public class Station extends Item {
     if (station == 8) {
       name = "oven";
     }
+    px = 0;
+    py = 0;
     inv.inventory[id]++;
   }
   void display() {
     if (isPlaced) {
       fill(c);
-      rect(x, y, 50, 50);
+      rect(x + px, y + py, 50, 50);
     }
   }
   /**first, checks your inventory to see if the item can be created. then creates it
@@ -79,6 +82,7 @@ public class Station extends Item {
    **/
   void place() {
     isPlaced = true;
+    p.equipped[5] = null; 
     if (direction.equals("north")) {
       x = 450; 
       y = 250;

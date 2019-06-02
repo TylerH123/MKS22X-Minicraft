@@ -127,10 +127,6 @@ void draw() {
     }
   }
 
-  if (keyz[4]) {
-    inv.display();
-  }
-
   fill(5);
 
   text("" + dx + ", " + dy, 10, 10);
@@ -152,13 +148,20 @@ void draw() {
     text("COLLIDFE", 10, 40);
   }
   for (Station s : stations) {
-    if (s.isPlaced) s.display();
+    s.display();
+    if (keyz[0]) s.px -= (5 + p.vel);
+    if (keyz[1]) s.py += (5 + p.vel);
+    if (keyz[2]) s.px += (5 + p.vel);
+    if (keyz[3]) s.py -= (5 + p.vel);
     //System.out.println(s.isPlaced);
   }
   text((dx > 450) + " left bound check", 10, 50);
   text((dy > 300) + " up bound check", 10, 60);
   text("Sprinting: " + keyz[5], 10, 70);
   text("Velocity:  " + p.vel, 10, 80);
+  if (keyz[4]) {
+    inv.display();
+  }
   p.display();
   //System.out.println(items[2].getInfo()[1]);
 }
