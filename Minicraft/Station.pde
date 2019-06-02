@@ -68,26 +68,30 @@ public class Station extends Item {
     int c = costList[itemID][0];
     //if its a tool, also cehck if inventory has 5 wood
     if (itemID >= 14 && itemID <= 18) {
-      if (inv.contains(rssID, c) && inv.contains(14, 5)) {
-        //remove the resources required to craft
-        inv.removeAmt(rssID, c);
-        inv.removeAmt(14, 5);
-        //add the crafted tool to the interactables items list
-        itemList[itemID] = new Tool(rssID, itemID);
-        inv.updateInventory();
-        return;
-      } else {
-        return;
+      if (inv.inventory[itemID] == 0) {
+        if (inv.contains(rssID, c) && inv.contains(14, 5)) {
+          //remove the resources required to craft
+          inv.removeAmt(rssID, c);
+          inv.removeAmt(14, 5);
+          //add the crafted tool to the interactables items list
+          itemList[itemID] = new Tool(rssID, itemID);
+          inv.updateInventory();
+          return;
+        } else {
+          return;
+        }
       }
     }
     //if anything else, check inventory for the resources
     if (inv.contains(rssID, c)) {
       //if it is armor piece then add it to itemList
       if (itemID >= 1 && itemID <= 4) {
-        itemList[itemID] = new Armor(rss, itemID);
-        //remove the resources required to craft
-        inv.removeAmt(rssID, c);
-        inv.updateInventory();
+        if (inv.inventory[itemID] == 0) {
+          itemList[itemID] = new Armor(rss, itemID);
+          //remove the resources required to craft
+          inv.removeAmt(rssID, c);
+          inv.updateInventory();
+        }
       }
       //if it is station then add it to itemList
       if (itemID >= 5 && itemID <= 8) {
@@ -135,7 +139,7 @@ public class Station extends Item {
     if (!isPlaced) {
       if (p.equipped[5] == null) {
         inv.removeAmt(id, 1);
-        itemList[id] = null;
+        if (inv.inventory[id] == 0) itemList[id] = null;
         p.equipped[5] = this; 
         inv.items.remove(idx);
         inv.updateInventory();
