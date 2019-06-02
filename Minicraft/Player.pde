@@ -7,6 +7,7 @@ public class Player {
   float stamina = 100;
   float dmgReduction = 0.00;
   int vel = 0;
+  boolean isSprinting = false;
   Item[] equipped = new Item[6];
   public Player() {
   }
