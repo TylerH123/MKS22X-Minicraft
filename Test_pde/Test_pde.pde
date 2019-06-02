@@ -6,6 +6,9 @@ PImage treeImg, stoneImg, grassImg;
 static int currtilex;
 static int currtiley;
 
+static float xcoor;
+static float ycoor;
+
 // static float currtilex;
 // static float currtiley;
 
@@ -90,6 +93,10 @@ void draw() {
 
   // p.checkCollide();
 
+  // assume sorted ArrayList
+  // implement seperate x and y comparator classes later
+
+
   if (!isPaused) {
     inv.ypos = 0;
     if (keyz[0]) {
@@ -126,6 +133,8 @@ void draw() {
   //white board the nedded transformation to map dx and dy to their tile underneath
   currtilex = 7 - ((int)dx/60);
   currtiley = 6 - ((int)dy/60);
+  xcoor = 7 - (dx/60);
+  ycoor = 6 - (dy/60);
   p.display();
   text("You're at" + currtilex + ", " + currtiley, 10, 40);
   try{
