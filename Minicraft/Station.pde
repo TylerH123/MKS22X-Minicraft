@@ -89,15 +89,15 @@ public class Station extends Item {
     }
     if (direction.equals("south")) {
       x = 450;
-      y = 425;
+      y = 350;
     }
     if (direction.equals("east")) {
       x = 500;
-      y = 375;
+      y = 300;
     }
     if (direction.equals("west")) {
       x = 400;
-      y = 375;
+      y = 300;
     }
   }
   String[] getInfo() {
