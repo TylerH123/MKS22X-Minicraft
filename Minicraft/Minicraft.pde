@@ -160,6 +160,7 @@ void draw() {
   }
   for (Station s : stations) {
     s.display();
+    if (s.isPlaced) s.interact(s.id);
     if (!isPaused && s.isPlaced && keyz[0]) s.px += (5 + p.vel);
     if (!isPaused && s.isPlaced && keyz[1]) s.py -= (5 + p.vel);
     if (!isPaused && s.isPlaced && keyz[2]) s.px -= (5 + p.vel);
@@ -178,25 +179,25 @@ void draw() {
 }
 
 void keyPressed() {
-
-  if (key == 'a')  keyz[0] = true;
-  if (key == 's')  keyz[1] = true;
-  if (key == 'd')  keyz[2] = true;
-  if (key == 'w')  keyz[3] = true;
+  if (!isPaused) {
+    if (key == 'a')  keyz[0] = true;
+    if (key == 's')  keyz[1] = true;
+    if (key == 'd')  keyz[2] = true;
+    if (key == 'w')  keyz[3] = true;
+    if (key == 'k') {
+      keyz[5] = !keyz[5];
+    }
+    if (key == 'o') {
+      if (p.equipped[5] != null) p.equipped[5].place();
+      else p.interact();
+    }
+  }
   if (key == 'i') {
     inv.updateInventory();
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
     inv.current = 0;
   }
-  if (key == 'k') {
-    keyz[5] = !keyz[5];
-  }
-  if (key == 'o' && !isPaused) {
-    if (p.equipped[5] != null) p.equipped[5].place();
-    else p.punch();
-  }
-
 
   if (isPaused) {
     if (key == 'w') {

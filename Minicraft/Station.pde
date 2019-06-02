@@ -125,6 +125,7 @@ public class Station extends Item {
       }
     } else {
       inv.display();
+      display(id);
     }
   }
   String name() {
@@ -132,5 +133,10 @@ public class Station extends Item {
   }
   boolean canInteract() {
     return true;
+  }
+  void check() {
+  }
+  void display(int s) {
+    rect(350, 200, 100, 125);
   }
 }

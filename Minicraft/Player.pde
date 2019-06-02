@@ -106,7 +106,7 @@ public class Player {
     if (equipped[4] != null) dmg = parseInt(equipped[4].getInfo()[1]);
     else dmg = 1;
   }
-  void punch() {
+  void interact() {
     if (direction == "north") {
     }
     if (direction == "south") {

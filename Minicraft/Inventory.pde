@@ -45,7 +45,7 @@ public class Inventory {
       }
     }
     //pointer
-    if (items.size() > 0) {
+    if (items.size() > 0 && keyz[4]) {
       fill(255, 0, 0);
       triangle(500, 285 + ypos, 500, 290 + ypos, 505, 287.5 + ypos);
     }
