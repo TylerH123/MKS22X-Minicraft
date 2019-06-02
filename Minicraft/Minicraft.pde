@@ -16,9 +16,10 @@ static float ycoor;
 
 float leanx, leany;
 static Tile[][] t = new Tile[10][10];
-static ArrayList<TestTile> stones = new ArrayList<TestTile>();
+static ArrayList<TestTile> stonesx = new ArrayList<TestTile>();
+static ArrayList<TestTile> stonesy = new ArrayList<TestTile>();
 
-static TestTile[][] testarr= new TestTile[10][10];
+static TestTile[][] testarr= new TestTile[100][100];
 Inventory inv = new Inventory();
 Player p = new Player();
 //direction that player is facing
@@ -51,14 +52,23 @@ void setup() {
   //   }
   // }
 
-  for (int x = 0; x < 10; x++) {
-    for (int y = 0; y < 10; y++) {
+  for (int x = 0; x < 100; x++) {
+    for (int y = 0; y < 100; y++) {
       testarr[x][y] = new TestTile(x, y);
     }
   }
 
+  for(int x = 10; x < 16; x++){
+    for(int y = 10; y < 16; y++){
+      testarr[x][y].makeStone();
+      stonesx.add(testarr[x][y]);
+      stonesy.add(testarr[x][y]);
+    }
+  }
   testarr[3][3].makeStone();
-  stones.add(testarr[3][3]);
+  stonesx.add(testarr[3][3]);
+  stonesy.add(testarr[3][3]);
+
   Armor a = new Armor(2, 2);
   itemList[2] = a;
   Armor b = new Armor(2, 1);
@@ -136,7 +146,7 @@ void draw() {
     if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
       p.isSprinting = false;
     }
-    if (p.isSprinting) p.stamina -= .1; 
+    if (p.isSprinting) p.stamina -= .1;
   }
 
   fill(5);
