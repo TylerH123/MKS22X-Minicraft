@@ -110,20 +110,19 @@ void draw() {
       if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[5]) {
-      if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
-        if (p.stamina < 100.0) {
-          p.stamina += 0.1;
-        }
-      }
       if (p.stamina > 0) {
         p.vel = 5;
       } else {
         p.vel = 0;
         keyz[5] = !keyz[5];
       }
-    } else {
-      if (p.stamina < 100.0) p.stamina += 0.1;
-      p.vel = 0;
+    } else{
+      if (p.stamina < 100.0)p.stamina += 0.1;
+    }
+    if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
+      if (p.stamina < 100.0) {
+        p.stamina += 0.1;
+      }
     }
   }
 

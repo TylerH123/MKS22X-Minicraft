@@ -18,7 +18,7 @@ public class Inventory {
   String tool = "fist";
   //variable for holding stations. default is none 
   String holding = "none"; 
-  
+
   public Inventory() {
   }
   void updateInventory() {
@@ -45,7 +45,7 @@ public class Inventory {
       }
     }
     //pointer
-    if (items.size() > 0){
+    if (items.size() > 0) {
       fill(255, 0, 0);
       triangle(500, 285 + ypos, 500, 290 + ypos, 505, 287.5 + ypos);
     }
@@ -78,11 +78,11 @@ public class Inventory {
     return false;
   }
   //adds to the quantity of item itemID in inventory array
-  void add(int itemID) {
+  void addToInv(int itemID) {
     inventory[itemID]++;
   }
   //reduces the quantity of item itemID by amt in inventory array
-  void remove(int itemID, int amt) {
+  void removeAmt(int itemID, int amt) {
     inventory[itemID] -= amt;
   }
   void moveUp() {
@@ -94,7 +94,7 @@ public class Inventory {
     current++;
   }
   void use() {
-    if (items.size() > 0){
+    if (items.size() > 0) {
       if (items.get(current).canInteract()) {
         items.get(current).interact(current);
       }
@@ -103,7 +103,6 @@ public class Inventory {
   void unequip() {
     if (p.equipped[4] != null) {
       int tempID = parseInt(p.equipped[4].getInfo()[2]);
-      inv.add(tempID);
       Tool t = new Tool(parseInt(p.equipped[4].getInfo()[3]), tempID);
       itemList[tempID] = t;
       p.equipped[4] = null;
@@ -111,19 +110,17 @@ public class Inventory {
       updateInventory();
     }
   }
-  void returnToInv(){
-    if (p.equipped[5] != null){
+  void returnToInv() {
+    if (p.equipped[5] != null) {
       int tempID = parseInt(p.equipped[5].getInfo()[1]);
-      inv.add(tempID); 
       Station s = new Station(tempID); 
       itemList[tempID] = s; 
       p.equipped[5] = null; 
       updateInventory();
     }
   }
-  void unequipArmor(int armorID){
+  void unequipArmor(int armorID) {
     if (p.equipped[armorID-1] != null) {
-      inv.add(armorID);
       Armor a = new Armor(parseInt(p.equipped[armorID].getInfo()[2]), armorID);
       itemList[armorID] = a;
       p.equipped[armorID-1] = null;

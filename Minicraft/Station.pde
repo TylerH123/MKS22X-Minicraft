@@ -43,10 +43,10 @@ public class Station extends Item {
     if (itemID >= 14 || itemID <= 18) {
       if (inv.contains(rssID, c) && inv.contains(14, 5)) {
         //remove the resources required to craft
-        inv.remove(rssID, c);
-        inv.remove(14, 5);
+        inv.removeAmt(rssID, c);
+        inv.removeAmt(14, 5);
         //add crafted item to inventory
-        inv.add(itemID);
+        inv.addToInv(itemID);
         //add the crafted tool to the interactables items list
         itemList[itemID] = new Tool(rssID, itemID);
         return "Successfully crafted";
@@ -67,9 +67,9 @@ public class Station extends Item {
         stations.add(s);
       }
       //remove the resources required to craft
-      inv.remove(rssID, c);
+      inv.removeAmt(rssID, c);
       //add crafted item to inventory
-      inv.add(itemID);
+      inv.addToInv(itemID);
       return "Successfully crafted";
     }
     return "Failed to craft";
@@ -105,7 +105,7 @@ public class Station extends Item {
   void interact(int idx) {
     if (!isPlaced) {
       if (p.equipped[5] == null) {
-        inv.remove(id, 1);
+        inv.removeAmt(id, 1);
         itemList[id] = null;
         p.equipped[5] = this; 
         inv.items.remove(idx);

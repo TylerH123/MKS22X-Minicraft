@@ -41,7 +41,7 @@ public class Armor extends Item {
   }
   void interact(int idx) {
     if (p.equipped[this.id - 1] == null) {
-      inv.remove(id, 1);
+      inv.removeAmt(id, 1);
       itemList[id] = null;
       p.equipped[id-1] = this; 
       p.updateArmor();

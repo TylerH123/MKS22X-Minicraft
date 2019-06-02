@@ -45,7 +45,7 @@ public class Tool extends Item {
   void interact(int idx) {
     if (p.equipped[5] == null) {
       if (p.equipped[4] == null) {
-        inv.remove(id, 1);
+        inv.removeAmt(id, 1);
         itemList[id] = null;
         p.equipped[4] = this; 
         p.updateDamage();
