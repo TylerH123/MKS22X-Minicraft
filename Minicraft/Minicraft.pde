@@ -89,33 +89,41 @@ void draw() {
       dx+= (5 + p.vel);
       leanx = -5;
       direction = "west";
+      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[1]) {
       dy-= (5 + p.vel);
       leany = 5;
       direction = "south";
+      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[2]) {
       dx-= (5 + p.vel);
       leanx = 5;
       direction = "east";
+      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[3]) {
       dy+= (5 + p.vel);
       leany = -5;
       direction = "north";
+      if (keyz[5]) p.stamina -= 0.1;
     }
     if (keyz[5]) {
+      if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
+        if (p.stamina < 100.0) {
+          p.stamina += 0.1;
+        }
+      }
       if (p.stamina > 0) {
-        p.vel = 5; 
-        p.stamina -= 0.1;
-      }
-      else{
-        keyz[5] = !keyz[5];
+        p.vel = 5;
+      } else {
         p.vel = 0;
+        keyz[5] = !keyz[5];
       }
-    } else if (p.stamina < 100.0) {
-      p.stamina += 0.1;
+    } else {
+      if (p.stamina < 100.0) p.stamina += 0.1;
+      p.vel = 0;
     }
   }
 
@@ -149,6 +157,8 @@ void draw() {
   }
   text((dx > 450) + " left bound check", 10, 50);
   text((dy > 300) + " up bound check", 10, 60);
+  text("Sprinting: " + keyz[5], 10, 70);
+  text("Velocity:  " + p.vel, 10, 80);
   p.display();
   //System.out.println(items[2].getInfo()[1]);
 }
