@@ -90,25 +90,28 @@ void draw() {
   if (!isPaused) {
     inv.ypos = 0;
     if (keyz[0]) {
-      dx+= 5;
+      dx += (5 + p.vel);
       leanx = -5;
       direction = "west";
+      if (keyz[5]) p.isSprinting = true;
     }
     if (keyz[1]) {
-      dy-= 5;
+      dy-= (5 + p.vel);
       leany = 5;
       direction = "south";
+      if (keyz[5]) p.isSprinting = true;
     }
     if (keyz[2]) {
-      dx-= 5;
+      dx-= (5 + p.vel);
       leanx = 5;
       direction = "east";
+      if (keyz[5]) p.isSprinting = true;
     }
     if (keyz[3]) {
-      dy+= 5;
+      dy+= (5 + p.vel);
       leany = -5;
       direction = "north";
-      if (keyz[5]) p.stamina -= 0.1;
+      if (keyz[5]) p.isSprinting = true;
     }
     if (keyz[5]) {
       if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
@@ -117,15 +120,20 @@ void draw() {
         }
       }
       if (p.stamina > 0) {
-        p.vel = 5;
+        p.vel = 2;
       } else {
         p.vel = 0;
         keyz[5] = !keyz[5];
+        p.isSprinting = false;
       }
     } else {
       p.vel = 0;
       if (p.stamina < 100.0)p.stamina += 0.1;
     }
+    if (!keyz[0] && !keyz[1] && !keyz[2] && !keyz[3]) {
+      p.isSprinting = false;
+    }
+    if (p.isSprinting) p.stamina -= .1; 
   }
 
   fill(5);
@@ -178,6 +186,9 @@ void keyPressed() {
     keyz[4] = !keyz[4];
     isPaused = !isPaused;
     inv.current = 0;
+  }
+  if (key == 'k') {
+    keyz[5] = !keyz[5];
   }
   if (key == 'o' && !isPaused) {
     if (p.equipped[5] != null) p.equipped[5].place();
