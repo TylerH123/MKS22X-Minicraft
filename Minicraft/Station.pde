@@ -1,9 +1,12 @@
 public class Station extends Item {
   String name;
   color c;
-  boolean isPlaced = false; 
+  boolean isPlaced = false;
   float x, y; 
   float px, py; 
+  int cy = 40;  
+  int cypos = 0; 
+  int current = 0;
   Station(int station) {
     id = station;
     //workbench
@@ -75,6 +78,7 @@ public class Station extends Item {
       inv.addToInv(itemID);
       return "Successfully crafted";
     }
+    inv.updateInventory();
     return "Failed to craft";
   }
   /**place the station 50 units in front of player according to direction
@@ -123,7 +127,11 @@ public class Station extends Item {
         inv.returnToInv();
         interact(idx);
       }
-    } else {
+    } else {// else if (stationMenu) {
+      //if (id == 5) craft();}
+      isPaused = true;
+      currentStation = this; 
+      stationMenu = true; 
       inv.display();
       display(id);
     }
@@ -137,6 +145,23 @@ public class Station extends Item {
   void check() {
   }
   void display(int s) {
-    rect(350, 200, 100, 125);
+    fill(255);
+    rect(450, 150, 200, 230);
+    if (s == 5) {
+      fill(255, 0, 0);
+      triangle(355, 40 + cypos, 355, 45 + cypos, 360, 42.5 + cypos);
+      for (int i = 0; i < craftables.length; i++) {
+        fill(0);
+        text(craftables[i][0], 365, 48 + i * 10); 
+      }
+    }
+  }
+  void moveUp() {
+    cypos -= 10;
+    current--;
+  }
+  void moveDown() {
+    cypos += 10;
+    current++;
   }
 }

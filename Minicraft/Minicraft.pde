@@ -3,6 +3,7 @@ import java.util.Comparator;
 
 boolean keyz[] = new boolean[6];
 boolean isPaused = false;
+boolean stationMenu = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
 PImage treeImg, stoneImg, grassImg;
@@ -28,6 +29,8 @@ int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14},
 //list with all the items in inventory
 Item[] itemList = new Item[25];
 ArrayList<Station> stations = new ArrayList<Station>();
+Station currentStation;
+String[][] craftables = new String[][] { {"helmet", "10"} , {"chestpiece", "20"} , {"leggings", "15"} , {"foot", "5"} , {"workbench", "20"} , {"furnace", "20"} , {"anvil", "5"} , {"oven", "15"} , {"pickaxe", "5"} , {"axe", "5"} , {"shovel", "2"}, {"hoe", "2"}, {"shovel", "7"} };
 void setup() {
   rectMode(CENTER);
   size(1000, 750);
@@ -56,7 +59,7 @@ void setup() {
       testarr[x][y] = new TestTile(x, y);
     }
   }
-
+  
   testarr[3][3].makeStone();
   stones.add(testarr[3][3]);
   Armor a = new Armor(2, 2);
@@ -193,39 +196,66 @@ void keyPressed() {
     }
   }
   if (key == 'i') {
-    inv.updateInventory();
-    keyz[4] = !keyz[4];
-    isPaused = !isPaused;
-    inv.current = 0;
+    if (!stationMenu) {
+      inv.updateInventory();
+      keyz[4] = !keyz[4];
+      isPaused = !isPaused;
+      inv.current = 0;
+    }
+    
   }
 
   if (isPaused) {
     if (key == 'w') {
-      if (inv.y - 10 >= 275) {
-        inv.y -= 10;
-        inv.moveUp();
-        if (inv.current < 0) {
-          int i = inv.items.size();
-          inv.y = (i-1) * 10 + 285;
-          inv.ypos = (i-1) * 10;
-          inv.current = i - 1;
+      if (!stationMenu) {
+        if (inv.y - 10 >= 275) {
+          inv.y -= 10;
+          inv.moveUp();
+          if (inv.current < 0) {
+            int i = inv.items.size();
+            inv.y = (i-1) * 10 + 285;
+            inv.ypos = (i-1) * 10;
+            inv.current = i - 1;
+          }
+        }
+      } else {
+        if (currentStation.cy - 10 >= 30) {
+          currentStation.cy -= 10;
+          currentStation.moveUp();
+          //System.out.println(currentStation.current);
+          if (currentStation.current < 0) {
+            currentStation.cy = (craftables.length - 1) * 10 + 40; 
+            currentStation.cypos = (craftables.length - 1) * 10; 
+            currentStation.current = craftables.length - 1;
+          }
         }
       }
     }
     if (key == 's') {
-      if (inv.y + 15 <= 580) {
-        inv.y += 10;
-        inv.moveDown();
-        if (inv.current >= inv.items.size()) {
-          inv.y = 285;
-          inv.current = 0;
-          inv.ypos = 0;
+      if (!stationMenu) {
+        if (inv.y + 15 <= 580) {
+          inv.y += 10;
+          inv.moveDown();
+          if (inv.current >= inv.items.size()) {
+            inv.y = 285;
+            inv.current = 0;
+            inv.ypos = 0;
+          }
+        }
+      } else {
+        if (currentStation.cy + 10 <= 365) {
+          currentStation.cy += 10; 
+          currentStation.moveDown();
+          if (currentStation.current >= craftables.length) {
+            currentStation.cy = 40; 
+            currentStation.current = 0; 
+            currentStation.cypos = 0;
+          }
         }
       }
     }
     if (key == 'o') {
-      //System.out.println(inv.current + "works");
-      inv.use();
+      if (!stationMenu) inv.use();
     }
     if (key == 'u') {
       if (p.equipped[5] == null) {
