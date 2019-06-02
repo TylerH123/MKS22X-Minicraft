@@ -15,15 +15,15 @@ public class Player {
   int currtiley = 6-(int)dy/50 - 1;
   int currtilex = 9-(int)dx/50 - 1;
 
-  public int first(TestTile[] arr, int low, int high, int e, int n, char mode)
+  public int first(ArrayList<TestTile>arr, int low, int high, int e, int n, char mode)
   {
       if(high >= low)
       {
         if (mode == 'x'){
           int mid = low + (high - low)/2;
-          if( ( mid == 0 || e > arr[mid-1].x) && arr[mid].x == e)
+          if( ( mid == 0 || e > arr.get(mid-1).x) && arr.get(mid).x == e)
           return mid;
-          else if(e > arr[mid].x)
+          else if(e > arr.get(mid).x)
           return first(arr, (mid + 1), high, e, n, mode);
           else
           return first(arr, low, (mid -1), e, n, mode);
@@ -31,9 +31,9 @@ public class Player {
 
         else{
           int mid = low + (high - low)/2;
-          if( ( mid == 0 || e > arr[mid-1].y) && arr[mid].y == e)
+          if( ( mid == 0 || e > arr.get(mid-1).y) && arr.get(mid).y == e)
           return mid;
-          else if(e > arr[mid].y)
+          else if(e > arr.get(mid).y)
           return first(arr, (mid + 1), high, e, n, mode);
           else
           return first(arr, low, (mid -1), e, n, mode);
@@ -45,24 +45,24 @@ public class Player {
   /* if x is present in arr[] then returns the index of
   LAST occurrence of x in arr[0..n-1], otherwise
   returns -1 */
-  public int last(TestTile[] arr, int low, int high, int e, int n, char mode)
+  public int last(ArrayList<TestTile> arr, int low, int high, int e, int n, char mode)
   {
       if (high >= low)
       {
         if (mode == 'x'){
           int mid = low + (high - low)/2;
-          if (( mid == n-1 || e < arr[mid+1].x) && arr[mid].x == e)
+          if (( mid == n-1 || e < arr.get(mid+1).x) && arr.get(mid).x == e)
           return mid;
-          else if (e < arr[mid].x)
+          else if (e < arr.get(mid).x)
           return last(arr, low, (mid -1), e, n, mode);
           else
           return last(arr, (mid + 1), high, e, n, mode);
         }
         else{
           int mid = low + (high - low)/2;
-          if (( mid == n-1 || e < arr[mid+1].y) && arr[mid].y == e)
+          if (( mid == n-1 || e < arr.get(mid+1).y) && arr.get(mid).y == e)
                return mid;
-          else if (e < arr[mid].y)
+          else if (e < arr.get(mid).y)
               return last(arr, low, (mid -1), e, n, mode);
           else
               return last(arr, (mid + 1), high, e, n, mode);
