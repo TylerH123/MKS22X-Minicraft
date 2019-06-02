@@ -20,6 +20,7 @@ While invetory is closed:
 ```
 o to punch or use equipped tool or place station 
 w,a,s,d to move around
+k to activate sprinting (drains stamina) 
 ```
 # DevLog
 
@@ -88,3 +89,7 @@ Today, I worked on readjusting the inventory. After Moody redid the tiless, the 
 ## 5-31-19
 ### Tyler
 Today, I worked on the station class. I worked on a way for the stations to be placed. I added a way for stations to be equipped via inventory. While equipped, the player can either place down the station or unequip the station. They are not allowed to punch or use a tool. To place or unequip the station, the player can use the same keys as they would to punch or unequip a tool. 
+
+## 6-1-19
+### Tyler
+Today, I worked on the inventory, player, resource, and the game class. Under the inventory class, I added a method that unequips armor. This method cannot be used by player and can only occur when putting on a different armor piece for the same slot. For resource class, I added a constructor to create the five different resources in the game: wood, sand, stone, iron, and moodstone. For player, I added health and stamina. These two stats are displayed in the top right corner of the game. Finally, under the game class, I added a new key control: k. By pressing k, sprinting gets activaated, which drains stamina if you move around. 
