@@ -16,6 +16,8 @@ public class TestTile{
     }
     fill(100, 50, 118);
     rect((x*60) + dx, (y*60) + dy, 60, 60);
+    imageMode(CENTER);
+    image(grassImg,(x*60)+dx,(y*60)+dy);
   }
 
   String getName(){
