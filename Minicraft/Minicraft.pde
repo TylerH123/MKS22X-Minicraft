@@ -8,6 +8,8 @@ PImage treeImg, stoneImg, grassImg;
 
 static float currtilex;
 static float currtiley;
+static float xcoor;
+static float ycoor;
 
 float leanx, leany;
 static Tile[][] t = new Tile[10][10];
@@ -20,7 +22,7 @@ String direction = "";
 //list shows cost as first value and id of the material needed to create
 int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14}, {20, 15}, {5, 17}, {15, 15}, {5, 0}, {5, 0}, {2, 0}, {2, 0}, {7, 0} };
 //list with all the items in inventory
-Item[] itemList = new Item[25];      
+Item[] itemList = new Item[25];
 ArrayList<Station> stations = new ArrayList<Station>();
 void setup() {
   rectMode(CENTER);
@@ -63,7 +65,7 @@ void setup() {
   Tool t2 = new Tool(2, 12);
   itemList[12] = t2;
   Station s = new Station(5);
-  itemList[5] = s; 
+  itemList[5] = s;
   stations.add(s);
 }
 
@@ -117,18 +119,20 @@ void draw() {
   //white board the nedded transformation to map dx and dy to their tile underneath
   currtilex = 9-(dx/50);
   currtiley = 6-(dy/50);
+  xcoor = (dx/60);
+  ycoor = (dy/60);
   // Tile currtile = t[currtilex][currtiley-1];
   try {
     TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
 
     text(currtile.getName()+"", 10, 30);
     text("You're at" + currtilex + ", " + currtiley, 10, 40);
-  } 
+  }
   catch(Exception e) {
     text("COLLIDFE", 10, 40);
   }
   for (Station s : stations){
-     if (s.isPlaced) s.display();  
+     if (s.isPlaced) s.display();
      //System.out.println(s.isPlaced);
   }
   text((dx > 450) + " left bound check", 10, 50);
@@ -162,7 +166,7 @@ void keyPressed() {
         if (inv.current < 0) {
           int i = inv.items.size();
           inv.y = (i-1) * 10 + 285;
-          inv.ypos = (i-1) * 10; 
+          inv.ypos = (i-1) * 10;
           inv.current = i - 1;
         }
       }
