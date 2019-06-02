@@ -93,3 +93,7 @@ Today, I worked on the station class. I worked on a way for the stations to be p
 ## 6-1-19
 ### Tyler
 Today, I worked on the inventory, player, resource, and the game class. Under the inventory class, I added a method that unequips armor. This method cannot be used by player and can only occur when putting on a different armor piece for the same slot. For resource class, I added a constructor to create the five different resources in the game: wood, sand, stone, iron, and moodstone. For player, I added health and stamina. These two stats are displayed in the top right corner of the game. Finally, under the game class, I added a new key control: k. By pressing k, sprinting gets activaated, which drains stamina if you move around. 
+
+## 6-2-19
+### Tyler
+Today, I worked on station, and game class. For station, I fixed the placement of the stations, so now after placing, stations do not move around. For the game class, I fixed up sprinting. It no longer uses twice as much stamina when moving diagonally. 
