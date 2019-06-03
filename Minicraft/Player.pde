@@ -136,13 +136,17 @@ public class Player {
   }
   void punch() {
     if (direction == "north") {
-      testarr[(int)currtilex][(int)currtiley-1].health -= 5;
+      testarr[round(currtilex)][round(currtiley-1)].health -= 5;
     }
     if (direction == "south") {
+      testarr[round(currtilex)][round(currtiley+1)].health -= 5;
     }
     if (direction == "east") {
+      testarr[round(currtilex + 1)][round(currtiley)].health -= 5;
     }
     if (direction == "west") {
+      testarr[round(currtilex - 1)][round(currtiley)].health -= 5;
+
     }
   }
 }
