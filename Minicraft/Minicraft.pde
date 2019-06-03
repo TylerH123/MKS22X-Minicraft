@@ -1,4 +1,6 @@
 import java.util.Comparator;
+import java.util.Collections;
+
 
 
 boolean keyz[] = new boolean[6];
@@ -17,9 +19,10 @@ static float ycoor;
 
 float leanx, leany;
 static Tile[][] t = new Tile[10][10];
-static ArrayList<TestTile> stones = new ArrayList<TestTile>();
+static ArrayList<TestTile> stonesx = new ArrayList<TestTile>();
+static ArrayList<TestTile> stonesy = new ArrayList<TestTile>();
 
-static TestTile[][] testarr= new TestTile[10][10];
+static TestTile[][] testarr= new TestTile[100][100];
 Inventory inv = new Inventory();
 Player p = new Player();
 //direction that player is facing
@@ -33,6 +36,7 @@ Station currentStation;
 Item[] craftables = new Item[] { new Armor(1), new Armor(2), new Armor(3), new Armor(4), new Station(5, 1), new Station(6, 1), new Station(7, 1), new Station(8, 1), new Tool(9), new Tool(10), new Tool(11), new Tool(12), new Tool(13) };
 void setup() {
   rectMode(CENTER);
+  shapeMode(CENTER);
   size(1000, 750);
   noStroke();
   smooth();
@@ -54,15 +58,35 @@ void setup() {
   //   }
   // }
 
-  for (int x = 0; x < 10; x++) {
-    for (int y = 0; y < 10; y++) {
-      testarr[x][y] = new TestTile(x, y);
+  for (int x = 0; x < 100; x++) {
+    for (int y = 0; y < 100; y++) {
+      testarr[x][y] = new TestTile(x, y, 10);
     }
   }
 
+  for(int x = 10; x < 16; x++){
+    for(int y = 10; y < 16; y++){
+      testarr[x][y].makeStone();
+      stonesx.add(testarr[x][y]);
+      stonesy.add(testarr[x][y]);
+    }
+  }
   testarr[3][3].makeStone();
+<<<<<<< HEAD
   stones.add(testarr[3][3]);
   Armor a = new Armor(14, 2);
+=======
+  stonesx.add(testarr[3][3]);
+  stonesy.add(testarr[3][3]);
+
+  TileXComparator xs = new TileXComparator();
+  TileYComparator ys = new TileYComparator();
+
+  Collections.sort(stonesx, xs);
+  Collections.sort(stonesy, ys);
+
+  Armor a = new Armor(2, 2);
+>>>>>>> e4e32e1002e2f0d92b6a5d37d463f072dd0a367d
   itemList[2] = a;
   Armor b = new Armor(15, 1);
   itemList[1] = b;
@@ -87,14 +111,33 @@ void draw() {
   background(#256d7b);
   stroke(#000000, 50);
   strokeWeight(2);
-  for (int x = 0; x < 10; x++) {
-    for (int y = 0; y < 10; y++) {
+  for (int x = 0; x < 100; x++) {
+    for (int y = 0; y < 100; y++) {
       // t[x][y].display();
       testarr[x][y].display();
     }
   }
   leanx = 0;
   leany = 0;
+
+  currtilex = 9-(dx/60) - 1;
+  currtiley = 6-(dy/60) - 1;
+
+  int relevantxstart = p.first(stonesx, 0, stonesx.size() - 1, (int)currtilex, stonesx.size(), 'x');
+  int relevantxend = p.last(stonesx, 0, stonesx.size() - 1, (int)currtilex, stonesx.size(), 'x');
+
+  int relevantystart = p.first(stonesy, 0, stonesy.size() - 1, (int)currtiley, stonesy.size(), 'y');
+  int relevantyend = p.last(stonesy, 0, stonesy.size() - 1, (int)currtiley, stonesy.size(), 'y');
+
+  for(int x = (int)currtilex - 2; x < currtilex + 2; x++){
+    for(int y = (int)currtiley - 2; y < currtiley + 2; y++){
+      if (x > 0 && y > 0 && x < 100 && y < 100){
+        p.isCollide(testarr[x][y]);
+      }
+    }
+  }
+
+  // p.isCollide(testarr[3][3]);
 
   if (!isPaused) {
     inv.ypos = 0;
@@ -150,15 +193,12 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  currtilex = 9-(dx/50);
-  currtiley = 6-(dy/50);
+  currtilex = 9-(dx/60) - 1;
+  currtiley = 6-(dy/60) - 1;
   xcoor = (dx/60);
   ycoor = (dy/60);
   // Tile currtile = t[currtilex][currtiley-1];
   try {
-    TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
-
-    text(currtile.getName()+"", 10, 30);
     text("You're at" + currtilex + ", " + currtiley, 10, 40);
   }
   catch(Exception e) {
@@ -295,7 +335,7 @@ void keyPressed() {
               currentStation.current2 = 3;
             }
           }
-        }
+        } 
       }
     }
   }

@@ -1,6 +1,6 @@
 public class Player {
 
-  float hitboxrad = 28.284;
+  float hitboxrad = .471;
   // static int x = 0;
   int dmg = 1;
   int hp = 100;
@@ -12,18 +12,15 @@ public class Player {
   public Player() {
   }
 
-  int currtiley = 6-(int)dy/50 - 1;
-  int currtilex = 9-(int)dx/50 - 1;
-
-  public int first(TestTile[] arr, int low, int high, int e, int n, char mode)
+  public int first(ArrayList<TestTile>arr, int low, int high, int e, int n, char mode)
   {
       if(high >= low)
       {
         if (mode == 'x'){
           int mid = low + (high - low)/2;
-          if( ( mid == 0 || e > arr[mid-1].x) && arr[mid].x == e)
+          if( ( mid == 0 || e > arr.get(mid-1).x) && arr.get(mid).x == e)
           return mid;
-          else if(e > arr[mid].x)
+          else if(e > arr.get(mid).x)
           return first(arr, (mid + 1), high, e, n, mode);
           else
           return first(arr, low, (mid -1), e, n, mode);
@@ -31,9 +28,9 @@ public class Player {
 
         else{
           int mid = low + (high - low)/2;
-          if( ( mid == 0 || e > arr[mid-1].y) && arr[mid].y == e)
+          if( ( mid == 0 || e > arr.get(mid-1).y) && arr.get(mid).y == e)
           return mid;
-          else if(e > arr[mid].y)
+          else if(e > arr.get(mid).y)
           return first(arr, (mid + 1), high, e, n, mode);
           else
           return first(arr, low, (mid -1), e, n, mode);
@@ -45,24 +42,24 @@ public class Player {
   /* if x is present in arr[] then returns the index of
   LAST occurrence of x in arr[0..n-1], otherwise
   returns -1 */
-  public int last(TestTile[] arr, int low, int high, int e, int n, char mode)
+  public int last(ArrayList<TestTile> arr, int low, int high, int e, int n, char mode)
   {
       if (high >= low)
       {
         if (mode == 'x'){
           int mid = low + (high - low)/2;
-          if (( mid == n-1 || e < arr[mid+1].x) && arr[mid].x == e)
+          if (( mid == n-1 || e < arr.get(mid+1).x) && arr.get(mid).x == e)
           return mid;
-          else if (e < arr[mid].x)
+          else if (e < arr.get(mid).x)
           return last(arr, low, (mid -1), e, n, mode);
           else
           return last(arr, (mid + 1), high, e, n, mode);
         }
         else{
           int mid = low + (high - low)/2;
-          if (( mid == n-1 || e < arr[mid+1].y) && arr[mid].y == e)
+          if (( mid == n-1 || e < arr.get(mid+1).y) && arr.get(mid).y == e)
                return mid;
-          else if (e < arr[mid].y)
+          else if (e < arr.get(mid).y)
               return last(arr, low, (mid -1), e, n, mode);
           else
               return last(arr, (mid + 1), high, e, n, mode);
@@ -71,15 +68,36 @@ public class Player {
   return -1;
   }
 
-  boolean isCollide(TestTile other){
-    float deltay = abs(other.y - ycoor) * 60;
-    float deltax = abs(other.x - xcoor) * 60;
-    float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
-    println(dist + ", " + (hitboxrad + other.radius));
-    if (dist < hitboxrad + other.radius){
-      return true;
+  void isCollide(TestTile other){
+    if (other.isStone){
+      float deltay = abs(other.y - currtiley);
+      float deltax = abs(other.x - currtilex);
+      float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
+      println(dist + ", " + (hitboxrad + other.radius));
+      if (dist < hitboxrad + other.radius){
+        // println("AAAAAAA");
+        // return true;
+        // System.exit(1);
+        if(other.x > currtilex){
+          keyz[2] = false;
+        }
+        else if(other.x < currtilex){
+          keyz[0] = false;
+        }
+
+        if (other.y < currtiley){
+          keyz[3] = false;
+          println("CANT DO A MOVE UP");
+        }
+        else if (other.y > currtiley){
+          keyz[1] = false;
+
+          println("CANT DO A MOVE DOWN: \n reeeeee");
+        }
+      }
+
     }
-    return false;
+    // return false;
   }
 
 
@@ -93,6 +111,16 @@ public class Player {
     fill(255,0,0);
     text("HP: " + hp, width - 60, 15);
     text("Stamina: " + (int)stamina, width - 90, 30);
+    text("I'm at" + currtilex + ", " + currtiley, 450, 320);
+    TestTile other = testarr[3][3];
+
+    float deltay = abs(other.y - currtiley);
+    float deltax = abs(other.x - currtilex);
+    float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
+    fill(#000000);
+    text("My distance to 3, 3 is: " + dist, 450, 330);
+    text("I'm at" + currtilex + ", " + currtiley, 450, 340);
+    text("3, 3 is at: " + other.x + ", " + other.y, 450, 350);
   }
   void updateArmor(){
     float armor = 0.00;
@@ -106,14 +134,24 @@ public class Player {
     if (equipped[4] != null) dmg = parseInt(equipped[4].getInfo()[1]);
     else dmg = 1;
   }
+<<<<<<< HEAD
   void interact() {
+=======
+  void punch() {
+    int tileDamageDealt = 5;
+>>>>>>> e4e32e1002e2f0d92b6a5d37d463f072dd0a367d
     if (direction == "north") {
+      testarr[round(currtilex)][round(currtiley-1)].health -= tileDamageDealt;
     }
     if (direction == "south") {
+      testarr[round(currtilex)][round(currtiley+1)].health -= tileDamageDealt;
     }
     if (direction == "east") {
+      testarr[round(currtilex + 1)][round(currtiley)].health -= tileDamageDealt;
     }
     if (direction == "west") {
+      testarr[round(currtilex - 1)][round(currtiley)].health -= tileDamageDealt;
+
     }
   }
 }
