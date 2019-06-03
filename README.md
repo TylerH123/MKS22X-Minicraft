@@ -19,7 +19,7 @@ o to interact with the item
 w,s to move pointer up and down
 u to unequip the current tool
 ```
-While invetory is closed:
+While inventory is closed:
 ```
 o to punch or use equipped tool or place station
 w,a,s,d to move around
