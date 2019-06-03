@@ -1,7 +1,7 @@
 public class TestTile{
 
   int x, y;
-  float radius = 0.707;
+  float radius = 0.5;
   boolean isStone;
   public TestTile(int x, int y){
     this.x = x;
@@ -14,8 +14,8 @@ public class TestTile{
       rect((x*60) + dx - 30, (y*60) + dy, 60, 60);
       return;
     }
-    fill(100, 50, 118);
-    rect((x*60) + dx - 30, (y*60) + dy, 60, 60);
+    // fill(100, 50, 118);
+    // rect((x*60) + dx - 30, (y*60) + dy, 60, 60);
     imageMode(CENTER);
     image(grassImg,(x*60)+dx - 30,(y*60)+dy);
   }
