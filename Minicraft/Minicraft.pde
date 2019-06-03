@@ -109,6 +109,8 @@ void draw() {
   leanx = 0;
   leany = 0;
 
+  currtilex = 9-(dx/60) - 1;
+  currtiley = 6-(dy/60) - 1;
 
   int relevantxstart = p.first(stonesx, 0, stonesx.size() - 1, (int)currtilex, stonesx.size(), 'x');
   int relevantxend = p.last(stonesx, 0, stonesx.size() - 1, (int)currtilex, stonesx.size(), 'x');
@@ -116,9 +118,15 @@ void draw() {
   int relevantystart = p.first(stonesy, 0, stonesy.size() - 1, (int)currtiley, stonesy.size(), 'y');
   int relevantyend = p.last(stonesy, 0, stonesy.size() - 1, (int)currtiley, stonesy.size(), 'y');
 
+  for(int x = (int)currtilex - 2; x < currtilex + 2; x++){
+    for(int y = (int)currtiley - 2; y < currtiley + 2; y++){
+      if (x > 0 && y > 0 && x < 100 && y < 100){
+        p.isCollide(testarr[x][y]);
+      }
+    }
+  }
 
-
-  p.isCollide(testarr[3][3]);
+  // p.isCollide(testarr[3][3]);
 
   if (!isPaused) {
     inv.ypos = 0;
