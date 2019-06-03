@@ -78,7 +78,6 @@ void setup() {
   Collections.sort(stonesx, xs);
   Collections.sort(stonesy, ys);
 
-
   Armor a = new Armor(2, 2);
   itemList[2] = a;
   Armor b = new Armor(2, 1);
@@ -109,6 +108,15 @@ void draw() {
   }
   leanx = 0;
   leany = 0;
+
+
+  int relevantxstart = p.first(stonesx, 0, stonesx.size() - 1, (int)currtilex, stonesx.size(), 'x');
+  int relevantxend = p.last(stonesx, 0, stonesx.size() - 1, (int)currtilex, stonesx.size(), 'x');
+
+  int relevantystart = p.first(stonesy, 0, stonesy.size() - 1, (int)currtiley, stonesy.size(), 'y');
+  int relevantyend = p.last(stonesy, 0, stonesy.size() - 1, (int)currtiley, stonesy.size(), 'y');
+
+
 
   p.isCollide(testarr[3][3]);
 
