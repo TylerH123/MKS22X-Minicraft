@@ -1,7 +1,7 @@
 public class TestTile{
 
   int x, y;
-  float radius = 1.414;
+  float radius = 0.707;
   boolean isStone;
   public TestTile(int x, int y){
     this.x = x;
@@ -11,13 +11,13 @@ public class TestTile{
   void display(){
     if(isStone){
       fill(157, 180, 119);
-      rect((x*60) + dx, (y*60) + dy, 60, 60);
+      rect((x*60) + dx - 30, (y*60) + dy, 60, 60);
       return;
     }
     fill(100, 50, 118);
-    rect((x*60) + dx, (y*60) + dy, 60, 60);
+    rect((x*60) + dx - 30, (y*60) + dy, 60, 60);
     imageMode(CENTER);
-    image(grassImg,(x*60)+dx,(y*60)+dy);
+    image(grassImg,(x*60)+dx - 30,(y*60)+dy);
   }
 
   String getName(){
