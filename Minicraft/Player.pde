@@ -12,9 +12,6 @@ public class Player {
   public Player() {
   }
 
-  int currtiley = 6-(int)dy/50 - 1;
-  int currtilex = 9-(int)dx/50 - 1;
-
   public int first(ArrayList<TestTile>arr, int low, int high, int e, int n, char mode)
   {
       if(high >= low)
@@ -71,15 +68,21 @@ public class Player {
   return -1;
   }
 
-  boolean isCollide(TestTile other){
+  void isCollide(TestTile other){
     float deltay = abs(other.y - ycoor) * 60;
     float deltax = abs(other.x - xcoor) * 60;
     float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
     println(dist + ", " + (hitboxrad + other.radius));
     if (dist < hitboxrad + other.radius){
-      return true;
+      // return true;
+      if (other.y > ycoor){
+        keyz[3] = false;
+      }
+      if (other.y < ycoor){
+        keyz[1] = false;
+      }
     }
-    return false;
+    // return false;
   }
 
 
@@ -93,6 +96,16 @@ public class Player {
     fill(255,0,0);
     text("HP: " + hp, width - 60, 15);
     text("Stamina: " + (int)stamina, width - 90, 30);
+    text("I'm at" + currtilex + ", " + currtiley, 450, 320);
+    TestTile other = testarr[3][3];
+
+    float deltay = abs(other.y - currtiley);
+    float deltax = abs(other.x - currtilex);
+    float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
+    fill(#000000);
+    text("My distance to 3, 3 is: " + dist, 450, 330);
+    text("I'm at" + currtilex + ", " + currtiley, 450, 340);
+    text("3, 3 is at: " + other.x + ", " + other.y, 450, 350);
   }
   void updateArmor(){
     float armor = 0.00;
