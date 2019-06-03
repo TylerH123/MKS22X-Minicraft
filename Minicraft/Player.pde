@@ -1,6 +1,6 @@
 public class Player {
 
-  float hitboxrad = 28.284;
+  float hitboxrad = .94;
   // static int x = 0;
   int dmg = 1;
   int hp = 100;
@@ -69,16 +69,18 @@ public class Player {
   }
 
   void isCollide(TestTile other){
-    float deltay = abs(other.y - ycoor) * 60;
-    float deltax = abs(other.x - xcoor) * 60;
+    float deltay = abs(other.y - ycoor);
+    float deltax = abs(other.x - xcoor);
     float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
-    println(dist + ", " + (hitboxrad + other.radius));
+    // println(dist + ", " + (hitboxrad + other.radius));
     if (dist < hitboxrad + other.radius){
+      println("AAAAAAA");
       // return true;
+      // System.exit(1);
       if (other.y > ycoor){
         keyz[3] = false;
       }
-      if (other.y < ycoor){
+      else if (other.y < ycoor){
         keyz[1] = false;
       }
     }
