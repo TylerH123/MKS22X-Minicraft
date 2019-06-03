@@ -136,6 +136,7 @@ public class Player {
   }
   void punch() {
     if (direction == "north") {
+      testarr[(int)currtilex][(int)currtiley-1].health -= 5;
     }
     if (direction == "south") {
     }
