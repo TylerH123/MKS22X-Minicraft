@@ -33,6 +33,7 @@ Item[] itemList = new Item[25];
 ArrayList<Station> stations = new ArrayList<Station>();
 void setup() {
   rectMode(CENTER);
+  shapeMode(CENTER);
   size(1000, 750);
   noStroke();
   smooth();
