@@ -69,30 +69,33 @@ public class Player {
   }
 
   void isCollide(TestTile other){
-    float deltay = abs(other.y - currtiley);
-    float deltax = abs(other.x - currtilex);
-    float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
-    println(dist + ", " + (hitboxrad + other.radius));
-    if (dist < hitboxrad + other.radius){
-      // println("AAAAAAA");
-      // return true;
-      // System.exit(1);
-      if(other.x > currtilex){
-        keyz[2] = false;
-      }
-      else if(other.x < currtilex){
-        keyz[0] = false;
+    if (other.isStone){
+      float deltay = abs(other.y - currtiley);
+      float deltax = abs(other.x - currtilex);
+      float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
+      println(dist + ", " + (hitboxrad + other.radius));
+      if (dist < hitboxrad + other.radius){
+        // println("AAAAAAA");
+        // return true;
+        // System.exit(1);
+        if(other.x > currtilex){
+          keyz[2] = false;
+        }
+        else if(other.x < currtilex){
+          keyz[0] = false;
+        }
+
+        if (other.y < currtiley){
+          keyz[3] = false;
+          println("CANT DO A MOVE UP");
+        }
+        else if (other.y > currtiley){
+          keyz[1] = false;
+
+          println("CANT DO A MOVE DOWN: \n reeeeee");
+        }
       }
 
-      if (other.y < currtiley){
-        keyz[3] = false;
-        println("CANT DO A MOVE UP");
-      }
-      else if (other.y > currtiley){
-        keyz[1] = false;
-
-        println("CANT DO A MOVE DOWN: \n reeeeee");
-      }
     }
     // return false;
   }
