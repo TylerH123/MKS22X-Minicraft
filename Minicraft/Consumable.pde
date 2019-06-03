@@ -33,5 +33,5 @@ public class Consumable extends Item {
     if (p.hp > 100) p.hp = 100;
   }
   void place() {
-  };
+  }
 }
