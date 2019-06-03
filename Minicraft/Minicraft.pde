@@ -72,10 +72,9 @@ void setup() {
     }
   }
   testarr[3][3].makeStone();
-<<<<<<< HEAD
   stones.add(testarr[3][3]);
   Armor a = new Armor(14, 2);
-=======
+
   stonesx.add(testarr[3][3]);
   stonesy.add(testarr[3][3]);
 
@@ -86,7 +85,7 @@ void setup() {
   Collections.sort(stonesy, ys);
 
   Armor a = new Armor(2, 2);
->>>>>>> e4e32e1002e2f0d92b6a5d37d463f072dd0a367d
+
   itemList[2] = a;
   Armor b = new Armor(15, 1);
   itemList[1] = b;
@@ -336,7 +335,7 @@ void keyPressed() {
             }
           }
         } 
-      }
+      }  
     }
   }
 }
