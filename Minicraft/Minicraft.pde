@@ -77,7 +77,7 @@ void setup() {
   Collections.sort(stonesx, xs);
   Collections.sort(stonesy, ys);
 
-  
+
   Armor a = new Armor(2, 2);
   itemList[2] = a;
   Armor b = new Armor(2, 1);
@@ -100,14 +100,16 @@ void draw() {
   background(#256d7b);
   stroke(#000000, 50);
   strokeWeight(2);
-  for (int x = 0; x < 10; x++) {
-    for (int y = 0; y < 10; y++) {
+  for (int x = 0; x < 100; x++) {
+    for (int y = 0; y < 100; y++) {
       // t[x][y].display();
       testarr[x][y].display();
     }
   }
   leanx = 0;
   leany = 0;
+
+  p.isCollide(testarr[3][3]);
 
   if (!isPaused) {
     inv.ypos = 0;
@@ -164,15 +166,12 @@ void draw() {
   text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
-  currtilex = 9-(dx/50);
-  currtiley = 6-(dy/50);
+  currtilex = 9-(dx/60) - 1;
+  currtiley = 6-(dy/60) - 1;
   xcoor = (dx/60);
   ycoor = (dy/60);
   // Tile currtile = t[currtilex][currtiley-1];
   try {
-    TestTile currtile = testarr[(int)currtilex][(int)currtiley-1];
-
-    text(currtile.getName()+"", 10, 30);
     text("You're at" + currtilex + ", " + currtiley, 10, 40);
   }
   catch(Exception e) {
