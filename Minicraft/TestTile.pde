@@ -2,13 +2,18 @@ public class TestTile{
 
   int x, y;
   float radius = 0.5;
+  float health;
   boolean isStone;
-  public TestTile(int x, int y){
+  public TestTile(int x, int y, int health){
     this.x = x;
     this.y = y;
+    this.health = health;
   }
 
   void display(){
+    if (health <= 0){
+      isStone = false;
+    }
     if(isStone){
       fill(157, 180, 119);
       rect((x*60) + dx - 30, (y*60) + dy, 60, 60);
