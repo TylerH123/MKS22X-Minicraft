@@ -10,7 +10,7 @@ boolean stationMenu = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
 //images for tree, stone, and grass
-PImage treeImg, stoneImg, grassImg;
+PImage treeImg, stoneImg, grassImg, workBImg;
 
 static float currtilex;
 static float currtiley;
@@ -47,9 +47,11 @@ void setup() {
   treeImg = loadImage("tree.png");
   stoneImg = loadImage("stone.png");
   grassImg = loadImage("grass.png");
+  workBImg = loadImage("workbench.png");
   treeImg.resize(60, 60);
   stoneImg.resize(60, 60);
   grassImg.resize(60, 60);
+  workBImg.resize(50,50);
   
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {

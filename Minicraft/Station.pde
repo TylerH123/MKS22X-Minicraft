@@ -53,7 +53,8 @@ public class Station extends Item {
   void display() {
     if (isPlaced) {
       fill(c);
-      rect(x + px, y + py, 50, 50);
+      image(workBImg,x + px, y + py);
+      //rect(x + px, y + py, 50, 50);
     }
     text("I'm at:" + x/50 + ", " + y/50, x + px, y + py);
   }
