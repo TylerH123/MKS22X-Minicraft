@@ -49,6 +49,7 @@ public class Station extends Item {
     }
     basic = name;
   }
+  //display the station if placed
   void display() {
     if (isPlaced) {
       fill(c);
@@ -131,12 +132,17 @@ public class Station extends Item {
       y = 300;
     }
   }
+  //returns an array containing id and name
   String[] getInfo() {
     String[] info = new String[4];
     info[0] = name();
     info[1] = id + "";
     return info;
   }
+  /**if not placed, then player equips the station or swaps the station if player is currently holding one
+   *else if placed and interacted, then display the station menu
+   *@param idx is the index of the station in items array
+   **/
   void interact(int idx) {
     if (!isPlaced) {
       if (p.equipped[5] == null) {
@@ -160,6 +166,8 @@ public class Station extends Item {
       display(id);
     }
   }
+  //interact for station menus 
+  //if station is workbench then craft 
   void interact() {
     if (id == 5) {
       int rssID = 0;
@@ -170,14 +178,18 @@ public class Station extends Item {
       craft(craftables[current].id, rssID);
     }
   }
+  //return name
   String name() {
     return name;
   }
+  //station can interact
   boolean canInteract() {
     return true;
   }
   void check() {
   }
+  //display station menu
+  //@param s is the station
   void display(int s) {
     fill(255);
     rect(450, 150, 200, 230);
@@ -201,18 +213,22 @@ public class Station extends Item {
       }
     }
   }
+  //moves the pointer in station menu up
   void moveUp() {
     cypos -= 10;
     current--;
   }
+  //moves the pointer in station menu down 
   void moveDown() {
     cypos += 10;
     current++;
   }
+  //moves the second pointer in station menu up
   void moveUp2() {
     c2ypos -= 10;
     current2--;
   }
+  //moves the second pointer in the station menu down
   void moveDown2() {
     c2ypos += 10;
     current2++;

@@ -85,14 +85,17 @@ public class Inventory {
   void removeAmt(int itemID, int amt) {
     inventory[itemID] -= amt;
   }
+  //moves pointer up
   void moveUp() {
     ypos -= 10;
     current--;
   }
+  //moves pointer down
   void moveDown() {
     ypos += 10;
     current++;
   }
+  //use the item that the pointer is pointing at
   void use() {
     if (items.size() > 0) {
       if (items.get(current).canInteract()) {
@@ -100,6 +103,7 @@ public class Inventory {
       }
     }
   }
+  //unequip the current tool
   void unequip() {
     if (p.equipped[4] != null) {
       int tempID = parseInt(p.equipped[4].getInfo()[2]);
@@ -110,6 +114,7 @@ public class Inventory {
       updateInventory();
     }
   }
+  //unequips the station
   void returnToInv() {
     if (p.equipped[5] != null) {
       int tempID = parseInt(p.equipped[5].getInfo()[1]);
@@ -119,6 +124,8 @@ public class Inventory {
       updateInventory();
     }
   }
+  //unequips the armor
+  //@param armorID is the slot that gets unequipped   
   void unequipArmor(int armorID) {
     if (p.equipped[armorID-1] != null) {
       Armor a = new Armor(parseInt(p.equipped[armorID].getInfo()[2]), armorID);

@@ -6,18 +6,24 @@ public class Consumable extends Item {
     if (id == 20) name = "bread";
     inv.inventory[id]++;
   }
+  //returns name of conssumable
   String name() {
     return name;
   }
+  //consumable can interact
   boolean canInteract() {
     return true;
   }
+  //returns an array containing id and name
   String[] getInfo() {
     String[] info = new String[2];
     info[0] = id + ""; 
     info[1] = name; 
     return info;
   }
+  /**use the consumable to heal yourself
+   *@param idx is the index of the consumable in items array
+   **/
   void interact(int idx) {
     inv.removeAmt(id, 1);
     if (inv.inventory[id] == 0) itemList[id] = null;

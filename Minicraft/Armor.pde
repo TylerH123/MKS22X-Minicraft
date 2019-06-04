@@ -4,7 +4,7 @@ public class Armor extends Item {
   float dmgReduc;
   int pieceStrength;
   int tier; 
-  Armor (int id){
+  Armor (int id) {
     this.id = id;
     if (id == 1) {
       pieceStrength = 2;
@@ -22,7 +22,7 @@ public class Armor extends Item {
       pieceStrength = 1;
       piece = "boots";
     }
-    basic = piece; 
+    basic = piece;
   }
   Armor(int type, int id) {
     this.type = type;
@@ -51,6 +51,7 @@ public class Armor extends Item {
     if (type == 18) tier = 4; 
     dmgReduc = .015 * (tier * pieceStrength) * 100;
   }
+  //returns name of armor
   String name() {
     String typeName = "";
     if (type == 14) typeName = "wooden";
@@ -59,6 +60,7 @@ public class Armor extends Item {
     if (type == 18) typeName = "moodstone";
     return typeName + " " + piece;
   }
+      //returns an array containing name, damage reduction, tier of the armor, and the piece
   String[] getInfo() {
     String[] info = new String[4];
     info[0] = name();
@@ -67,6 +69,10 @@ public class Armor extends Item {
     info[3] = piece; 
     return info;
   }
+  /** checks to see if armor slot for this armor is filled, 
+   *if filled, unequip it and equip this 
+   *@param idx is the index of this armor in the items array
+   **/
   void interact(int idx) {
     if (p.equipped[this.id - 1] == null) {
       inv.removeAmt(id, 1);
@@ -80,12 +86,12 @@ public class Armor extends Item {
         inv.ypos -= 10; 
         inv.y -= 10;
       }
-    }
-    else {
+    } else {
       inv.unequipArmor(this.id);
       interact(idx);
     }
   }
+  //armor can interact 
   boolean canInteract() {
     return true;
   }

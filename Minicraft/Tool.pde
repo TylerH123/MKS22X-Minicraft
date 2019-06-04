@@ -19,7 +19,7 @@ public class Tool extends Item {
     if (id == 13) {
       piece = "sword";
     }
-    basic = piece; 
+    basic = piece;
   }
   Tool(int type, int id) {
     this.id = id; 
@@ -47,6 +47,7 @@ public class Tool extends Item {
     basic = piece; 
     inv.inventory[id]++;
   }
+  //return name of tool
   String name() {
     String typeName = "";
     if (type == 1) typeName = "wooden";
@@ -54,6 +55,7 @@ public class Tool extends Item {
     if (type == 3) typeName = "moodstone"; 
     return typeName + " " + piece;
   }
+  //returns an array containing id, name, damage, and tier 
   String[] getInfo() {
     String[] info = new String[4];
     info[0] = name();
@@ -62,6 +64,9 @@ public class Tool extends Item {
     info[3] = type + "";
     return info;
   }
+  /**equip the tool or swap the tool
+   *@param idx is the index of the tool in items array
+   **/
   void interact(int idx) {
     if (p.equipped[5] == null) {
       if (p.equipped[4] == null) {
@@ -82,6 +87,7 @@ public class Tool extends Item {
       }
     }
   }
+  //tool can interact
   boolean canInteract() {
     return true;
   }
