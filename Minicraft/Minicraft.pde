@@ -134,6 +134,15 @@ void draw() {
     }
   }
 
+  for(Station std: stations){
+    // int sx = round(std.x);
+    // int sy = round(std.y);
+    // float dist = distcalc(sx, sy, currtilex, currtiley);
+    // if(p.hitboxrad + std.radius < dist){
+    //   System.exit(0);
+    // }
+  }
+
   // p.isCollide(testarr[3][3]);
 
   if (!isPaused) {
@@ -343,4 +352,10 @@ void keyReleased() {
   if (key == 's')  keyz[1] = false;
   if (key == 'd')  keyz[2] = false;
   if (key == 'w')  keyz[3] = false;
+}
+
+static float distcalc(float p1x, float p1y, float p2x, float p2y){
+  float deltax = abs(p1x - p2x);
+  float deltay = abs(p1y - p2y);
+  return sqrt(pow(deltax, 2) + pow(deltay, 2));
 }
