@@ -3,6 +3,7 @@ public class Armor extends Item {
   String piece;
   float dmgReduc;
   int pieceStrength;
+  int tier; 
   Armor (int id){
     this.id = id;
     if (id == 1) {
@@ -44,7 +45,11 @@ public class Armor extends Item {
     }
     basic = piece; 
     inv.inventory[id]++;
-    dmgReduc = .015 * (type * pieceStrength) * 100;
+    if (type == 14) tier = 1; 
+    if (type == 15) tier = 2; 
+    if (type == 17) tier = 3; 
+    if (type == 18) tier = 4; 
+    dmgReduc = .015 * (tier * pieceStrength) * 100;
   }
   String name() {
     String typeName = "";

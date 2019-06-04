@@ -44,7 +44,7 @@ void setup() {
   stoneImg = loadImage("stone.png");
   grassImg = loadImage("grass.png");
   treeImg.resize(50, 50);
-  stoneImg.resize(50, 50);
+  stoneImg.resize(60, 60);
   grassImg.resize(60, 60);
   // for (int i = 0; i < 100; i++) {
   //   for (int j = 0; j < 100; j++) {

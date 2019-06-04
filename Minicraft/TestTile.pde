@@ -15,8 +15,9 @@ public class TestTile{
       isStone = false;
     }
     if(isStone){
-      fill(157, 180, 119);
-      rect((x*60) + dx - 30, (y*60) + dy, 60, 60);
+      //fill(157, 180, 119);
+      image(grassImg,(x*60) + dx - 30, (y*60)+dy);
+      image(stoneImg,(x*60) + dx - 30, (y*60) + dy);
       return;
     }
     // fill(100, 50, 118);

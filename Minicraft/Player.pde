@@ -131,7 +131,7 @@ public class Player {
   void interact() {
   }
   void punch() {
-    int tileDamageDealt = 5;
+    int tileDamageDealt = dmg;
     if (direction == "north") {
       testarr[round(currtilex)][round(currtiley-1)].health -= tileDamageDealt;
     }
