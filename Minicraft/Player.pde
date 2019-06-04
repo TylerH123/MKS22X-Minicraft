@@ -131,18 +131,21 @@ public class Player {
   void interact() {
   }
   void punch() {
-    int tileDamageDealt = dmg;
-    if (direction == "north") {
-      testarr[round(currtilex)][round(currtiley-1)].health -= tileDamageDealt;
-    }
-    if (direction == "south") {
-      testarr[round(currtilex)][round(currtiley+1)].health -= tileDamageDealt;
-    }
-    if (direction == "east") {
-      testarr[round(currtilex + 1)][round(currtiley)].health -= tileDamageDealt;
-    }
-    if (direction == "west") {
-      testarr[round(currtilex - 1)][round(currtiley)].health -= tileDamageDealt;
+    if (stamina > 10) {
+      int tileDamageDealt = dmg;
+      stamina -= 10; 
+      if (direction == "north") {
+        testarr[round(currtilex)][round(currtiley-1)].health -= tileDamageDealt;
+      }
+      if (direction == "south") {
+        testarr[round(currtilex)][round(currtiley+1)].health -= tileDamageDealt;
+      }
+      if (direction == "east") {
+        testarr[round(currtilex + 1)][round(currtiley)].health -= tileDamageDealt;
+      }
+      if (direction == "west") {
+        testarr[round(currtilex - 1)][round(currtiley)].health -= tileDamageDealt;
+      }
     }
   }
 }
