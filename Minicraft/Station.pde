@@ -11,6 +11,7 @@ public class Station extends Item {
   int current = 0;
   int current2 = 0;
   float radius = 0.589;
+  float worldx, worldy;
   Station(int station) {
     id = station;
     //workbench
@@ -54,8 +55,8 @@ public class Station extends Item {
     if (isPlaced) {
       fill(c);
       rect(x + px, y + py, 50, 50);
+      text("I'm at: " + worldx + ", " + worldy, x + px, y + py - 10);
     }
-    text("I'm at:" + x/50 + ", " + y/50, x + px, y + py);
   }
   /**first, checks your inventory to see if the item can be created. then creates it
    @param itemID is the id of the item you are trying to create
@@ -131,6 +132,26 @@ public class Station extends Item {
       x = 400;
       y = 300;
     }
+
+    if (direction.equals("north")){
+      worldx = currtilex;
+      worldy = currtiley - 1;
+    }
+
+    if (direction.equals("south")){
+      worldx = currtilex;
+      worldy = currtiley + 1;
+    }
+
+    if (direction.equals("east")){
+      worldx = currtilex + 1;
+      worldy = currtiley;
+    }
+
+    if (direction.equals("west")){
+      worldx = currtilex - 1;
+      worldy = currtiley;
+    }
   }
   //returns an array containing id and name
   String[] getInfo() {
@@ -140,7 +161,7 @@ public class Station extends Item {
     return info;
   }
   /**if not placed, then player equips the station or swaps the station if player is currently holding one
-   *else if placed and interacted, then display the station menu
+   *else if placed and interacted, then ay the station menu
    *@param idx is the index of the station in items array
    **/
   void interact(int idx) {
@@ -166,8 +187,8 @@ public class Station extends Item {
       display(id);
     }
   }
-  //interact for station menus 
-  //if station is workbench then craft 
+  //interact for station menus
+  //if station is workbench then craft
   void interact() {
     if (id == 5) {
       int rssID = 0;
@@ -218,7 +239,7 @@ public class Station extends Item {
     cypos -= 10;
     current--;
   }
-  //moves the pointer in station menu down 
+  //moves the pointer in station menu down
   void moveDown() {
     cypos += 10;
     current++;
