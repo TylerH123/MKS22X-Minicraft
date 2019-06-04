@@ -142,3 +142,8 @@ Finally, I made the choice to keep all calculations in terms of the coordinates 
 ### Moody
 Realized that there was a second draw for a rectangle under every grass tile and removed that. This sped up the game immensely. Rather than binary searching all tiles, player
 now checks tiles in a 3 by 3 radius for collision. Proper colliding is also finally implemented.
+
+
+## 6-4-19
+### Tyler
+Today, I worked on the game class. I added a new key press, p. By pressing p while a station menu is displayed allows you to pickup the station. I also added comments to all the classes I worked on. 
