@@ -317,6 +317,13 @@ void keyPressed() {
         inv.returnToInv();
       }
     }
+    if (key == 'p' && stationMenu) {
+      stationMenu = false; 
+      currentStation.isPlaced = false; 
+      inv.inventory[currentStation.id]++;
+      itemList[currentStation.id] = currentStation; 
+      inv.items.add(currentStation);
+    }
     if (key == CODED && stationMenu) {
       if (keyCode == DOWN) {
         if ((currentStation.current >= 0 && currentStation.current <= 3) || (currentStation.current >= 8 && currentStation.current <= 12)) {
