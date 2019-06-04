@@ -13,7 +13,6 @@ i to open inventory
 ```
 While inventory is opened:
 ```
-<<<<<<< HEAD
 o to interact with the item 
 w,s to move pointer up and down 
 u to unequip the current tool 
@@ -24,12 +23,8 @@ While station menu is opened:
 o to interact with the itme
 w,s to move pointer up and down
 ↑,↓ to move second pointer up and down
-i to close inventory
-=======
-o to interact with the item
-w,s to move pointer up and down
-u to unequip the current tool
->>>>>>> e4e32e1002e2f0d92b6a5d37d463f072dd0a367d
+p to pickup the station
+i to close station menu
 ```
 While invetory is closed:
 ```
