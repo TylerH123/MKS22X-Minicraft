@@ -1,6 +1,6 @@
 public class Station extends Item {
   String name;
-  color c;
+  PImage img;
   boolean isPlaced = false;
   float x, y;
   float px, py;
@@ -15,7 +15,7 @@ public class Station extends Item {
     id = station;
     //workbench
     if (station == 5) {
-      c = color(#654321);
+      img = workBImg;
       name = "workbench";
     }
     if (station == 6) {
@@ -52,9 +52,7 @@ public class Station extends Item {
   //display the station if placed
   void display() {
     if (isPlaced) {
-      fill(c);
-      image(workBImg,x + px, y + py);
-      //rect(x + px, y + py, 50, 50);
+      image(img, x + px, y + py);
     }
     text("I'm at:" + x/50 + ", " + y/50, x + px, y + py);
   }
