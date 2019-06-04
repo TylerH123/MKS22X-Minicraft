@@ -98,7 +98,7 @@ void setup() {
   Station s = new Station(5);
   itemList[5] = s;
   stations.add(s);
-  itemList[14] = new Resource(14,100); 
+  itemList[14] = new Resource(14,100);
   Consumable ap = new Consumable(19);
   itemList[19] = ap;
 }
@@ -231,6 +231,7 @@ void keyPressed() {
       keyz[5] = !keyz[5];
     }
     if (key == 'o') {
+      p.punch();
       if (p.equipped[5] != null) p.equipped[5].place();
       else p.interact();
     }
@@ -243,7 +244,7 @@ void keyPressed() {
       inv.current = 0;
     } else {
       stationMenu = !stationMenu;
-      isPaused = !isPaused; 
+      isPaused = !isPaused;
     }
   }
 
@@ -266,8 +267,8 @@ void keyPressed() {
           currentStation.moveUp();
           //System.out.println(currentStation.current);
           if (currentStation.current < 0) {
-            currentStation.cy = (craftables.length - 1) * 10 + 40; 
-            currentStation.cypos = (craftables.length - 1) * 10; 
+            currentStation.cy = (craftables.length - 1) * 10 + 40;
+            currentStation.cypos = (craftables.length - 1) * 10;
             currentStation.current = craftables.length - 1;
           }
         }
@@ -286,11 +287,11 @@ void keyPressed() {
         }
       } else {
         if (currentStation.cy + 10 <= 365) {
-          currentStation.cy += 10; 
+          currentStation.cy += 10;
           currentStation.moveDown();
           if (currentStation.current >= craftables.length) {
-            currentStation.cy = 40; 
-            currentStation.current = 0; 
+            currentStation.cy = 40;
+            currentStation.current = 0;
             currentStation.cypos = 0;
           }
         }
@@ -311,11 +312,11 @@ void keyPressed() {
       if (keyCode == DOWN) {
         if ((currentStation.current >= 0 && currentStation.current <= 3) || (currentStation.current >= 8 && currentStation.current <= 12)) {
           if (currentStation.c2y + 10 <= 365) {
-            currentStation.c2y += 10; 
+            currentStation.c2y += 10;
             currentStation.moveDown2();
             if (currentStation.current2 >= 4) {
-              currentStation.c2y = 40; 
-              currentStation.current2 = 0; 
+              currentStation.c2y = 40;
+              currentStation.current2 = 0;
               currentStation.c2ypos = 0;
             }
           }
@@ -327,13 +328,13 @@ void keyPressed() {
             currentStation.c2y -= 10;
             currentStation.moveUp2();
             if (currentStation.current2 < 0) {
-              currentStation.c2y = 70; 
-              currentStation.c2ypos = 30; 
+              currentStation.c2y = 70;
+              currentStation.c2ypos = 30;
               currentStation.current2 = 3;
             }
           }
-        } 
-      }  
+        }
+      }
     }
   }
 }
