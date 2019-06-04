@@ -1,14 +1,16 @@
 import java.util.Comparator;
 import java.util.Collections;
 
+//array of booleans for keys pressed 0-3 is for movement 4 is for inventory 5 is for sprinting
 boolean keyz[] = new boolean[6];
+//boolean to check if game is paused
 boolean isPaused = false;
+//boolean to check if a station menu is open
 boolean stationMenu = false;
 static boolean cannotwalk[] = new boolean[4];
 static float dx, dy;
+//images for tree, stone, and grass
 PImage treeImg, stoneImg, grassImg;
-// static int currtilex;
-// static int currtiley;
 
 static float currtilex;
 static float currtiley;
@@ -16,12 +18,15 @@ static float xcoor;
 static float ycoor;
 
 float leanx, leany;
-static Tile[][] t = new Tile[10][10];
 static ArrayList<TestTile> stonesx = new ArrayList<TestTile>();
 static ArrayList<TestTile> stonesy = new ArrayList<TestTile>();
+static ArrayList<TestTile> treesx = new ArrayList<TestTile>();
+static ArrayList<TestTile> treesy = new ArrayList<TestTile>();
 
 static TestTile[][] testarr= new TestTile[100][100];
+//inventory
 Inventory inv = new Inventory();
+//player
 Player p = new Player();
 //direction that player is facing
 String direction = "";
@@ -42,7 +47,7 @@ void setup() {
   treeImg = loadImage("tree.png");
   stoneImg = loadImage("stone.png");
   grassImg = loadImage("grass.png");
-  treeImg.resize(50, 50);
+  treeImg.resize(60, 60);
   stoneImg.resize(60, 60);
   grassImg.resize(60, 60);
   
@@ -59,6 +64,14 @@ void setup() {
       stonesy.add(testarr[x][y]);
     }
   }
+  for (int x = 17; x < 20; x++){
+    for (int y = 17; y < 20; y++){
+      testarr[x][y].makeTree();
+      treesx.add(testarr[x][y]);
+      treesy.add(testarr[x][y]);
+    }
+  }
+  
   testarr[3][3].makeStone();
   Armor a = new Armor(14, 2);
 
@@ -70,7 +83,9 @@ void setup() {
 
   Collections.sort(stonesx, xs);
   Collections.sort(stonesy, ys);
-
+  Collections.sort(treesx, xs);
+  Collections.sort(treesy, ys);
+  
   itemList[2] = a;
   Armor b = new Armor(15, 1);
   itemList[1] = b;
@@ -90,6 +105,8 @@ void setup() {
   itemList[19] = ap;
   Tool t3 = new Tool(2,9);
   itemList[9] = t3; 
+  Tool t4 = new Tool(2,10);
+  itemList[10] = t4;
 }
 
 void draw() {

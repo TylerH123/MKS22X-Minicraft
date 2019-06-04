@@ -91,6 +91,31 @@ public class Player {
         }
       }
     }
+    if (other.isTree) {
+      float deltay = abs(other.y - currtiley);
+      float deltax = abs(other.x - currtilex);
+      float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
+      println(dist + ", " + (hitboxrad + other.radius));
+      if (dist < hitboxrad + other.radius) {
+        // println("AAAAAAA");
+        // return true;
+        // System.exit(1);
+        if (other.x > currtilex) {
+          keyz[2] = false;
+        } else if (other.x < currtilex) {
+          keyz[0] = false;
+        }
+
+        if (other.y < currtiley) {
+          keyz[3] = false;
+          println("CANT DO A MOVE UP");
+        } else if (other.y > currtiley) {
+          keyz[1] = false;
+
+          println("CANT DO A MOVE DOWN: \n reeeeee");
+        }
+      }
+    }
     // return false;
   }
 
@@ -134,23 +159,48 @@ public class Player {
     if (stamina > 10) {
       stamina -= 5; 
       if (direction == "north") {
-        if (testarr[round(currtilex)][round(currtiley-1)].isStone){
-          if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))testarr[round(currtilex)][round(currtiley-1)].health -= dmg * 2;
+        if (testarr[round(currtilex)][round(currtiley-1)].isStone) {
+          if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))
+            testarr[round(currtilex)][round(currtiley-1)].health -= dmg * 2;
+        }
+        if (testarr[round(currtilex)][round(currtiley-1)].isTree) {
+          if (p.equipped[4] == null) 
+            testarr[round(currtilex)][round(currtiley-1)].health -= dmg;
+          else if (p.equipped[4].basic.equals("axe"))
+            testarr[round(currtilex)][round(currtiley-1)].health -= dmg * 2;
         }
       }
       if (direction == "south") {
-        if (testarr[round(currtilex)][round(currtiley+1)].isStone){
+        if (testarr[round(currtilex)][round(currtiley+1)].isStone) {
           if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))testarr[round(currtilex)][round(currtiley+1)].health -= dmg * 2;
+        }
+        if (testarr[round(currtilex)][round(currtiley+1)].isTree) {
+          if (p.equipped[4] == null) 
+            testarr[round(currtilex)][round(currtiley+1)].health -= dmg;
+          else if (p.equipped[4].basic.equals("axe"))
+            testarr[round(currtilex)][round(currtiley+1)].health -= dmg * 2;
         }
       }
       if (direction == "east") {
-        if (testarr[round(currtilex+1)][round(currtiley)].isStone){
+        if (testarr[round(currtilex+1)][round(currtiley)].isStone) {
           if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))testarr[round(currtilex+1)][round(currtiley)].health -= dmg * 2;
+        }
+        if (testarr[round(currtilex+1)][round(currtiley)].isTree) {
+          if (p.equipped[4] == null) 
+            testarr[round(currtilex+1)][round(currtiley)].health -= dmg;
+          else if (p.equipped[4].basic.equals("axe"))
+            testarr[round(currtilex+1)][round(currtiley-1)].health -= dmg * 2;
         }
       }
       if (direction == "west") {
-        if (testarr[round(currtilex-1)][round(currtiley-1)].isStone){
+        if (testarr[round(currtilex-1)][round(currtiley-1)].isStone) {
           if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))testarr[round(currtilex-1)][round(currtiley-1)].health -= dmg * 2;
+        }
+        if (testarr[round(currtilex-1)][round(currtiley)].isTree) {
+          if (p.equipped[4] == null) 
+            testarr[round(currtilex-1)][round(currtiley)].health -= dmg;
+          else if (p.equipped[4].basic.equals("axe"))
+            testarr[round(currtilex-1)][round(currtiley)].health -= dmg * 2;
         }
       }
     }
