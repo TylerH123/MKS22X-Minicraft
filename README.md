@@ -138,9 +138,7 @@ nearby stones. I'm also attempting to keep the calculations in terms of the pixe
 
 ## 6-2-19
 ### Tyler
-<<<<<<< HEAD
 Today, I worked on station, and game class. For station, I fixed the placement of the stations, so now after placing, stations do not move around. I also added a way for the player to craft the items they want. If the player already has the armor piece or tool in their inventory, the item will not be crafted. For the game class, I fixed up sprinting. It no longer uses twice as much stamina when moving diagonally. In addition, I added a new class called consumable. This class is for foods that player can eat to regain health. The consumable class has two different foods: apple and bread. Apple heals for 10 hp, while bread heals for 20. However, the player's health cannot go above 100. 
-=======
 Today, I worked on station, and game class. For station, I fixed the placement of the stations, so now after placing, stations do not move around. For the game class, I fixed up
 sprinting. It no longer uses twice as much stamina when moving diagonally.
 ### Moody
@@ -151,4 +149,3 @@ Finally, I made the choice to keep all calculations in terms of the coordinates 
 ### Moody
 Realized that there was a second draw for a rectangle under every grass tile and removed that. This sped up the game immensely. Rather than binary searching all tiles, player
 now checks tiles in a 3 by 3 radius for collision. Proper colliding is also finally implemented.
->>>>>>> e4e32e1002e2f0d92b6a5d37d463f072dd0a367d
