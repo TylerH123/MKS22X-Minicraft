@@ -72,7 +72,7 @@ void setup() {
     }
   }
   testarr[3][3].makeStone();
-  stones.add(testarr[3][3]);
+  //stones.add(testarr[3][3]);
   Armor a = new Armor(14, 2);
 
   stonesx.add(testarr[3][3]);
@@ -83,8 +83,6 @@ void setup() {
 
   Collections.sort(stonesx, xs);
   Collections.sort(stonesy, ys);
-
-  Armor a = new Armor(2, 2);
 
   itemList[2] = a;
   Armor b = new Armor(15, 1);
