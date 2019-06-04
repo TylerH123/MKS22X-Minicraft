@@ -2,14 +2,15 @@ public class Station extends Item {
   String name;
   color c;
   boolean isPlaced = false;
-  float x, y; 
-  float px, py; 
+  float x, y;
+  float px, py;
   int cy = 40;
   int c2y = 40;
-  int cypos = 0; 
-  int c2ypos = 0; 
+  int cypos = 0;
+  int c2ypos = 0;
   int current = 0;
-  int current2 = 0; 
+  int current2 = 0;
+  float radius = 0.589;
   Station(int station) {
     id = station;
     //workbench
@@ -26,7 +27,7 @@ public class Station extends Item {
     if (station == 8) {
       name = "oven";
     }
-    basic = name; 
+    basic = name;
     px = 0;
     py = 0;
     inv.inventory[id]++;
@@ -53,6 +54,7 @@ public class Station extends Item {
       fill(c);
       rect(x + px, y + py, 50, 50);
     }
+    text("I'm at:" + x/50 + ", " + y/50, x + px, y + py);
   }
   /**first, checks your inventory to see if the item can be created. then creates it
    @param itemID is the id of the item you are trying to create
@@ -111,9 +113,9 @@ public class Station extends Item {
    **/
   void place() {
     isPlaced = true;
-    p.equipped[5] = null; 
+    p.equipped[5] = null;
     if (direction.equals("north")) {
-      x = 450; 
+      x = 450;
       y = 250;
     }
     if (direction.equals("south")) {
@@ -140,12 +142,12 @@ public class Station extends Item {
       if (p.equipped[5] == null) {
         inv.removeAmt(id, 1);
         if (inv.inventory[id] == 0) itemList[id] = null;
-        p.equipped[5] = this; 
+        p.equipped[5] = this;
         if (inv.inventory[id] == 0) inv.items.remove(idx);
         inv.updateInventory();
         if (inv.current == inv.items.size() && inv.y - 10 > 275) {
           inv.current--;
-          inv.ypos -= 10; 
+          inv.ypos -= 10;
           inv.y -= 10;
         }
       } else {
@@ -153,18 +155,18 @@ public class Station extends Item {
         interact(idx);
       }
     } else if (stationMenu) {
-      currentStation = this; 
+      currentStation = this;
       inv.display();
       display(id);
     }
   }
   void interact() {
-    if (id == 5) {  
-      int rssID = 0; 
-      if (current2 == 0) rssID = 14; 
-      if (current2 == 1) rssID = 15; 
-      if (current2 == 2) rssID = 17; 
-      if (current2 == 3) rssID = 18; 
+    if (id == 5) {
+      int rssID = 0;
+      if (current2 == 0) rssID = 14;
+      if (current2 == 1) rssID = 15;
+      if (current2 == 2) rssID = 17;
+      if (current2 == 3) rssID = 18;
       craft(craftables[current].id, rssID);
     }
   }
@@ -184,7 +186,7 @@ public class Station extends Item {
       triangle(355, 40 + cypos, 355, 45 + cypos, 360, 42.5 + cypos);
       for (int i = 0; i < craftables.length; i++) {
         fill(0);
-        text(craftables[i].basic, 365, 48 + i * 10); 
+        text(craftables[i].basic, 365, 48 + i * 10);
         if ((current >= 0 && current <= 3) || (current >= 8 && current <= 12)) {
           fill(255, 0, 0);
           triangle(445, 40 + c2ypos, 445, 45 + c2ypos, 450, 42.5 + c2ypos);
@@ -208,11 +210,11 @@ public class Station extends Item {
     current++;
   }
   void moveUp2() {
-    c2ypos -= 10; 
+    c2ypos -= 10;
     current2--;
   }
   void moveDown2() {
-    c2ypos += 10; 
+    c2ypos += 10;
     current2++;
   }
 }
