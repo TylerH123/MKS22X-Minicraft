@@ -146,4 +146,4 @@ now checks tiles in a 3 by 3 radius for collision. Proper colliding is also fina
 
 ## 6-4-19
 ### Tyler
-Today, I worked on the game class. I added a new key press, p. By pressing p while a station menu is displayed allows you to pickup the station. I also added comments to all the classes I worked on. 
+Today, I worked on the player, testtile, and game class. I added a new key press, p. By pressing p while a station menu is displayed allows you to pickup the station. I also added comments to all the classes I worked on. For player class, I updated the punch so stones can only be broken by pickaxes. Trees can be broken by fist or axes. Axes do twice as much damage to trees. For the testtile class, I added a way for the tile to be a tree. I also added a way for players to gain resources after breaking a tree or stone. After breaking a tree or stone, the resource will be automatically added into the inventory. 
