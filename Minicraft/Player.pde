@@ -132,19 +132,26 @@ public class Player {
   }
   void punch() {
     if (stamina > 10) {
-      int tileDamageDealt = dmg;
-      stamina -= 10; 
+      stamina -= 5; 
       if (direction == "north") {
-        testarr[round(currtilex)][round(currtiley-1)].health -= tileDamageDealt;
+        if (testarr[round(currtilex)][round(currtiley-1)].isStone){
+          if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))testarr[round(currtilex)][round(currtiley-1)].health -= dmg * 2;
+        }
       }
       if (direction == "south") {
-        testarr[round(currtilex)][round(currtiley+1)].health -= tileDamageDealt;
+        if (testarr[round(currtilex)][round(currtiley+1)].isStone){
+          if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))testarr[round(currtilex)][round(currtiley+1)].health -= dmg * 2;
+        }
       }
       if (direction == "east") {
-        testarr[round(currtilex + 1)][round(currtiley)].health -= tileDamageDealt;
+        if (testarr[round(currtilex+1)][round(currtiley)].isStone){
+          if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))testarr[round(currtilex+1)][round(currtiley)].health -= dmg * 2;
+        }
       }
       if (direction == "west") {
-        testarr[round(currtilex - 1)][round(currtiley)].health -= tileDamageDealt;
+        if (testarr[round(currtilex-1)][round(currtiley-1)].isStone){
+          if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))testarr[round(currtilex-1)][round(currtiley-1)].health -= dmg * 2;
+        }
       }
     }
   }

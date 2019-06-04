@@ -4,6 +4,7 @@ public class TestTile{
   float radius = 0.5;
   float health;
   boolean isStone;
+  boolean wasStone = false; 
   public TestTile(int x, int y, int health){
     this.x = x;
     this.y = y;
@@ -11,8 +12,11 @@ public class TestTile{
   }
 
   void display(){
-    if (health <= 0){
+    if (health <= 0 && wasStone){
       isStone = false;
+      Resource s = new Resource(15, 3); 
+      itemList[15] = s; 
+      wasStone = false; 
     }
     if(isStone){
       //fill(157, 180, 119);
@@ -32,6 +36,7 @@ public class TestTile{
 
   void makeStone(){
     isStone = true;
+    wasStone = true; 
   }
 
   int compareTo(TestTile other){

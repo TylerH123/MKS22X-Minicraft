@@ -7,7 +7,7 @@ public class Resource extends Item {
     if (id == 16) name = "sand";
     if (id == 17) name = "iron";
     if (id == 18) name = "moodstone";
-    inv.inventory[id] = amt;
+    inv.inventory[id] += amt;
   }
   //return name of resource
   String name() {

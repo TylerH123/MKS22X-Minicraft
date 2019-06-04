@@ -1,8 +1,6 @@
 import java.util.Comparator;
 import java.util.Collections;
 
-
-
 boolean keyz[] = new boolean[6];
 boolean isPaused = false;
 boolean stationMenu = false;
@@ -33,6 +31,7 @@ int[][] costList = new int[][]{ {}, {10, 0}, {20, 0}, {15, 0}, {5, 0}, {20, 14},
 Item[] itemList = new Item[25];
 ArrayList<Station> stations = new ArrayList<Station>();
 Station currentStation;
+//array for workbench. this allows for items to be crafted
 Item[] craftables = new Item[] { new Armor(1), new Armor(2), new Armor(3), new Armor(4), new Station(5, 1), new Station(6, 1), new Station(7, 1), new Station(8, 1), new Tool(9), new Tool(10), new Tool(11), new Tool(12), new Tool(13) };
 void setup() {
   rectMode(CENTER);
@@ -46,18 +45,7 @@ void setup() {
   treeImg.resize(50, 50);
   stoneImg.resize(60, 60);
   grassImg.resize(60, 60);
-  // for (int i = 0; i < 100; i++) {
-  //   for (int j = 0; j < 100; j++) {
-  //     if (j == 4 && i == 4) {
-  //       t[i][j] = new Tree(i, j);
-  //     } else if (j == 0|| j == 99 || i == 0 || i == 99) {
-  //       t[i][j] = new Stone(i, j);
-  //     } else {
-  //       t[i][j] = new Grass(i, j);
-  //     }
-  //   }
-  // }
-
+  
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
       testarr[x][y] = new TestTile(x, y, 10);
@@ -72,7 +60,6 @@ void setup() {
     }
   }
   testarr[3][3].makeStone();
-  //stones.add(testarr[3][3]);
   Armor a = new Armor(14, 2);
 
   stonesx.add(testarr[3][3]);
@@ -101,10 +88,11 @@ void setup() {
   itemList[14] = new Resource(14,100);
   Consumable ap = new Consumable(19);
   itemList[19] = ap;
+  Tool t3 = new Tool(2,9);
+  itemList[9] = t3; 
 }
 
 void draw() {
-  // clear();
   background(#256d7b);
   stroke(#000000, 50);
   strokeWeight(2);
@@ -133,17 +121,6 @@ void draw() {
       }
     }
   }
-
-  for(Station std: stations){
-    // int sx = round(std.x);
-    // int sy = round(std.y);
-    // float dist = distcalc(sx, sy, currtilex, currtiley);
-    // if(p.hitboxrad + std.radius < dist){
-    //   System.exit(0);
-    // }
-  }
-
-  // p.isCollide(testarr[3][3]);
 
   if (!isPaused) {
     inv.ypos = 0;
