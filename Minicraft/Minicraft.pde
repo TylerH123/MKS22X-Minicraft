@@ -7,7 +7,7 @@ boolean keyz[] = new boolean[6];
 boolean isPaused = false;
 //boolean to check if a station menu is open
 boolean stationMenu = false;
-static boolean cannotwalk[] = new boolean[4];
+static boolean canWalk[] = new boolean[]{true, true, true, true};
 static float dx, dy;
 //images for tree, stone, and grass
 PImage treeImg, stoneImg, grassImg, workBImg, pup, pdown, pleft, pright;
@@ -61,7 +61,7 @@ void setup() {
   treeImg.resize(60, 60);
   stoneImg.resize(60, 60);
   grassImg.resize(60, 60);
-  workBImg.resize(60,60);
+  workBImg.resize(60, 60);
 
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
@@ -69,15 +69,15 @@ void setup() {
     }
   }
 
-  for(int x = 10; x < 16; x++){
-    for(int y = 10; y < 16; y++){
+  for (int x = 10; x < 16; x++) {
+    for (int y = 10; y < 16; y++) {
       testarr[x][y].makeStone();
       stonesx.add(testarr[x][y]);
       stonesy.add(testarr[x][y]);
     }
   }
-  for (int x = 17; x < 20; x++){
-    for (int y = 17; y < 20; y++){
+  for (int x = 17; x < 20; x++) {
+    for (int y = 17; y < 20; y++) {
       testarr[x][y].makeTree();
       treesx.add(testarr[x][y]);
       treesy.add(testarr[x][y]);
@@ -112,12 +112,12 @@ void setup() {
   Station s = new Station(5);
   itemList[5] = s;
   stations.add(s);
-  itemList[14] = new Resource(14,100);
+  itemList[14] = new Resource(14, 100);
   Consumable ap = new Consumable(19);
   itemList[19] = ap;
-  Tool t3 = new Tool(2,9);
+  Tool t3 = new Tool(2, 9);
   itemList[9] = t3;
-  Tool t4 = new Tool(2,10);
+  Tool t4 = new Tool(2, 10);
   itemList[10] = t4;
 }
 
@@ -143,34 +143,34 @@ void draw() {
   int relevantystart = p.first(stonesy, 0, stonesy.size() - 1, (int)currtiley, stonesy.size(), 'y');
   int relevantyend = p.last(stonesy, 0, stonesy.size() - 1, (int)currtiley, stonesy.size(), 'y');
 
-  for(int x = (int)currtilex - 2; x < currtilex + 2; x++){
-    for(int y = (int)currtiley - 2; y < currtiley + 2; y++){
-      if (x > 0 && y > 0 && x < 100 && y < 100){
+  for (int x = (int)currtilex - 2; x < currtilex + 2; x++) {
+    for (int y = (int)currtiley - 2; y < currtiley + 2; y++) {
+      if (x > 0 && y > 0 && x < 100 && y < 100) {
         p.isCollide(testarr[x][y]);
       }
     }
   }
 
   if (!isPaused) {
-    if (keyz[0]) {
+    if (keyz[0] && canWalk[0]) {
       dx += (5 + p.vel);
       leanx = -5;
       direction = "west";
       if (keyz[5]) p.isSprinting = true;
     }
-    if (keyz[1]) {
+    if (keyz[1] && canWalk[1]) {
       dy-= (5 + p.vel);
       leany = 5;
       direction = "south";
       if (keyz[5]) p.isSprinting = true;
     }
-    if (keyz[2]) {
+    if (keyz[2] && canWalk[2]) {
       dx-= (5 + p.vel);
       leanx = 5;
       direction = "east";
       if (keyz[5]) p.isSprinting = true;
     }
-    if (keyz[3]) {
+    if (keyz[3] && canWalk[3]) {
       dy+= (5 + p.vel);
       leany = -5;
       direction = "north";
@@ -218,10 +218,12 @@ void draw() {
   for (Station s : stations) {
     s.display();
     p.isCollideStation(s);
-    if (!isPaused && s.isPlaced && keyz[0]) s.px += (5 + p.vel);
-    if (!isPaused && s.isPlaced && keyz[1]) s.py -= (5 + p.vel);
-    if (!isPaused && s.isPlaced && keyz[2]) s.px -= (5 + p.vel);
-    if (!isPaused && s.isPlaced && keyz[3]) s.py += (5 + p.vel);
+    if (!isPaused && s.isPlaced) {
+      if (canWalk[0] && keyz[0]) s.px += (5 + p.vel);
+      if (canWalk[1] && keyz[1]) s.py -= (5 + p.vel);
+      if (canWalk[2] && keyz[2]) s.px -= (5 + p.vel);
+      if (canWalk[3] && keyz[3]) s.py += (5 + p.vel);
+    }
     //System.out.println(s.isPlaced);
   }
   //text((dx > 450) + " left bound check", 10, 50);
@@ -232,7 +234,7 @@ void draw() {
     inv.display();
   }
   if (stationMenu) {
-    currentStation.interact(currentStation.id); 
+    currentStation.interact(currentStation.id);
   }
   p.display();
   //System.out.println(items[2].getInfo()[1]);
@@ -265,10 +267,10 @@ void keyPressed() {
     }
   }
 
-  if (key == 'o' && !stationMenu){
-    if (collidingStation){
+  if (key == 'o' && !stationMenu) {
+    if (collidingStation) {
       stationMenu = true; 
-      isPaused = true; 
+      isPaused = true;
     }
   }
 
@@ -377,7 +379,7 @@ void keyReleased() {
   if (key == 'w')  keyz[3] = false;
 }
 
-static float distcalc(float p1x, float p1y, float p2x, float p2y){
+static float distcalc(float p1x, float p1y, float p2x, float p2y) {
   float deltax = abs(p1x - p2x);
   float deltay = abs(p1y - p2y);
   return sqrt(pow(deltax, 2) + pow(deltay, 2));
