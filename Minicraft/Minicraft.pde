@@ -72,12 +72,12 @@ void setup() {
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
       testarr[x][y] = new TestTile(x, y, 10);
-      if(g.data[x][y] == 1){
+      if (g.data[x][y] == 1) {
         testarr[x][y].makeStone();
         // stones.add(testarr[x][y]);
       }
 
-      if(g.data[x][y] == 2){
+      if (g.data[x][y] == 2) {
         testarr[x][y].makeTree();
         // stones.add(testarr[x][y]);
       }
@@ -218,13 +218,15 @@ void draw() {
     //text("COLLIDFE", 10, 40);
   }
   for (Station s : stations) {
-    s.display();
-    p.isCollideStation(s);
-    if (!isPaused && s.isPlaced) {
-      if (canWalk[0] && keyz[0]) s.px += (5 + p.vel);
-      if (canWalk[1] && keyz[1]) s.py -= (5 + p.vel);
-      if (canWalk[2] && keyz[2]) s.px -= (5 + p.vel);
-      if (canWalk[3] && keyz[3]) s.py += (5 + p.vel);
+    if (s.isPlaced) {
+      s.display();
+      p.isCollideStation(s);
+      if (!isPaused) {
+        if (canWalk[0] && keyz[0]) s.px += (5 + p.vel);
+        if (canWalk[1] && keyz[1]) s.py -= (5 + p.vel);
+        if (canWalk[2] && keyz[2]) s.px -= (5 + p.vel);
+        if (canWalk[3] && keyz[3]) s.py += (5 + p.vel);
+      }
     }
     //System.out.println(s.isPlaced);
   }
@@ -350,12 +352,17 @@ void keyPressed() {
     }
     if (key == 'p' && stationMenu) {
       stationMenu = false;
+      collidingStation = false; 
       currentStation.isPlaced = false;
       inv.inventory[currentStation.id]++;
       itemList[currentStation.id] = currentStation;
       inv.items.add(currentStation);
       isPaused = !isPaused;
       stations.remove(currentStation);
+      canWalk[0] = true; 
+      canWalk[1] = true; 
+      canWalk[2] = true; 
+      canWalk[3] = true; 
       currentStation = null;
     }
     if (key == CODED && stationMenu) {

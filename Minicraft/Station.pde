@@ -101,6 +101,7 @@ public class Station extends Item {
       if (itemID >= 5 && itemID <= 8) {
         Station s = new Station(itemID);
         itemList[itemID] = s;
+
         //remove the resources required to craft
         inv.removeAmt(rssID, c);
         inv.updateInventory();
@@ -115,6 +116,10 @@ public class Station extends Item {
   void place() {
     isPlaced = true;
     stations.add(s);
+    if (inv.inventory[5] > 1) {
+      itemList[5] = new Station(5);
+      inv.inventory[5]--;
+    }
     p.equipped[5] = null;
     if (direction.equals("north")) {
       x = 450;
