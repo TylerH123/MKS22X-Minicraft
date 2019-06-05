@@ -168,7 +168,6 @@ public class Station extends Item {
         interact(idx);
       }
     } else if (stationMenu) {
-      currentStation = this;
       inv.display();
       display(id);
     }
@@ -192,8 +191,6 @@ public class Station extends Item {
   //station can interact
   boolean canInteract() {
     return true;
-  }
-  void check() {
   }
   //display station menu
   //@param s is the station

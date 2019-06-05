@@ -25,7 +25,7 @@ static ArrayList<TestTile> treesy = new ArrayList<TestTile>();
 
 boolean collidingStation;
 static TestTile[][] testarr= new TestTile[100][100];
-//inventory
+//inventory 
 Inventory inv = new Inventory();
 //player
 Player p = new Player();
@@ -151,10 +151,6 @@ void draw() {
     }
   }
 
-  for (Station chosens: stations){
-    p.isCollideStation(chosens);
-  }
-
   if (!isPaused) {
     if (keyz[0]) {
       dx += (5 + p.vel);
@@ -221,6 +217,7 @@ void draw() {
   }
   for (Station s : stations) {
     s.display();
+    p.isCollideStation(s);
     if (!isPaused && s.isPlaced && keyz[0]) s.px += (5 + p.vel);
     if (!isPaused && s.isPlaced && keyz[1]) s.py -= (5 + p.vel);
     if (!isPaused && s.isPlaced && keyz[2]) s.px -= (5 + p.vel);
@@ -233,6 +230,9 @@ void draw() {
   text("Velocity:  " + p.vel, 10, 80);
   if (keyz[4]) {
     inv.display();
+  }
+  if (stationMenu) {
+    currentStation.interact(currentStation.id); 
   }
   p.display();
   //System.out.println(items[2].getInfo()[1]);
@@ -267,8 +267,8 @@ void keyPressed() {
 
   if (key == 'l'){
     if (collidingStation){
-      stations.get(0).display(5);
-
+      stationMenu = true; 
+      isPaused = true; 
     }
   }
 

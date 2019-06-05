@@ -126,6 +126,7 @@ public class Player {
     // println(dist + ", " + (hitboxrad + other.radius));
     if (dist < hitboxrad + other.radius) {
       collidingStation = true;
+      currentStation = other; 
       // println("AAAAAAA");
       // return true;
       // System.exit(1);
