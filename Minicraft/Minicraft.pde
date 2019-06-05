@@ -1,5 +1,6 @@
 import java.util.Comparator;
 import java.util.Collections;
+import java.util.Random;
 
 //array of booleans for keys pressed 0-3 is for movement 4 is for inventory 5 is for sprinting
 boolean keyz[] = new boolean[6];
@@ -25,7 +26,7 @@ static ArrayList<TestTile> treesy = new ArrayList<TestTile>();
 
 boolean collidingStation;
 static TestTile[][] testarr= new TestTile[100][100];
-//inventory 
+//inventory
 Inventory inv = new Inventory();
 //player
 Player p = new Player();
@@ -62,6 +63,8 @@ void setup() {
   stoneImg.resize(60, 60);
   grassImg.resize(60, 60);
   workBImg.resize(60, 60);
+
+  Generator g = new Generator();
 
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
@@ -238,7 +241,7 @@ void draw() {
   }
   p.display();
   //System.out.println(items[2].getInfo()[1]);
-}    
+}
 
 void keyPressed() {
   if (!isPaused) {
@@ -269,7 +272,7 @@ void keyPressed() {
 
   if (key == 'o' && !stationMenu) {
     if (collidingStation) {
-      stationMenu = true; 
+      stationMenu = true;
       isPaused = true;
     }
   }
