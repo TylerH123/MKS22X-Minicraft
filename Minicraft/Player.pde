@@ -216,9 +216,6 @@ public class Player {
           } else if (p.equipped[4].basic.equals("axe"))
             testarr[round(currtilex)][round(currtiley-1)].health -= dmg * 2;
         }
-        if (isTouchingMonster) {
-          currentMonster.hp -= dmg; 
-        }
       }
       if (direction == "south") {
         if (testarr[round(currtilex)][round(currtiley+1)].isStone) {
@@ -231,9 +228,6 @@ public class Player {
             hp--;
           } else if (p.equipped[4].basic.equals("axe"))
             testarr[round(currtilex)][round(currtiley+1)].health -= dmg * 2;
-        }
-        if (isTouchingMonster) {
-          currentMonster.hp -= dmg; 
         }
       }
       if (direction == "east") {
@@ -248,9 +242,6 @@ public class Player {
           } else if (p.equipped[4].basic.equals("axe"))
             testarr[round(currtilex+1)][round(currtiley-1)].health -= dmg * 2;
         }
-        if (isTouchingMonster) {
-          currentMonster.hp -= dmg; 
-        }
       }
       if (direction == "west") {
         if (testarr[round(currtilex-1)][round(currtiley-1)].isStone) {
@@ -263,9 +254,6 @@ public class Player {
             hp--;
           } else if (p.equipped[4].basic.equals("axe"))
             testarr[round(currtilex-1)][round(currtiley)].health -= dmg * 2;
-        }
-        if (isTouchingMonster) {
-          currentMonster.hp -= dmg; 
         }
       }
     }
