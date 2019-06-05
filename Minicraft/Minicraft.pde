@@ -146,7 +146,6 @@ void draw() {
   }
 
   if (!isPaused) {
-    inv.ypos = 0;
     if (keyz[0]) {
       dx += (5 + p.vel);
       leanx = -5;
@@ -249,8 +248,9 @@ void keyPressed() {
       keyz[4] = !keyz[4];
       isPaused = !isPaused;
       inv.current = 0;
+      inv.ypos = 0;
     } else {
-      stationMenu = !stationMenu;
+      stationMenu = false;
       isPaused = !isPaused;
     }
   }
