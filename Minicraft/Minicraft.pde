@@ -266,7 +266,10 @@ void keyPressed() {
   }
 
   if (key == 'l'){
-    stations.get(0).display(5);
+    if (collidingStation){
+      stations.get(0).display(5);
+
+    }
   }
 
   if (isPaused) {
