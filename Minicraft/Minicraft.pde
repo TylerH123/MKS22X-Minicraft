@@ -73,6 +73,11 @@ void setup() {
         testarr[x][y].makeStone();
         // stones.add(testarr[x][y]);
       }
+
+      if(g.data[x][y] == 2){
+        testarr[x][y].makeTree();
+        // stones.add(testarr[x][y]);
+      }
     }
   }
 
