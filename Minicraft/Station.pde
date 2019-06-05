@@ -98,8 +98,8 @@ public class Station extends Item {
       //if it is station then add it to itemList
       if (itemID >= 5 && itemID <= 8) {
         Station s = new Station(itemID);
-        itemList[itemID] = s;
         stations.add(s);
+        itemList[itemID] = s;
         //remove the resources required to craft
         inv.removeAmt(rssID, c);
         inv.updateInventory();
@@ -131,22 +131,22 @@ public class Station extends Item {
       y = 300;
     }
 
-    if (direction.equals("north")){
+    if (direction.equals("north")) {
       worldx = currtilex;
       worldy = currtiley - 1;
     }
 
-    if (direction.equals("south")){
+    if (direction.equals("south")) {
       worldx = currtilex;
       worldy = currtiley + 1;
     }
 
-    if (direction.equals("east")){
+    if (direction.equals("east")) {
       worldx = currtilex + 1;
       worldy = currtiley;
     }
 
-    if (direction.equals("west")){
+    if (direction.equals("west")) {
       worldx = currtilex - 1;
       worldy = currtiley;
     }
