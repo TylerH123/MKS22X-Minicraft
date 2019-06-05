@@ -23,6 +23,7 @@ static ArrayList<TestTile> stonesy = new ArrayList<TestTile>();
 static ArrayList<TestTile> treesx = new ArrayList<TestTile>();
 static ArrayList<TestTile> treesy = new ArrayList<TestTile>();
 
+boolean collidingStation;
 static TestTile[][] testarr= new TestTile[100][100];
 //inventory
 Inventory inv = new Inventory();
@@ -262,6 +263,10 @@ void keyPressed() {
       stationMenu = false;
       isPaused = !isPaused;
     }
+  }
+
+  if (key == 'l'){
+    stations.get(0).display(5);
   }
 
   if (isPaused) {
