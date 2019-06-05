@@ -212,7 +212,6 @@ void draw() {
   }
   for (Station s : stations) {
     s.display();
-    if (s.isPlaced) s.interact(s.id);
     if (!isPaused && s.isPlaced && keyz[0]) s.px += (5 + p.vel);
     if (!isPaused && s.isPlaced && keyz[1]) s.py -= (5 + p.vel);
     if (!isPaused && s.isPlaced && keyz[2]) s.px -= (5 + p.vel);
@@ -240,9 +239,8 @@ void keyPressed() {
       keyz[5] = !keyz[5];
     }
     if (key == 'o') {
-      p.punch();
       if (p.equipped[5] != null) p.equipped[5].place();
-      else p.interact();
+      else p.punch();
     }
   }
   if (key == 'i') {
