@@ -69,6 +69,10 @@ void setup() {
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
       testarr[x][y] = new TestTile(x, y, 10);
+      if(g.data[x][y] == 1){
+        testarr[x][y].makeStone();
+        // stones.add(testarr[x][y]);
+      }
     }
   }
 
