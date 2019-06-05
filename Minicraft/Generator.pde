@@ -4,6 +4,18 @@ public class Generator{
     // 0 is gress
     // 1 is stone
     // 2 is tree
+    ArrayList<Integer> uniquex = new ArrayList<Integer>();
+    ArrayList<Integer> uniquey = new ArrayList<Integer>();
+    int seedCounter = 0;
+
+    for(int z = 10; z < 100; z++){
+      uniquex.add(z);
+      uniquey.add(z);
+    }
+
+    Collections.shuffle(uniquex);
+    Collections.shuffle(uniquey);
+
     Random randgen = new Random();
     int noMountains = 20;
     int[][] stoneseeds = new int[noMountains][2];
@@ -12,7 +24,8 @@ public class Generator{
     // data[stoneseeds[2][0] = abs(randgen.nextInt()%100)] [stoneseeds[2][1] = abs(randgen.nextInt()%100)] = 1;
 
     for(int x = 0; x < noMountains; x++){
-      data[stoneseeds[x][0] = abs(randgen.nextInt()%100)] [stoneseeds[x][1] = abs(randgen.nextInt()%100)] = 1;
+      data[stoneseeds[x][0] = uniquex.get(seedCounter)] [stoneseeds[x][1] = uniquey.get(seedCounter)] = 1;
+      seedCounter++;
     }
 
     for(int seed = 0; seed < noMountains; seed++){
