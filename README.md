@@ -2,7 +2,7 @@
 
 # Description
 
-The game is a top down version of Minecraft where you have to gather resources and survive. The player starts off with the most basic tools created by gathering wood from trees. As the player progresses further into the game, they can mine stronger ore such as iron and moodstone. The material gathered can be used to create items such as craft stations like a furnace. The main objective is to stay alive by defending against monsters. The player can create weapons from the materials they have gathered, such as a stone sword from stone. There is also armor that can be created and equipped by the player to reduce damage taken. There are two stats to keep in check throughout the game: health and stamina. 
+The game is a top down version of Minecraft where you have to gather resources and survive. The player starts off with the most basic tools created by gathering wood from trees. As the player progresses further into the game, they can mine stronger ore such as iron and moodstone. The material gathered can be used to create items such as craft stations like a furnace. The material can also be used to create better tools such as a stone pickaxe. There is also armor that can be created and equipped by the player to reduce damage taken. There are two stats to keep in check throughout the game: health and stamina. 
 
 
 # How to Run
