@@ -24,6 +24,7 @@ static ArrayList<TestTile> treesx = new ArrayList<TestTile>();
 static ArrayList<TestTile> treesy = new ArrayList<TestTile>();
 
 boolean collidingStation;
+boolean isTouchingMonster;
 static TestTile[][] testarr= new TestTile[100][100];
 //inventory 
 Inventory inv = new Inventory();
@@ -40,6 +41,7 @@ Station currentStation;
 //array for workbench. this allows for items to be crafted
 Item[] craftables = new Item[] { new Armor(1), new Armor(2), new Armor(3), new Armor(4), new Station(5, 1), new Station(6, 1), new Station(7, 1), new Station(8, 1), new Tool(9), new Tool(10), new Tool(11), new Tool(12), new Tool(13) };
 ArrayList<Monster> monsters = new ArrayList<Monster>(); 
+Monster currentMonster; 
 void setup() {
   rectMode(CENTER);
   shapeMode(CENTER);
@@ -243,6 +245,7 @@ void draw() {
     m.display(); 
     m.move();
     m.isCollidePlayer(p);
+    currentMonster = m; 
   }
   p.display();
   //System.out.println(items[2].getInfo()[1]);

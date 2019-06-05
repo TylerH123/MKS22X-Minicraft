@@ -1,10 +1,11 @@
 public class Monster {
 
   float hitboxrad = .471;
-  float dmg = .05;
+  float dmg = 2;
   int hp = 10;
   float x,y; 
   float radius = 0.5; 
+  float timer = 0;
   public Monster(int x, int y) {
     this.x = x;
     this.y = y; 
@@ -26,8 +27,8 @@ public class Monster {
     float deltax = abs(this.x - currtilex);
     float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
     //println(dist + ", " + (hitboxrad + other.radius));
-    float timer = 0;
     if (dist < hitboxrad + this.radius) { 
+      isTouchingMonster = true; 
       if (timer % 50 == 0) {
         other.hp -= this.dmg;
       }
