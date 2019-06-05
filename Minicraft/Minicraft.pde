@@ -112,7 +112,7 @@ void setup() {
   itemList[14] = new Resource(14, 100);
   Consumable ap = new Consumable(19);
   itemList[19] = ap;
-  inv.inventory[19] = 2; 
+  inv.inventory[19] = 2;
   Tool t3 = new Tool(2, 9);
   itemList[9] = t3;
   Tool t4 = new Tool(2, 10);
@@ -148,6 +148,20 @@ void draw() {
       }
     }
   }
+
+  if(currtiley <= 0){
+    keyz[3] = false;
+  }
+  if(currtiley >=  100){
+    keyz[1] = false;
+  }
+  if(currtilex <= 0){
+    keyz[0] = false;
+  }
+  if(currtilex >= 100){
+    keyz[2] = false;
+  }
+
   if (!isPaused) {
     if (keyz[0] && canWalk[0]) {
       dx += (5 + p.vel);
@@ -341,17 +355,17 @@ void keyPressed() {
     }
     if (key == 'p' && stationMenu) {
       stationMenu = false;
-      collidingStation = false; 
+      collidingStation = false;
       currentStation.isPlaced = false;
       inv.inventory[currentStation.id]++;
       itemList[currentStation.id] = currentStation;
       inv.items.add(currentStation);
       isPaused = !isPaused;
       stations.remove(currentStation);
-      canWalk[0] = true; 
-      canWalk[1] = true; 
-      canWalk[2] = true; 
-      canWalk[3] = true; 
+      canWalk[0] = true;
+      canWalk[1] = true;
+      canWalk[2] = true;
+      canWalk[3] = true;
       currentStation = null;
     }
     if (key == CODED && stationMenu) {
