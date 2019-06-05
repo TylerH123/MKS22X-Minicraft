@@ -112,6 +112,7 @@ void setup() {
   itemList[14] = new Resource(14, 100);
   Consumable ap = new Consumable(19);
   itemList[19] = ap;
+  inv.inventory[19] = 2; 
   Tool t3 = new Tool(2, 9);
   itemList[9] = t3;
   Tool t4 = new Tool(2, 10);

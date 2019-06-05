@@ -26,6 +26,10 @@ public class TestTile {
          Resource t = new Resource(14,3); 
          itemList[14] = t;
          wasTree = false; 
+         if ((int)(Math.random() * 100) < 70) {
+           Consumable a = new Consumable(19);
+           if (itemList[19] == null) itemList[19] = a;  
+         }
       }
     }
     if (isStone) {
