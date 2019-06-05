@@ -1,5 +1,6 @@
 import java.util.Comparator;
 import java.util.Collections;
+import java.util.Random;
 
 //array of booleans for keys pressed 0-3 is for movement 4 is for inventory 5 is for sprinting
 boolean keyz[] = new boolean[6];
@@ -26,7 +27,7 @@ static ArrayList<TestTile> treesy = new ArrayList<TestTile>();
 boolean collidingStation;
 boolean isTouchingMonster;
 static TestTile[][] testarr= new TestTile[100][100];
-//inventory 
+//inventory
 Inventory inv = new Inventory();
 //player
 Player p = new Player();
@@ -40,8 +41,8 @@ ArrayList<Station> stations = new ArrayList<Station>();
 Station currentStation;
 //array for workbench. this allows for items to be crafted
 Item[] craftables = new Item[] { new Armor(1), new Armor(2), new Armor(3), new Armor(4), new Station(5, 1), new Station(6, 1), new Station(7, 1), new Station(8, 1), new Tool(9), new Tool(10), new Tool(11), new Tool(12), new Tool(13) };
-ArrayList<Monster> monsters = new ArrayList<Monster>(); 
-Monster currentMonster; 
+ArrayList<Monster> monsters = new ArrayList<Monster>();
+Monster currentMonster;
 void setup() {
   rectMode(CENTER);
   shapeMode(CENTER);
@@ -66,9 +67,20 @@ void setup() {
   grassImg.resize(60, 60);
   workBImg.resize(60, 60);
 
+  Generator g = new Generator();
+
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
       testarr[x][y] = new TestTile(x, y, 10);
+      if(g.data[x][y] == 1){
+        testarr[x][y].makeStone();
+        // stones.add(testarr[x][y]);
+      }
+
+      if(g.data[x][y] == 2){
+        testarr[x][y].makeTree();
+        // stones.add(testarr[x][y]);
+      }
     }
   }
 
@@ -242,14 +254,14 @@ void draw() {
     currentStation.interact(currentStation.id);
   }
   for (Monster m : monsters) {
-    m.display(); 
+    m.display();
     m.move();
     m.isCollidePlayer(p);
-    currentMonster = m; 
+    currentMonster = m;
   }
   p.display();
   //System.out.println(items[2].getInfo()[1]);
-}    
+}
 
 void keyPressed() {
   if (!isPaused) {
@@ -266,7 +278,7 @@ void keyPressed() {
     }
     if (key == 'o' && !stationMenu) {
       if (collidingStation) {
-        stationMenu = true; 
+        stationMenu = true;
         isPaused = true;
       }
     }
@@ -281,6 +293,13 @@ void keyPressed() {
     } else {
       stationMenu = false;
       isPaused = !isPaused;
+    }
+  }
+
+  if (key == 'o' && !stationMenu) {
+    if (collidingStation) {
+      stationMenu = true;
+      isPaused = true;
     }
   }
 
