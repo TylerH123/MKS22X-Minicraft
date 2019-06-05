@@ -125,6 +125,7 @@ public class Player {
     float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
     // println(dist + ", " + (hitboxrad + other.radius));
     if (dist < hitboxrad + other.radius) {
+      collidingStation = true;
       // println("AAAAAAA");
       // return true;
       // System.exit(1);
@@ -142,6 +143,9 @@ public class Player {
 
         // println("CANT DO A MOVE DOWN: \n reeeeee");
       }
+    }
+    else{
+      collidingStation = false;
     }
   }
 
