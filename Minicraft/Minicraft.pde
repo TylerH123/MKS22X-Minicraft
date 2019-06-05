@@ -200,8 +200,8 @@ void draw() {
 
   fill(5);
 
-  text("" + dx + ", " + dy, 10, 10);
-  text(direction, 10, 20);
+  //text("" + dx + ", " + dy, 10, 10);
+  //text(direction, 10, 20);
 
   //white board the nedded transformation to map dx and dy to their tile underneath
   currtilex = 9-(dx/60) - 1;
@@ -210,10 +210,10 @@ void draw() {
   ycoor = (dy/60);
   // Tile currtile = t[currtilex][currtiley-1];
   try {
-    text("You're at" + currtilex + ", " + currtiley, 10, 40);
+    //text("You're at" + currtilex + ", " + currtiley, 10, 40);
   }
   catch(Exception e) {
-    text("COLLIDFE", 10, 40);
+    //text("COLLIDFE", 10, 40);
   }
   for (Station s : stations) {
     s.display();
@@ -224,10 +224,10 @@ void draw() {
     if (!isPaused && s.isPlaced && keyz[3]) s.py += (5 + p.vel);
     //System.out.println(s.isPlaced);
   }
-  text((dx > 450) + " left bound check", 10, 50);
-  text((dy > 300) + " up bound check", 10, 60);
-  text("Sprinting: " + keyz[5], 10, 70);
-  text("Velocity:  " + p.vel, 10, 80);
+  //text((dx > 450) + " left bound check", 10, 50);
+  //text((dy > 300) + " up bound check", 10, 60);
+  //text("Sprinting: " + keyz[5], 10, 70);
+  //text("Velocity:  " + p.vel, 10, 80);
   if (keyz[4]) {
     inv.display();
   }
@@ -247,7 +247,7 @@ void keyPressed() {
     if (key == 'k') {
       keyz[5] = !keyz[5];
     }
-    if (key == 'o') {
+    if (key == 'p') {
       if (p.equipped[5] != null) p.equipped[5].place();
       else p.punch();
     }
@@ -265,7 +265,7 @@ void keyPressed() {
     }
   }
 
-  if (key == 'l'){
+  if (key == 'o' && !stationMenu){
     if (collidingStation){
       stationMenu = true; 
       isPaused = true; 

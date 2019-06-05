@@ -167,24 +167,21 @@ public class Player {
     if (direction.equals("west")){
       image(pleft, 450 + leanx, 300 + leany);
     }
-    else{
-      // rect(450 + leanx, 300 + leany, 40, 40);
-    }
     fill(255);
     rect(width-50, 20, 100, 40);
     fill(255, 0, 0);
     text("HP: " + hp, width - 60, 15);
     text("Stamina: " + (int)stamina, width - 90, 30);
-    text("I'm at" + currtilex + ", " + currtiley, 450, 320);
+    //text("I'm at" + currtilex + ", " + currtiley, 450, 320);
     TestTile other = testarr[3][3];
 
     float deltay = abs(other.y - currtiley);
     float deltax = abs(other.x - currtilex);
     float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
-    fill(#000000);
-    text("My distance to 3, 3 is: " + dist, 450, 330);
-    text("I'm at" + currtilex + ", " + currtiley, 450, 340);
-    text("3, 3 is at: " + other.x + ", " + other.y, 450, 350);
+    //fill(#000000);
+    //text("My distance to 3, 3 is: " + dist, 450, 330);
+    //text("I'm at" + currtilex + ", " + currtiley, 450, 340);
+    //text("3, 3 is at: " + other.x + ", " + other.y, 450, 350);
   }
   void updateArmor() {
     float armor = 0.00;
@@ -197,8 +194,6 @@ public class Player {
   void updateDamage() {
     if (equipped[4] != null) dmg = parseInt(equipped[4].getInfo()[1]);
     else dmg = 1;
-  }
-  void interact() {
   }
   void punch() {
     if (stamina > 10) {
