@@ -4,6 +4,9 @@ public class Generator{
     // 0 is gress
     // 1 is stone
     // 2 is tree
+
+    int maxRadius = 15;
+
     ArrayList<Integer> uniquex = new ArrayList<Integer>();
     ArrayList<Integer> uniquey = new ArrayList<Integer>();
     int seedCounter = 0;
@@ -31,7 +34,7 @@ public class Generator{
     for(int seed = 0; seed < noMountains; seed++){
       for(int x = 0; x < 100; x++){
         for(int y = 0; y < 100; y++){
-          if ((x - stoneseeds[seed][0]) * (x - stoneseeds[seed][0]) + (y - stoneseeds[seed][1]) * (y - stoneseeds[seed][1]) <= pow(randgen.nextInt(15), 2)) {
+          if ((x - stoneseeds[seed][0]) * (x - stoneseeds[seed][0]) + (y - stoneseeds[seed][1]) * (y - stoneseeds[seed][1]) <= pow(randgen.nextInt(maxRadius), 2)) {
             data[x][y] = 1;
           }
         }
@@ -54,7 +57,7 @@ public class Generator{
     for(int seed = 0; seed < noForests; seed++){
       for(int x = 0; x < 100; x++){
         for(int y = 0; y < 100; y++){
-          if ((x - forestseeds[seed][0]) * (x - forestseeds[seed][0]) + (y - forestseeds[seed][1]) * (y - forestseeds[seed][1]) <= pow(randgen.nextInt(15), 2)) {
+          if ((x - forestseeds[seed][0]) * (x - forestseeds[seed][0]) + (y - forestseeds[seed][1]) * (y - forestseeds[seed][1]) <= pow(randgen.nextInt(maxRadius), 2)) {
             data[x][y] = 2;
           }
         }
