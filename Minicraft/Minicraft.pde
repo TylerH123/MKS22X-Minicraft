@@ -60,7 +60,7 @@ void setup() {
   treeImg.resize(60, 60);
   stoneImg.resize(60, 60);
   grassImg.resize(60, 60);
-  workBImg.resize(50,50);
+  workBImg.resize(60,60);
 
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
@@ -235,7 +235,7 @@ void draw() {
   }
   p.display();
   //System.out.println(items[2].getInfo()[1]);
-}
+}    
 
 void keyPressed() {
   if (!isPaused) {

@@ -117,36 +117,24 @@ public class Station extends Item {
     if (direction.equals("north")) {
       x = 450;
       y = 250;
+      worldx = currtilex;
+      worldy = currtiley - 1;
     }
     if (direction.equals("south")) {
       x = 450;
       y = 350;
+      worldx = currtilex;
+      worldy = currtiley + 1;
     }
     if (direction.equals("east")) {
       x = 500;
       y = 300;
+      worldx = currtilex + 1;
+      worldy = currtiley;
     }
     if (direction.equals("west")) {
       x = 400;
       y = 300;
-    }
-
-    if (direction.equals("north")) {
-      worldx = currtilex;
-      worldy = currtiley - 1;
-    }
-
-    if (direction.equals("south")) {
-      worldx = currtilex;
-      worldy = currtiley + 1;
-    }
-
-    if (direction.equals("east")) {
-      worldx = currtilex + 1;
-      worldy = currtiley;
-    }
-
-    if (direction.equals("west")) {
       worldx = currtilex - 1;
       worldy = currtiley;
     }

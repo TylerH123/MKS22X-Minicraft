@@ -130,14 +130,14 @@ public class Player {
       // System.exit(1);
       if (other.worldx > currtilex) {
         keyz[2] = false;
-      } else if (other.x < currtilex) {
+      } else if (other.worldx < currtilex) {
         keyz[0] = false;
       }
 
       if (other.worldy < currtiley) {
         keyz[3] = false;
         // println("CANT DO A MOVE UP");
-      } else if (other.y > currtiley) {
+      } else if (other.worldy > currtiley) {
         keyz[1] = false;
 
         // println("CANT DO A MOVE DOWN: \n reeeeee");
