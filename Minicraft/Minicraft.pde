@@ -50,7 +50,7 @@ void setup() {
   treeImg.resize(60, 60);
   stoneImg.resize(60, 60);
   grassImg.resize(60, 60);
-  
+
   for (int x = 0; x < 100; x++) {
     for (int y = 0; y < 100; y++) {
       testarr[x][y] = new TestTile(x, y, 10);
@@ -71,7 +71,7 @@ void setup() {
       treesy.add(testarr[x][y]);
     }
   }
-  
+
   testarr[3][3].makeStone();
   Armor a = new Armor(14, 2);
 
@@ -85,7 +85,7 @@ void setup() {
   Collections.sort(stonesy, ys);
   Collections.sort(treesx, xs);
   Collections.sort(treesy, ys);
-  
+
   itemList[2] = a;
   Armor b = new Armor(15, 1);
   itemList[1] = b;
@@ -104,7 +104,7 @@ void setup() {
   Consumable ap = new Consumable(19);
   itemList[19] = ap;
   Tool t3 = new Tool(2,9);
-  itemList[9] = t3; 
+  itemList[9] = t3;
   Tool t4 = new Tool(2,10);
   itemList[10] = t4;
 }
@@ -137,6 +137,10 @@ void draw() {
         p.isCollide(testarr[x][y]);
       }
     }
+  }
+
+  for (Station chosens: stations){
+    p.isCollideStation(chosens);
   }
 
   if (!isPaused) {
@@ -312,10 +316,10 @@ void keyPressed() {
       }
     }
     if (key == 'p' && stationMenu) {
-      stationMenu = false; 
-      currentStation.isPlaced = false; 
+      stationMenu = false;
+      currentStation.isPlaced = false;
       inv.inventory[currentStation.id]++;
-      itemList[currentStation.id] = currentStation; 
+      itemList[currentStation.id] = currentStation;
       inv.items.add(currentStation);
     }
     if (key == CODED && stationMenu) {
