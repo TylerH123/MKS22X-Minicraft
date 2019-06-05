@@ -28,7 +28,8 @@ i to close station menu
 ```
 While invetory is closed:
 ```
-o to punch or use equipped tool or place station
+p to punch or use equipped tool or place station
+o to open and use a station
 w,a,s,d to move around
 k to activate sprinting (drains stamina)
 ```
