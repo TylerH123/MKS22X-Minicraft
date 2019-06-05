@@ -70,7 +70,7 @@ public class Player {
       float deltay = abs(other.y - currtiley);
       float deltax = abs(other.x - currtilex);
       float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
-      println(dist + ", " + (hitboxrad + other.radius));
+      //println(dist + ", " + (hitboxrad + other.radius));
       if (dist < hitboxrad + other.radius) {
         // println("AAAAAAA");
         // return true;
@@ -83,11 +83,11 @@ public class Player {
 
         if (other.y < currtiley) {
           keyz[3] = false;
-          println("CANT DO A MOVE UP");
+          //println("CANT DO A MOVE UP");
         } else if (other.y > currtiley) {
           keyz[1] = false;
 
-          println("CANT DO A MOVE DOWN: \n reeeeee");
+          //println("CANT DO A MOVE DOWN: \n reeeeee");
         }
       }
     }
@@ -95,7 +95,7 @@ public class Player {
       float deltay = abs(other.y - currtiley);
       float deltax = abs(other.x - currtilex);
       float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
-      println(dist + ", " + (hitboxrad + other.radius));
+      //println(dist + ", " + (hitboxrad + other.radius));
       if (dist < hitboxrad + other.radius) {
         // println("AAAAAAA");
         // return true;
@@ -108,11 +108,11 @@ public class Player {
 
         if (other.y < currtiley) {
           keyz[3] = false;
-          println("CANT DO A MOVE UP");
+          //println("CANT DO A MOVE UP");
         } else if (other.y > currtiley) {
           keyz[1] = false;
 
-          println("CANT DO A MOVE DOWN: \n reeeeee");
+          //println("CANT DO A MOVE DOWN: \n reeeeee");
         }
       }
     }

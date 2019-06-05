@@ -7,7 +7,7 @@ boolean keyz[] = new boolean[6];
 boolean isPaused = false;
 //boolean to check if a station menu is open
 boolean stationMenu = false;
-static boolean canWalk[] = new boolean[]{true, true, true, true};
+boolean canWalk[] = new boolean[]{true, true, true, true};
 static float dx, dy;
 //images for tree, stone, and grass
 PImage treeImg, stoneImg, grassImg, workBImg, pup, pdown, pleft, pright;
@@ -111,7 +111,6 @@ void setup() {
   itemList[12] = t2;
   Station s = new Station(5);
   itemList[5] = s;
-  //stations.add(s);
   itemList[14] = new Resource(14, 100);
   Consumable ap = new Consumable(19);
   itemList[19] = ap;
