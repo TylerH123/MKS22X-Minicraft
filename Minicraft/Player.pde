@@ -119,6 +119,32 @@ public class Player {
     // return false;
   }
 
+  void isCollideStation(Station other){
+    float deltay = abs(other.worldy - currtiley);
+    float deltax = abs(other.worldx - currtilex);
+    float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
+    // println(dist + ", " + (hitboxrad + other.radius));
+    if (dist < hitboxrad + other.radius) {
+      // println("AAAAAAA");
+      // return true;
+      // System.exit(1);
+      if (other.worldx > currtilex) {
+        keyz[2] = false;
+      } else if (other.x < currtilex) {
+        keyz[0] = false;
+      }
+
+      if (other.worldy < currtiley) {
+        keyz[3] = false;
+        // println("CANT DO A MOVE UP");
+      } else if (other.y > currtiley) {
+        keyz[1] = false;
+
+        // println("CANT DO A MOVE DOWN: \n reeeeee");
+      }
+    }
+  }
+
 
   void display() {
     fill(100, 50, 118);
@@ -157,7 +183,7 @@ public class Player {
   }
   void punch() {
     if (stamina > 10) {
-      stamina -= 5; 
+      stamina -= 5;
       if (direction == "north") {
         if (testarr[round(currtilex)][round(currtiley-1)].isStone) {
           if (p.equipped[4] != null && p.equipped[4].basic.equals("pickaxe"))
