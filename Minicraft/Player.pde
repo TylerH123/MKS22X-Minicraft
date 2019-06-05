@@ -150,7 +150,21 @@ public class Player {
     fill(100, 50, 118);
     //text("PLAYER BOI", 442, 368);
     stroke(#000000, 50);
-    rect(450 + leanx, 300 + leany, 40, 40);
+    if (direction.equals("north")){
+      image(pup, 450 + leanx, 300 + leany);
+    }
+    if (direction.equals("south")){
+      image(pdown, 450 + leanx, 300 + leany);
+    }
+    if (direction.equals("east")){
+      image(pright, 450 + leanx, 300 + leany);
+    }
+    if (direction.equals("west")){
+      image(pleft, 450 + leanx, 300 + leany);
+    }
+    else{
+      // rect(450 + leanx, 300 + leany, 40, 40);
+    }
     fill(255);
     rect(width-50, 20, 100, 40);
     fill(255, 0, 0);
