@@ -60,7 +60,7 @@ public class Armor extends Item {
     if (type == 18) typeName = "moodstone";
     return typeName + " " + piece;
   }
-      //returns an array containing name, damage reduction, tier of the armor, and the piece
+  //returns an array containing name, damage reduction, tier of the armor, and the piece
   String[] getInfo() {
     String[] info = new String[4];
     info[0] = name();
