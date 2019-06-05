@@ -39,6 +39,7 @@ ArrayList<Station> stations = new ArrayList<Station>();
 Station currentStation;
 //array for workbench. this allows for items to be crafted
 Item[] craftables = new Item[] { new Armor(1), new Armor(2), new Armor(3), new Armor(4), new Station(5, 1), new Station(6, 1), new Station(7, 1), new Station(8, 1), new Tool(9), new Tool(10), new Tool(11), new Tool(12), new Tool(13) };
+ArrayList<Monster> monsters = new ArrayList<Monster>(); 
 void setup() {
   rectMode(CENTER);
   shapeMode(CENTER);
@@ -82,6 +83,10 @@ void setup() {
       treesx.add(testarr[x][y]);
       treesy.add(testarr[x][y]);
     }
+  }
+
+  for (int i = 0; i < 1; i ++) {
+    monsters.add(new Monster(0, 0));
   }
 
   testarr[3][3].makeStone();
@@ -149,7 +154,6 @@ void draw() {
       }
     }
   }
-
   if (!isPaused) {
     if (keyz[0] && canWalk[0]) {
       dx += (5 + p.vel);
@@ -234,6 +238,11 @@ void draw() {
   }
   if (stationMenu) {
     currentStation.interact(currentStation.id);
+  }
+  for (Monster m : monsters) {
+    m.display(); 
+    m.move();
+    m.isCollidePlayer(p);
   }
   p.display();
   //System.out.println(items[2].getInfo()[1]);

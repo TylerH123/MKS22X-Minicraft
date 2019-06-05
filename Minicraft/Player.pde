@@ -119,7 +119,7 @@ public class Player {
     // return false;
   }
 
-  void isCollideStation(Station other){
+  void isCollideStation(Station other) {
     float deltay = abs(other.worldy - currtiley);
     float deltax = abs(other.worldx - currtilex);
     float dist = sqrt((pow(deltax, 2)) + (pow(deltay, 2)));
@@ -144,8 +144,7 @@ public class Player {
 
         // println("CANT DO A MOVE DOWN: \n reeeeee");
       }
-    }
-    else{
+    } else {
       collidingStation = false;
       canWalk[0] = true;
       canWalk[1] = true;
@@ -154,21 +153,20 @@ public class Player {
     }
   }
 
-
   void display() {
     fill(100, 50, 118);
     //text("PLAYER BOI", 442, 368);
     stroke(#000000, 50);
-    if (direction.equals("north")){
+    if (direction.equals("north")) {
       image(pup, 450 + leanx, 300 + leany);
     }
-    if (direction.equals("south")){
+    if (direction.equals("south")) {
       image(pdown, 450 + leanx, 300 + leany);
     }
-    if (direction.equals("east")){
+    if (direction.equals("east")) {
       image(pright, 450 + leanx, 300 + leany);
     }
-    if (direction.equals("west")){
+    if (direction.equals("west")) {
       image(pleft, 450 + leanx, 300 + leany);
     }
     fill(255);
@@ -256,4 +254,4 @@ public class Player {
       }
     }
   }
-}
+}  

@@ -193,7 +193,7 @@ public class Station extends Item {
   //return name
   String name() {
     return name;
-  }
+  }  
   //station can interact
   boolean canInteract() {
     return true;
