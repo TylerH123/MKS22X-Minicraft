@@ -111,7 +111,7 @@ void setup() {
   itemList[12] = t2;
   Station s = new Station(5);
   itemList[5] = s;
-  stations.add(s);
+  //stations.add(s);
   itemList[14] = new Resource(14, 100);
   Consumable ap = new Consumable(19);
   itemList[19] = ap;
@@ -253,6 +253,12 @@ void keyPressed() {
       if (p.equipped[5] != null) p.equipped[5].place();
       else p.punch();
     }
+    if (key == 'o' && !stationMenu) {
+      if (collidingStation) {
+        stationMenu = true; 
+        isPaused = true;
+      }
+    }
   }
   if (key == 'i') {
     if (!stationMenu) {
@@ -264,13 +270,6 @@ void keyPressed() {
     } else {
       stationMenu = false;
       isPaused = !isPaused;
-    }
-  }
-
-  if (key == 'o' && !stationMenu) {
-    if (collidingStation) {
-      stationMenu = true; 
-      isPaused = true;
     }
   }
 
@@ -341,6 +340,8 @@ void keyPressed() {
       itemList[currentStation.id] = currentStation;
       inv.items.add(currentStation);
       isPaused = !isPaused;
+      stations.remove(currentStation);
+      currentStation = null;
     }
     if (key == CODED && stationMenu) {
       if (keyCode == DOWN) {

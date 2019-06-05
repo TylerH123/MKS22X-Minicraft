@@ -12,6 +12,7 @@ public class Station extends Item {
   int current2 = 0;
   float radius = 0.589;
   float worldx, worldy;
+  Station s; 
   Station(int station) {
     id = station;
     //workbench
@@ -32,6 +33,7 @@ public class Station extends Item {
     px = 0;
     py = 0;
     inv.inventory[id]++;
+    s = this;
   }
   Station(int s, int g) {
     id = s;
@@ -98,7 +100,6 @@ public class Station extends Item {
       //if it is station then add it to itemList
       if (itemID >= 5 && itemID <= 8) {
         Station s = new Station(itemID);
-        stations.add(s);
         itemList[itemID] = s;
         //remove the resources required to craft
         inv.removeAmt(rssID, c);
@@ -113,6 +114,7 @@ public class Station extends Item {
    **/
   void place() {
     isPlaced = true;
+    stations.add(s);
     p.equipped[5] = null;
     if (direction.equals("north")) {
       x = 450;
@@ -177,10 +179,14 @@ public class Station extends Item {
   void interact() {
     if (id == 5) {
       int rssID = 0;
-      if (current2 == 0) rssID = 14;
-      if (current2 == 1) rssID = 15;
-      if (current2 == 2) rssID = 17;
-      if (current2 == 3) rssID = 18;
+      if ((current >= 0 && current <= 3) || (current >= 8 && current <= 12)) {
+        if (current2 == 0) rssID = 14;
+        if (current2 == 1) rssID = 15;
+        if (current2 == 2) rssID = 17;
+        if (current2 == 3) rssID = 18;
+      } else {
+        rssID = costList[current+1][1];
+      }
       craft(craftables[current].id, rssID);
     }
   }
@@ -213,6 +219,14 @@ public class Station extends Item {
           text(costList[craftables[current].id][0] + "x moodstone", 455, 78);
         } else {
           current2 = 0;
+          if (current == 4) 
+            text(costList[craftables[current].id][0] + "x wood", 455, 48);
+          if (current == 5) 
+            text(costList[craftables[current].id][0] + "x stone", 455, 48);
+          if (current == 6) 
+            text(costList[craftables[current].id][0] + "x iron", 455, 48);
+          if (current == 7) 
+            text(costList[craftables[current].id][0] + "x stone", 455, 48);
         }
       }
     }
