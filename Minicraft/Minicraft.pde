@@ -338,6 +338,7 @@ void keyPressed() {
       inv.inventory[currentStation.id]++;
       itemList[currentStation.id] = currentStation;
       inv.items.add(currentStation);
+      isPaused = !isPaused;
     }
     if (key == CODED && stationMenu) {
       if (keyCode == DOWN) {
