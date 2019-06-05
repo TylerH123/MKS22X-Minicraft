@@ -84,21 +84,6 @@ void setup() {
     }
   }
 
-  for (int x = 10; x < 16; x++) {
-    for (int y = 10; y < 16; y++) {
-      testarr[x][y].makeStone();
-      stonesx.add(testarr[x][y]);
-      stonesy.add(testarr[x][y]);
-    }
-  }
-  for (int x = 17; x < 20; x++) {
-    for (int y = 17; y < 20; y++) {
-      testarr[x][y].makeTree();
-      treesx.add(testarr[x][y]);
-      treesy.add(testarr[x][y]);
-    }
-  }
-
   for (int i = 0; i < 1; i ++) {
     monsters.add(new Monster(0, 0));
   }
